@@ -49,7 +49,7 @@ public class ToolBarDemo extends JPanel
         JButton button = null;
  
         //first button
-        button = makeNavigationButton("Back24", JToolBar. PREVIOUS,
+        button = makeNavigationButton("Back24", PREVIOUS,
                                       "Back to previous something-or-other",
                                       "Previous");
         toolBar.add(button);
