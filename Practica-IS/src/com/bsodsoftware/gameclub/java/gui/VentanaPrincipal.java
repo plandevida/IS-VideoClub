@@ -13,6 +13,8 @@ import javax.swing.JMenuItem;
 
 public class VentanaPrincipal extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * El título de la ventana
 	 * 
