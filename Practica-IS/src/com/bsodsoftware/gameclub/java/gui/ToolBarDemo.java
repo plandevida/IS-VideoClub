@@ -18,9 +18,11 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
  
-public class ToolBarDemo extends JPanel
-                         implements ActionListener {
-    protected JTextArea textArea;
+public class ToolBarDemo extends JPanel implements ActionListener {
+	
+	private static final long serialVersionUID = 1L;
+	
+	protected JTextArea textArea;
     protected String newline = "\n";
     static final private String PREVIOUS = "previous";
     static final private String UP = "up";
@@ -49,9 +51,9 @@ public class ToolBarDemo extends JPanel
         JButton button = null;
  
         //first button
-        button = makeNavigationButton("Back24", PREVIOUS,
+        button = makeNavigationButton("JL", ".jpg", PREVIOUS,
                                       "Back to previous something-or-other",
-                                      "Previous");
+                                      "JuanLU");
         toolBar.add(button);
  
         //second button
@@ -71,10 +73,17 @@ public class ToolBarDemo extends JPanel
                                            String actionCommand,
                                            String toolTipText,
                                            String altText) {
+    	
+    	return makeNavigationButton(imageName, ".gif", actionCommand, toolTipText, altText);
+    	
+    }
+    
+    protected JButton makeNavigationButton(String imageName, String typeImage, String actionCommand, String toolTipText, String altText) {
+
         //Look for the image.
-        String imgLocation = "images/"
+        String imgLocation = "resources/"
                              + imageName
-                             + ".gif";
+                             + typeImage;
         URL imageURL = ToolBarDemo.class.getResource(imgLocation);
         
         //Create and initialize the button.
