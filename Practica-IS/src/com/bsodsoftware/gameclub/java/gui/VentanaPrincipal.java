@@ -80,10 +80,8 @@ public class VentanaPrincipal extends JFrame {
 //		barraMenus.add(menuArchivoItem);
 //		
 //		setJMenuBar(barraMenus);
-		JPanel p = new ToolBarDemo();
-			
+		ToolBarDemo p = new ToolBarDemo();
 		
-	
 		add(p);
 	
 		pack();
