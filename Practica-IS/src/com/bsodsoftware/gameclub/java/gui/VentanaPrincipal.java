@@ -4,12 +4,12 @@ import imangenes.Imagenes;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.net.URL;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -66,38 +66,30 @@ public class VentanaPrincipal extends JFrame {
 	private void crearBotones(JPanel panel) {
 		JToolBar barraBotones = new JToolBar(JToolBar.VERTICAL);
 		
+		ImageIcon iconoPrestamo = Imagenes.getJL56_56();
+		ImageIcon iconoDevoluciones = Imagenes.getJL56_56();
+		ImageIcon iconoAdministracion = Imagenes.getJL56_56();
+		
 		JButton botonPrestamos = new JButton("Préstamos");
 		
-		URL url = getClass().getResource("/recursos/JL.jpg");
-		
-		if (url == null) {
-			url = getClass().getResource("JL.jpg");
-		}
-		
-		ImageIcon icono = null;
-		
-		try {
-			icono = new ImageIcon(url);
-			
-			System.out.println(icono);
-			
-		} catch(NullPointerException nu) {
-			
-			System.out.println("nulo desde los recursos");
-			
-			icono = Imagenes.getJL();
-		}
-		
-		System.out.println(icono);
-		
-		botonPrestamos.setIcon(icono);
-//		botonPrestamos.setIconTextGap(5);
+		botonPrestamos.setVerticalTextPosition(JLabel.BOTTOM);
+		botonPrestamos.setHorizontalTextPosition(JLabel.CENTER);
+		botonPrestamos.setIcon(iconoPrestamo);
+		botonPrestamos.setIconTextGap(5);
 		
 		JButton botonDevoluciones = new JButton("Devoluciones");
-//		botonDevoluciones.setIconTextGap(5);
+		
+		botonDevoluciones.setVerticalTextPosition(JLabel.BOTTOM);
+		botonDevoluciones.setHorizontalTextPosition(JLabel.CENTER);
+		botonDevoluciones.setIcon(iconoDevoluciones);
+		botonDevoluciones.setIconTextGap(5);
 		
 		JButton botonAdministracion = new JButton("Administración");
-//		botonAdministracion.setIconTextGap(5);
+		
+		botonDevoluciones.setVerticalTextPosition(JLabel.BOTTOM);
+		botonDevoluciones.setHorizontalTextPosition(JLabel.CENTER);
+		botonDevoluciones.setIcon(iconoAdministracion);
+		botonAdministracion.setIconTextGap(5);
 		
 		barraBotones.add(Box.createGlue());
 		barraBotones.add(botonPrestamos);
