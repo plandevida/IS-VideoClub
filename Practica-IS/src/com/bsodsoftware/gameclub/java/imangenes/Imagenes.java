@@ -24,7 +24,7 @@ public class Imagenes {
 	}
 	
 	public static ImageIcon getDevoluciones() {
-		cachedIcon = new ImageIcon(Imagenes.class.getResource("devoluciones.jpg"));
+		cachedIcon = new ImageIcon(Imagenes.class.getResource("devoluciones.png"));
 		
 		return getCachedIcon();
 	}
