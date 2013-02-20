@@ -1,6 +1,5 @@
 package com.bsodsoftware.gameclub.java.gui;
 
-import imangenes.Imagenes;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -14,6 +13,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
+
+import com.bsodsoftware.gameclub.java.imangenes.Imagenes;
 
 public class VentanaPrincipal extends JFrame {
 	

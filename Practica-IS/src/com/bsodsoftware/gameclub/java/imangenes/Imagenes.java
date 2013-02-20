@@ -1,4 +1,4 @@
-package imangenes;
+package com.bsodsoftware.gameclub.java.imangenes;
 
 import java.awt.Image;
 
