@@ -67,9 +67,9 @@ public class VentanaPrincipal extends JFrame {
 	private void crearBotones(JPanel panel) {
 		JToolBar barraBotones = new JToolBar(JToolBar.VERTICAL);
 		
-		ImageIcon iconoPrestamo = Imagenes.getJL56_56();
-		ImageIcon iconoDevoluciones = Imagenes.getJL56_56();
-		ImageIcon iconoAdministracion = Imagenes.getJL56_56();
+		ImageIcon iconoPrestamo = Imagenes.getPrestamos56x56();
+		ImageIcon iconoDevoluciones = Imagenes.getDevoluciones56x56();
+		ImageIcon iconoAdministracion = Imagenes.getAdministracion56x56();
 		
 		JButton botonPrestamos = new JButton("Préstamos");
 		
@@ -87,9 +87,9 @@ public class VentanaPrincipal extends JFrame {
 		
 		JButton botonAdministracion = new JButton("Administración");
 		
-		botonDevoluciones.setVerticalTextPosition(JLabel.BOTTOM);
-		botonDevoluciones.setHorizontalTextPosition(JLabel.CENTER);
-		botonDevoluciones.setIcon(iconoAdministracion);
+		botonAdministracion.setVerticalTextPosition(JLabel.BOTTOM);
+		botonAdministracion.setHorizontalTextPosition(JLabel.CENTER);
+		botonAdministracion.setIcon(iconoAdministracion);
 		botonAdministracion.setIconTextGap(5);
 		
 		barraBotones.add(Box.createGlue());

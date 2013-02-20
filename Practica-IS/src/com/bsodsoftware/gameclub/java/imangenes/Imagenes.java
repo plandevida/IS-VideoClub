@@ -6,20 +6,51 @@ import javax.swing.ImageIcon;
 
 public class Imagenes {
 	
+	/**
+	 * Última imagen cargada.
+	 */
 	private static ImageIcon cachedIcon;
 	
-	public static ImageIcon getJL() {
-		cachedIcon = new ImageIcon(Imagenes.class.getResource("./JL.jpg"));
+	public static ImageIcon getPrestamos() {
+		cachedIcon = new ImageIcon(Imagenes.class.getResource("prestamos.jpg"));
 		
 		return getCachedIcon();
 	}
 	
-	public static ImageIcon getJL56_56() {
-		cachedIcon = new ImageIcon(getJL().getImage().getScaledInstance(56, 56, Image.SCALE_FAST));
+	public static ImageIcon getPrestamos56x56() {
+		cachedIcon = new ImageIcon(getPrestamos().getImage().getScaledInstance(56, 56, Image.SCALE_FAST));
 		
 		return getCachedIcon();
 	}
 	
+	public static ImageIcon getDevoluciones() {
+		cachedIcon = new ImageIcon(Imagenes.class.getResource("devoluciones.jpg"));
+		
+		return getCachedIcon();
+	}
+	
+	public static ImageIcon getDevoluciones56x56() {
+		cachedIcon = new ImageIcon(getDevoluciones().getImage().getScaledInstance(56, 56, Image.SCALE_FAST));
+		
+		return getCachedIcon();
+	}
+
+	public static ImageIcon getAdministracion() {
+		cachedIcon = new ImageIcon(Imagenes.class.getResource("administracion.png"));
+		
+		return getCachedIcon();
+	}
+	
+	public static ImageIcon getAdministracion56x56() {
+		cachedIcon = new ImageIcon(getAdministracion().getImage().getScaledInstance(56, 56, Image.SCALE_FAST));
+		
+		return getCachedIcon();
+	}
+	
+	/**
+	 * Obtiene la última imagen cargada.
+	 * @return
+	 */
 	public static ImageIcon getCachedIcon() {
 		return cachedIcon;
 	}
