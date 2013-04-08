@@ -28,10 +28,10 @@ public class Conexion
 			
 			
 		
-		String driver = "org.apache.derby.jdbc.ClientDriver";
+		String driver = "org.apache.derby.jdbc.EmbeddedDriver";
 		Class.forName(driver).newInstance();
-			
-		String db="jdbc:derby://localhost:1527/C:/hlocal/git/IS-VideoClub/Practica-IS/db;create=true;";
+		//C:\hlocal\git\IS-VideoClub\Practica-IS\db	
+		String db="jdbc:derby:C:\\hlocal\\git\\IS-VideoClub\\Practica-IS\\db\\db\\db;create=true";
 		conexion_bd = DriverManager.getConnection(db);
 	      System.out.println("Derby connection ok.");
 	     
@@ -60,7 +60,7 @@ public class Conexion
 		
 		Conexion c = new Conexion();
 		c.CrearConexion();
-		c.Ejecutar_Consulta("select * from PRUEBA.MYTABLE");
+		c.Ejecutar_Consulta("select * from  TROLLMILIO.tablatroll");
 		
 	}
 }
