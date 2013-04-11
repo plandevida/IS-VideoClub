@@ -9,13 +9,18 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
+import com.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
 import com.bsodsoftware.gameclub.java.gui.paneles.PanelPrestamos;
 import com.bsodsoftware.gameclub.java.imangenes.Imagenes;
 
@@ -23,7 +28,7 @@ public class VentanaPrincipal extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private JPanel panel;
+	private static JPanel panel;
 	
 	public VentanaPrincipal() {
 		/* 
@@ -73,9 +78,27 @@ public class VentanaPrincipal extends JFrame {
 		
 		JMenuBar barraMenus = new JMenuBar();
 		
-		JMenu menuArchivoItem = new JMenu("Archivo");
+		JMenu menuArchivo = new JMenu("Archivo");
+		JMenu menuAyuda = new JMenu("Ayuda");
 		
-		barraMenus.add(menuArchivoItem);
+		JMenuItem menuAboutItem = new JMenuItem("About BSOD Sotfware");
+		menuAboutItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				
+				dialogo.setContentPane(new PanelAbout(Imagenes.getAbout().getImage()));
+				
+				dialogo.setModal(true);
+				dialogo.setVisible(true);
+			}
+		});
+		
+		menuAyuda.add(menuAboutItem);
+		
+		barraMenus.add(menuArchivo);
+		barraMenus.add(menuAyuda);
 		
 		ventana.setJMenuBar(barraMenus);
 	}
@@ -113,6 +136,13 @@ public class VentanaPrincipal extends JFrame {
 		botonDevoluciones.setIcon(iconoDevoluciones);
 		botonDevoluciones.setIconTextGap(5);
 		
+		botonDevoluciones.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ev) {
+				//changeLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
+			}
+		});
+		
 		JButton botonAdministracion = new JButton("Administración");
 		
 		botonAdministracion.setVerticalTextPosition(JLabel.BOTTOM);
@@ -132,5 +162,20 @@ public class VentanaPrincipal extends JFrame {
 	private void cambiarPanel(JPanel nuevoPanel) {
 		panel.add(nuevoPanel);
 		pack();
+	}
+	
+	/**
+	 * Método que cambia el Look and Feel de la aplicación.
+	 * @param classRouteName String de la clase (Look and Feel)
+	 * a poner.
+	 */
+	@Deprecated
+	public static void changeLookAndFeel(String classRouteName) {
+		try {
+			UIManager.setLookAndFeel(classRouteName);
+			panel.repaint();
+		} catch(Exception e) {
+			
+		}
 	}
 }

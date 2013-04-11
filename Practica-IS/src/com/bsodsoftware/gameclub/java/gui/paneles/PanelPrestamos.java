@@ -8,6 +8,8 @@ import javax.swing.JTable;
 
 public class PanelPrestamos extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
+
 	public PanelPrestamos() {
 		
 		add(crear());
@@ -15,6 +17,10 @@ public class PanelPrestamos extends JPanel {
 		setOpaque(true);
 	}
 	
+	/**
+	 * Crea el contenido del panel.
+	 * @return Un panel desizable con una tabla.
+	 */
 	private JScrollPane crear() {
 		String[] nombresColumnas = {
 				"ID",
@@ -33,9 +39,6 @@ public class PanelPrestamos extends JPanel {
         tabla.setFillsViewportHeight(true);
 		
 		JScrollPane panelDeslizable = new JScrollPane(tabla);
-		
-//		JPanel contenedor = new JPanel();
-//		contenedor.add(panelDeslizable);
 		
 		return panelDeslizable;
 	}

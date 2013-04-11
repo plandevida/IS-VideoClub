@@ -48,7 +48,7 @@ public class Imagenes {
 	}
 	
 	public static ImageIcon getAbout() {
-		cachedIcon = new ImageIcon(Imagenes.class.getResource("aout.jpg"));
+		cachedIcon = new ImageIcon(Imagenes.class.getResource("about.jpg"));
 		
 		return getCachedIcon();
 	}
