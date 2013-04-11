@@ -1,8 +1,10 @@
-package com.bsodsoftware.gameclub.java.gui;
+package com.bsodsoftware.gameclub.java.gui.ventanas;
 
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -14,11 +16,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import com.bsodsoftware.gameclub.java.gui.paneles.PanelPrestamos;
 import com.bsodsoftware.gameclub.java.imangenes.Imagenes;
 
 public class VentanaPrincipal extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private JPanel panel;
 	
 	public VentanaPrincipal() {
 		/* 
@@ -37,12 +42,27 @@ public class VentanaPrincipal extends JFrame {
 		setBounds(0, 0, 700, 500);
 		setMinimumSize(new Dimension(700, 500));
 		
-		crearBarraMenus(this);
-		
-		crearBotones( (JPanel) getContentPane());
+		setLayout(new BorderLayout());
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		
+		// Obtenemos una referencia del panel principal
+		// para poder hacer los cambio de panel.
+		panel = (JPanel) getContentPane();
+		
+		// Inicializamos los botones y paneles.
+		Init();
+	}
+	
+	/**
+	 * Método que crea los componenetes de la ventana.
+	 */
+	private void Init() {
+		
+		crearBarraMenus(this);
+		
+		panel.add(crearBotones(), BorderLayout.WEST);
 	}
 	
 	/**
@@ -64,21 +84,29 @@ public class VentanaPrincipal extends JFrame {
 	 * Crea los botones de cada sección de la aplicación.
 	 * @param panel
 	 */
-	private void crearBotones(JPanel panel) {
+	private JToolBar crearBotones() {
 		JToolBar barraBotones = new JToolBar(JToolBar.VERTICAL);
 		
 		ImageIcon iconoPrestamo = Imagenes.getPrestamos56x56();
 		ImageIcon iconoDevoluciones = Imagenes.getDevoluciones56x56();
 		ImageIcon iconoAdministracion = Imagenes.getAdministracion56x56();
 		
-		JButton botonPrestamos = new JButton("Préstamos");
+		JButton botonPrestamos = new JButton("   Préstamos    ");
 		
 		botonPrestamos.setVerticalTextPosition(JLabel.BOTTOM);
 		botonPrestamos.setHorizontalTextPosition(JLabel.CENTER);
 		botonPrestamos.setIcon(iconoPrestamo);
 		botonPrestamos.setIconTextGap(5);
 		
-		JButton botonDevoluciones = new JButton("Devoluciones");
+		botonPrestamos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				cambiarPanel(new PanelPrestamos());
+			}
+		});
+		
+		JButton botonDevoluciones = new JButton("  Devoluciones ");
 		
 		botonDevoluciones.setVerticalTextPosition(JLabel.BOTTOM);
 		botonDevoluciones.setHorizontalTextPosition(JLabel.CENTER);
@@ -98,6 +126,11 @@ public class VentanaPrincipal extends JFrame {
 		barraBotones.add(botonAdministracion);
 		barraBotones.add(Box.createGlue());
 		
-		panel.add(barraBotones, BorderLayout.WEST);
+		return barraBotones;
+	}
+	
+	private void cambiarPanel(JPanel nuevoPanel) {
+		panel.add(nuevoPanel);
+		pack();
 	}
 }

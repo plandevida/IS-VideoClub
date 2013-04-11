@@ -1,4 +1,4 @@
-package todo;
+package com.bsodsoftware.gameclub.java.todo;
 public class Sistema {
 
   public Sistema Prestar(int idjuego, int idcopia, boolean disponible) {

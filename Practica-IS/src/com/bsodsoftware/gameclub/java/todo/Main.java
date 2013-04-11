@@ -1,5 +1,5 @@
 
-package todo;
+package com.bsodsoftware.gameclub.java.todo;
 public class Main {
 
   public Sistema sistema;

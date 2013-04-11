@@ -1,4 +1,4 @@
-package todo;
+package com.bsodsoftware.gameclub.java.todo;
 import java.util.Date;
 
 public class Usuario {

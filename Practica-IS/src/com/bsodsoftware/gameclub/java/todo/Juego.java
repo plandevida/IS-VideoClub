@@ -1,4 +1,4 @@
-package todo;
+package com.bsodsoftware.gameclub.java.todo;
 
 public class Juego {
 

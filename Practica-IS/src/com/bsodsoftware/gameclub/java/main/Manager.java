@@ -1,6 +1,6 @@
 package com.bsodsoftware.gameclub.java.main;
 
-import com.bsodsoftware.gameclub.java.gui.VentanaPrincipal;
+import com.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 
 /**
  * Clase principal de la aplicación, desde la cual se inicia la interfaz.
@@ -20,7 +20,11 @@ public class Manager {
 	 * Arranca la aplicación
 	 */
 	public static void ejecutar() {
-		gui = new VentanaPrincipal("Game Club");
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                gui = new VentanaPrincipal("Game Club");
+            }
+        });
 	}
 	
 	/**

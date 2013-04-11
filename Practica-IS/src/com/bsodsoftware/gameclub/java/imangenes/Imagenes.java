@@ -47,6 +47,12 @@ public class Imagenes {
 		return getCachedIcon();
 	}
 	
+	public static ImageIcon getAbout() {
+		cachedIcon = new ImageIcon(Imagenes.class.getResource("aout.jpg"));
+		
+		return getCachedIcon();
+	}
+	
 	/**
 	 * Obtiene la última imagen cargada.
 	 * @return
