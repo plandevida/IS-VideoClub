@@ -18,7 +18,7 @@ public class PanelAbout extends JPanel {
 	}
 	
 	private void Init() {
-		setSize(200, 200);
+		setBounds(0, 0, 300, 300);
 	}
 	
 	@Override

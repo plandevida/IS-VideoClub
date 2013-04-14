@@ -17,17 +17,20 @@ public class Manager {
 	private static final Logger logger = Logger.getLogger(Manager.class.getName());
 	
 	@SuppressWarnings("unused")
-	private static VentanaPrincipal gui;
+	private VentanaPrincipal gui;
+	private String titulo;
 	
 	/**
 	 * Inicia y configura la aplicación
 	 */
-	public static void iniciar() { }
+	public  void iniciar() {
+		titulo = "Video Game Club";
+	}
 	
 	/**
 	 * Arranca la aplicación
 	 */
-	public static void ejecutar() {
+	public  void ejecutar() {
 		
 		try {
 //			UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
@@ -38,7 +41,7 @@ public class Manager {
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                gui = new VentanaPrincipal("Game Club");
+                gui = new VentanaPrincipal(titulo);
             }
         });
 	}
@@ -46,11 +49,13 @@ public class Manager {
 	/**
 	 * Realiza tareas antes de cerrar la aplicación
 	 */
-	public static void finalizar() { }
+	public  void finalizar() { }
 
 	public static void main(String[] args) {
-		iniciar();
-		ejecutar();
-		finalizar();
+		Manager manager = new Manager();
+		
+		manager.iniciar();
+		manager.ejecutar();
+		manager.finalizar();
 	}
 }

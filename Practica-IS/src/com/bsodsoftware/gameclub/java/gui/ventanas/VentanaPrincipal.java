@@ -18,7 +18,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import com.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
 import com.bsodsoftware.gameclub.java.gui.paneles.PanelPrestamos;
