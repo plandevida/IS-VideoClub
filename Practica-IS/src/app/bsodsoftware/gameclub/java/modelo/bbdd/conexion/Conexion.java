@@ -1,4 +1,4 @@
-package com.bsodsoftware.gameclub.java.modelo.bbdd.conexion;
+package app.bsodsoftware.gameclub.java.modelo.bbdd.conexion;
 
 import java.net.InetAddress;
 import java.sql.Connection;

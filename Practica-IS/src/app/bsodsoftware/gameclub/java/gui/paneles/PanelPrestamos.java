@@ -1,4 +1,4 @@
-package com.bsodsoftware.gameclub.java.gui.paneles;
+package app.bsodsoftware.gameclub.java.gui.paneles;
 
 import java.awt.Dimension;
 

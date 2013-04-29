@@ -1,4 +1,4 @@
-package com.bsodsoftware.gameclub.java.entidades.juego;
+package app.bsodsoftware.gameclub.java.entidades.juego;
 
 public class Juego {
 

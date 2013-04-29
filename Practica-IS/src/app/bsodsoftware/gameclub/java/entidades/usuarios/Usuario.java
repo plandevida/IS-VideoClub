@@ -1,4 +1,4 @@
-package com.bsodsoftware.gameclub.java.entidades.usuarios;
+package app.bsodsoftware.gameclub.java.entidades.usuarios;
 
 import java.util.Date;
 

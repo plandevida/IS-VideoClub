@@ -1,4 +1,4 @@
-package com.bsodsoftware.gameclub.java.main;
+package app.bsodsoftware.gameclub.java.main;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -6,11 +6,12 @@ import java.util.logging.Logger;
 
 import javax.swing.UIManager;
 
-import com.bsodsoftware.gameclub.java.entidades.juego.Juego;
-import com.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
-import com.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
-import com.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
-import com.bsodsoftware.gameclub.java.modelo.sistema.Sistema;
+import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
+import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
+import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
+import app.bsodsoftware.gameclub.java.modelo.controlador.Sistema;
+
 
 /**
  * Clase principal de la aplicación, desde la cual se inicia la interfaz.

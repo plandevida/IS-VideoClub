@@ -1,11 +1,12 @@
-package com.bsodsoftware.gameclub.java.modelo.sistema;
+package app.bsodsoftware.gameclub.java.modelo.controlador;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bsodsoftware.gameclub.java.entidades.juego.Juego;
-import com.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
-import com.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
+import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
+import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+
 
 public class Sistema {
 

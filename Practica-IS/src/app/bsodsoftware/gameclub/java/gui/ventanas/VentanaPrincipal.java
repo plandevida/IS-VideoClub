@@ -1,4 +1,4 @@
-package com.bsodsoftware.gameclub.java.gui.ventanas;
+package app.bsodsoftware.gameclub.java.gui.ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -18,9 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.UIManager;
 
-import com.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
-import com.bsodsoftware.gameclub.java.gui.paneles.PanelPrestamos;
-import com.bsodsoftware.gameclub.java.imagenes.Imagenes;
+import app.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
+import app.bsodsoftware.gameclub.java.gui.paneles.PanelPrestamos;
+import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
+
 
 public class VentanaPrincipal extends JFrame {
 

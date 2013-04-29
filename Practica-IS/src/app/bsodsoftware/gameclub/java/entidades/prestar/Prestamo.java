@@ -1,9 +1,10 @@
-package com.bsodsoftware.gameclub.java.entidades.prestar;
+package app.bsodsoftware.gameclub.java.entidades.prestar;
 
 import java.util.Date;
 
-import com.bsodsoftware.gameclub.java.entidades.juego.Juego;
-import com.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
+import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+
 
 public class Prestamo {
 

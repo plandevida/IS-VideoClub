@@ -1,4 +1,4 @@
-package com.bsodsoftware.gameclub.java.imagenes;
+package app.bsodsoftware.gameclub.java.imagenes;
 
 import java.awt.Image;
 
