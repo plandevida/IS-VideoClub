@@ -10,7 +10,7 @@ import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
  * @author Alvaro Quesada Pimentel
  * @author Emilio Alvarez Viñeiro
  */
-public interface IntefazFachadaUsuario {
+public interface InterfazFachadaUsuario {
 	
 	/**
 	 * Añade un usuario a la bbdd
