@@ -71,14 +71,14 @@ public class VentanaPrincipal extends JFrame {
 		ImageIcon iconoDevoluciones = Imagenes.getDevoluciones56x56();
 		ImageIcon iconoAdministracion = Imagenes.getAdministracion56x56();
 		
-		JButton botonPrestamos = new JButton("Préstamos");
+		JButton botonPrestamos = new JButton("    Préstamos     ");
 		
 		botonPrestamos.setVerticalTextPosition(JLabel.BOTTOM);
 		botonPrestamos.setHorizontalTextPosition(JLabel.CENTER);
 		botonPrestamos.setIcon(iconoPrestamo);
 		botonPrestamos.setIconTextGap(5);
 		
-		JButton botonDevoluciones = new JButton("Devoluciones");
+		JButton botonDevoluciones = new JButton("  Devoluciones  ");
 		
 		botonDevoluciones.setVerticalTextPosition(JLabel.BOTTOM);
 		botonDevoluciones.setHorizontalTextPosition(JLabel.CENTER);
