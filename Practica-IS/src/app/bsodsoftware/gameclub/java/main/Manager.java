@@ -10,7 +10,7 @@ import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
-import app.bsodsoftware.gameclub.java.modelo.controlador.Sistema;
+import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 
 /**

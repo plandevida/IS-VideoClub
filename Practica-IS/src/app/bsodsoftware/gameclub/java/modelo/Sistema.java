@@ -1,4 +1,4 @@
-package app.bsodsoftware.gameclub.java.modelo.controlador;
+package app.bsodsoftware.gameclub.java.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,31 +6,38 @@ import java.util.List;
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaUsuario;
 
 
-public class Sistema {
+public class Sistema  {
+/*
+	private ArrayList<Usuario> listaUsuarios;
 
-	public ArrayList<Usuario> listaUsuarios;
+	private ArrayList<Juego> listaJuegos;
 
-	public ArrayList<Juego> listaJuegos;
-
-	public ArrayList<Prestamo> listaPrestamos;
-
+	private ArrayList<Prestamo> listaPrestamos;
+	*/
+	SistemaUsuarios sistemaUsuarios;
+	SistemaJuegos sistemaJuegos ;
+	SistemaPrestamos sistemaPrestamos;
 	
-	public Sistema(ArrayList<Usuario> lista_usuarios, ArrayList<Juego> lista_juegos, ArrayList<Prestamo> lista_prestamos)
+	public Sistema()
 	{
-		listaUsuarios=lista_usuarios;
-		listaJuegos=lista_juegos;
-		listaPrestamos=lista_prestamos;
+		
+		//sistemaUsuarios = new SistemaUsuarios();
 		
 		
 	}
 	
+
 	public void Prestar(int idjuego, int idcopia, boolean disponible) {
+		
+		
 
 	}
 
 	public void Devolver() {
+		
 	}
 
 	public void DarDeAltaUsuario() {
@@ -47,4 +54,7 @@ public class Sistema {
 
 	public void DevolverPrestamo() {
 	}
+	
+	
+	
 }
