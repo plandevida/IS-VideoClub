@@ -1,14 +1,10 @@
 package app.bsodsoftware.gameclub.java.main;
 
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.UIManager;
 
-import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
-import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
-import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
@@ -34,20 +30,8 @@ public class Manager {
 	 */
 	public void iniciar() {
 		titulo = "Video Game Club";
-		ArrayList<Usuario> listaUsuarios= new ArrayList<Usuario>();
-		ArrayList<Juego> listaJuegos = new ArrayList<Juego>(); 
-		ArrayList<Prestamo> listaPrestamos = new ArrayList<Prestamo>(); 
 		
-		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama"));
-		
-		listaJuegos.add(new Juego(0, "Colonos del Catan", "Muy Interesante", 5));
-		// SE CARGAN LOS DATOS
-		
-		
-		
-		sistema= new Sistema(listaUsuarios,listaJuegos,listaPrestamos);
-		
-		
+		sistema= new Sistema();
 	}
 
 	/**

@@ -9,12 +9,13 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 
 	
 	private ArrayList<Usuario> listaUsuarios;
-	
+
 	
 	public SistemaUsuarios()
 	{
-		
-		listaUsuarios=cargarfichero();
+
+		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama"));
+		//listaUsuarios=cargarfichero();
 	}
 	@Override
 	public Usuario addUsuario(Usuario usuario) {
