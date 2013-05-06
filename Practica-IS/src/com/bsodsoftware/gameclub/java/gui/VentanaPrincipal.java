@@ -14,7 +14,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-import com.bsodsoftware.gameclub.java.imangenes.Imagenes;
+import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 
 public class VentanaPrincipal extends JFrame {
 	
