@@ -9,17 +9,17 @@ import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaPrestamo;
 public class SistemaPrestamos implements InterfazFachadaPrestamo {
 
 	ArrayList<Prestamo> listaPrestamos = new ArrayList<Prestamo>();
-	
+
 	@Override
-	public Usuario addPrestamo(Prestamo prestamo) {
+	public boolean addPrestamo(Prestamo prestamo) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override
-	public Usuario modificarPrestamo(Prestamo prestamo) {
+	public boolean modificarPrestamo(Prestamo prestamo) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override

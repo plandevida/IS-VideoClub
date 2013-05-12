@@ -12,11 +12,12 @@ public class Juego {
 
 	private int num_copias_prestadas;
 
-	public Juego(int nuevo_id, String nuevo_nombre, String nuevo_comentarios,int nuevo_num_copias) {
-		
-		idjuego=nuevo_id;
-		comentarios=nuevo_comentarios;
-		num_copias=nuevo_num_copias;
-		num_copias_prestadas=0;
+	public Juego(int nuevo_id, String nuevo_nombre, String nuevo_comentarios,
+			int nuevo_num_copias) {
+
+		idjuego = nuevo_id;
+		comentarios = nuevo_comentarios;
+		num_copias = nuevo_num_copias;
+		num_copias_prestadas = 0;
 	}
 }

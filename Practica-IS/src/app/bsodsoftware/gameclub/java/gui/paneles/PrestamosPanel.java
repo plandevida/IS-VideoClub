@@ -16,15 +16,14 @@ public class PrestamosPanel extends JPanel {
 	 */
 	public PrestamosPanel() {
 		setLayout(new BorderLayout(0, 0));
-		
+
 		table = new JTable();
 		add(table, BorderLayout.CENTER);
-		
+
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(300, 10));
 		add(panel, BorderLayout.EAST);
-		panel.setLayout(new FormLayout(new ColumnSpec[] {},
-			new RowSpec[] {}));
+		panel.setLayout(new FormLayout(new ColumnSpec[] {}, new RowSpec[] {}));
 
 	}
 

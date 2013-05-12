@@ -8,7 +8,6 @@ import javax.swing.UIManager;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
-
 /**
  * Clase principal de la aplicación, desde la cual se inicia la interfaz.
  * 
@@ -30,8 +29,8 @@ public class Manager {
 	 */
 	public void iniciar() {
 		titulo = "Video Game Club";
-		
-		sistema= new Sistema();
+
+		sistema = new Sistema();
 	}
 
 	/**
@@ -59,13 +58,12 @@ public class Manager {
 	 * Realiza tareas antes de cerrar la aplicación
 	 */
 	public void finalizar() {
-		
-		
+
 	}
 
 	public static void main(String[] args) {
 		Manager manager = new Manager();
-	
+
 		manager.iniciar();
 		manager.ejecutar();
 		manager.finalizar();

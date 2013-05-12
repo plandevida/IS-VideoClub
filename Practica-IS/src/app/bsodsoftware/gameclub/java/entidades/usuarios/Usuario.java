@@ -15,15 +15,28 @@ public class Usuario {
 	private Date hasta;
 
 	public Usuario(String nuevo_dni, String nuevo_nombre, String nuevo_apellidos) {
-		
-		dni=nuevo_dni;
-		nombre=nuevo_nombre;
-		apellidos=nuevo_apellidos;
-		sancionado=false;
-		hasta=null;
-		
-		
+
+		setDni(nuevo_dni);
+		nombre = nuevo_nombre;
+		apellidos = nuevo_apellidos;
+		sancionado = false;
+		hasta = null;
+
 	}
 
-	
+	/**
+	 * @return the dni
+	 */
+	public String getDni() {
+		return dni;
+	}
+
+	/**
+	 * @param dni
+	 *            the dni to set
+	 */
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
 }
