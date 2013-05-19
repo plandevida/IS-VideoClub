@@ -15,12 +15,15 @@ public class Juego {
 	private int num_copias_prestadas;
 	
 	private ImageIcon imagen;
+	
+	private int numero_jugadores;
 
-	public Juego(int nuevo_id, String nuevo_nombre, String nuevo_comentarios,
+	public Juego(int nuevo_id, String nuevo_nombre, int nuevo_numero_juegadores, String nuevo_comentarios,
 			int nuevo_num_copias, ImageIcon imagenCaja) {
 
 		idjuego = nuevo_id;
 		nombre = nuevo_nombre;
+		numero_jugadores = nuevo_numero_juegadores;
 		comentarios = nuevo_comentarios;
 		num_copias = nuevo_num_copias;
 		num_copias_prestadas = 0;
@@ -73,5 +76,13 @@ public class Juego {
 
 	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
+	}
+
+	public int getNumero_jugadores() {
+		return numero_jugadores;
+	}
+
+	public void setNumero_jugadores(int numero_jugadores) {
+		this.numero_jugadores = numero_jugadores;
 	}
 }

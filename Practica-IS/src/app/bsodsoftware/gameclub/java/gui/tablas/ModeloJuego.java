@@ -1,53 +1,30 @@
 package app.bsodsoftware.gameclub.java.gui.tablas;
 
-import javax.swing.ImageIcon;
-import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 
-public class ModeloJuego extends AbstractTableModel {
+public class ModeloJuego extends DefaultTableModel {
 
 	private static final long serialVersionUID = -7174921828122713554L;
-	
-	private String[] columnas;
-	private Juego[] filas;
 
 	public ModeloJuego(Juego[] data, String[] columns) {
 
-		columnas = columns;
-		filas = data;
+		super(rellenar(data, columns.length), columns);
 	}
-
-	@Override
-	public int getRowCount() {
-		return filas.length;
-	}
-
-	@Override
-	public int getColumnCount() {
-		return columnas.length;
-	}
-
-	@Override
-	public Object getValueAt(int rowIndex, int columnIndex) {
+	
+	private static Object[][] rellenar(Juego[] juegos, int columnasLength) {
 		
-		Juego juego = filas[rowIndex];
+		Object[][] datos = new Object[juegos.length][columnasLength];
 		
-		Object datoColumna = datoJuego(columnIndex, juego);
+		for (int i = 0; i < juegos.length; i++) {
+			datos[i][0] = juegos[i].getNombre();
+			datos[i][1] = juegos[i].getImagen();
+			datos[i][2] = juegos[i].getNumero_jugadores();
+			datos[i][3] = juegos[i].getComentarios();
+		}
 		
-		return datoColumna;
-	}
-
-	@Override
-	public String getColumnName(int columnIndex) {
-		return columnas[columnIndex].toString();
-	}
-
-	@Override
-	public void setValueAt(Object value, int rowIndex, int columnIndex) {
-
-		cambiaDatoJuego(columnIndex, filas[rowIndex], value);
-		fireTableCellUpdated(rowIndex, columnIndex);
+		return datos;
 	}
 
 	@Override
@@ -59,43 +36,5 @@ public class ModeloJuego extends AbstractTableModel {
 		}
 
 		return clazz;
-	}
-	
-	private void cambiaDatoJuego(int columna, Juego juego, Object dato) {
-		
-		switch(columna) {
-		
-		case 0:
-			juego.setNombre( (String)dato );
-			break;
-		case 1:
-			juego.setComentarios( (String)dato );
-			break;
-		case 2:
-			juego.setImagen( (ImageIcon)dato );
-			break;
-		}
-	}
-	
-	private Object datoJuego(int columna, Juego juego) {
-		
-		Object datoColumna;
-		
-		switch(columna) {
-		
-		case 0:
-			datoColumna = juego.getNombre();
-			break;
-		case 1:
-			datoColumna = juego.getImagen();
-			break;
-		case 2:
-			datoColumna = juego.getComentarios();
-			break;
-		default:
-			datoColumna = "";
-		}
-		
-		return datoColumna;
 	}
 }
