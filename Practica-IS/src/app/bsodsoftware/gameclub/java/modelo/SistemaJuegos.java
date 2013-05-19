@@ -2,6 +2,8 @@ package app.bsodsoftware.gameclub.java.modelo;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaJuego;
 
@@ -12,8 +14,7 @@ public class SistemaJuegos implements InterfazFachadaJuego {
 	@Override
 	public Juego addjuego(Juego juego) {
 
-		listaJuegos
-				.add(new Juego(0, "Colonos del Catan", "Muy Interesante", 5));
+		listaJuegos.add(new Juego(0, "Colonos del Catan", "Muy Interesante", 5, new ImageIcon()));
 		// TODO Auto-generated method stub
 		return null;
 	}
