@@ -14,9 +14,9 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 	public SistemaUsuarios() {
 
 		listaUsuarios = new ArrayList<Usuario>();
-		// listaUsuarios = new ArrayList<Usuario>();
-		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama", null,
-				"calle", 6541942));
+		
+//		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama", null,
+//				"calle", 6541942));
 
 		cargarFichero();
 		escribirFichero();
@@ -99,7 +99,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 			linea_usuario = "";
 			linea_usuario += u.getDni() + ":" + u.getNombre() + ":"
 					+ u.getApellidos() + "\n";
-			System.out.println(linea_usuario);
+			
 
 			salida_de_datos_por_fichero.escribirLinea(linea_usuario);
 		}

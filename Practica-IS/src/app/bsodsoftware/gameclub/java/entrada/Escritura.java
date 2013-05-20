@@ -23,12 +23,13 @@ public class Escritura {
 		escritura = nuevo_escritor;
 
 	}
+	
 
 	public void escribirLinea(String linea) {
 
 		try {
-			System.out.println("linea:" + linea);
 			escritura.write(linea);
+			escritura.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
