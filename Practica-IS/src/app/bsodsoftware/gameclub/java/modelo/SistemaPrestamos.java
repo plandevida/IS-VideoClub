@@ -1,36 +1,132 @@
 package app.bsodsoftware.gameclub.java.modelo;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
+import app.bsodsoftware.gameclub.java.entrada.Escritura;
+import app.bsodsoftware.gameclub.java.entrada.Lectura;
 import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaPrestamo;
+import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFicheros;
 
-public class SistemaPrestamos implements InterfazFachadaPrestamo {
+public class SistemaPrestamos implements InterfazFachadaPrestamo,
+		InterfazFicheros {
 
-	ArrayList<Prestamo> listaPrestamos = new ArrayList<Prestamo>();
+	private ArrayList<Prestamo> listaPrestamos;
+	private SistemaUsuarios sistema_usuarios;
+	private SistemaJuegos sistema_juegos;
+
+	public SistemaPrestamos(SistemaUsuarios _sistema_usuarios,
+			SistemaJuegos _sistema_juegos) {
+
+		listaPrestamos = new ArrayList<Prestamo>();
+		sistema_juegos = _sistema_juegos;
+		sistema_usuarios = _sistema_usuarios;
+
+		try {
+			listaPrestamos.add(new Prestamo(sistema_usuarios
+					.buscaUsuario("12345678A"), sistema_juegos
+					.buscaJuego("Catan the game"),
+					new SimpleDateFormat("dd-MM-yyyy").parse("20-01-2010"),
+					new SimpleDateFormat("dd-MM-yyyy").parse("20-01-2010")));
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+
+		cargarFichero();
+//		escribirFichero();
+	}
 
 	@Override
 	public boolean addPrestamo(Prestamo prestamo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resultado = false;
+
+		if (!existePrestamo(prestamo)) {
+
+			listaPrestamos.add(prestamo);
+			resultado = true;
+		}
+		return resultado;
 	}
 
 	@Override
 	public boolean modificarPrestamo(Prestamo prestamo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resultado = true;
+		if (!existePrestamo(prestamo)) {
+			resultado = false;
+
+		} else {
+
+		}
+		return resultado;
 	}
 
 	@Override
-	public boolean borrarPrestamo(Integer idPrestamo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean borrarPrestamo(Prestamo prestamo) {
+		boolean resultado = true;
+		if (!existePrestamo(prestamo)) {
+			resultado = false;
+		} else {
+			listaPrestamos.remove(prestamo);
+			resultado = true;
+		}
+		return resultado;
 	}
 
 	@Override
-	public boolean existePrestamo(Integer idPrestamo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean existePrestamo(Prestamo prestamo) {
+		return listaPrestamos.contains(prestamo);
+
+	}
+
+	@Override
+	public void cargarFichero() {
+		Lectura entrada_de_datos_por_fichero = new Lectura("prestamos.txt");
+		String linea_prestamo;
+
+		try {
+			while ((linea_prestamo = entrada_de_datos_por_fichero.leerLinea()) != null) {
+
+				String datos[] = linea_prestamo.split(":");
+				// public Prestamo(Usuario usuario_a_prestar, Juego
+				// juego_a_prestar,
+				// Date fecha_de_prestamos, Date fecha_a_devolver) {
+
+				addPrestamo(new Prestamo(
+						sistema_usuarios.buscaUsuario(datos[0]),
+						sistema_juegos.buscaJuego(datos[1]),
+						new SimpleDateFormat("dd-MM-YYYY").parse(datos[2]),
+						new SimpleDateFormat("dd-MM-YYYY").parse(datos[3])));
+						
+			}
+		} catch (Exception e) {
+
+		} finally {
+
+		}
+
+	}
+
+	@Override
+	public void escribirFichero() {
+		Escritura salida_de_datos_por_fichero = new Escritura("prestamos.txt");
+		String linea_prestamo;
+	
+		
+		for (Prestamo p : listaPrestamos) {
+			linea_prestamo = "";
+			linea_prestamo += p.getUsuario_a_prestar().getDni() + ":"
+					+ p.getJuego_a_prestar().getNombre() + ":"
+					+ new SimpleDateFormat("dd-MM-YYYY").format(p.getFecha_de_prestamos())+ ":"
+					+ new SimpleDateFormat("dd-MM-YYYY").format(p.getFecha_a_devolver()) + "\n";
+					
+			salida_de_datos_por_fichero.escribirLinea(linea_prestamo);
+		}
+
 	}
 
 }

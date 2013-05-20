@@ -6,20 +6,22 @@ import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
 import app.bsodsoftware.gameclub.java.entrada.Lectura;
 import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaUsuario;
+import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFicheros;
 
-public class SistemaUsuarios implements InterfazFachadaUsuario {
+public class SistemaUsuarios implements InterfazFachadaUsuario,
+		InterfazFicheros {
 
 	private ArrayList<Usuario> listaUsuarios;
 
 	public SistemaUsuarios() {
 
 		listaUsuarios = new ArrayList<Usuario>();
-		// listaUsuarios = new ArrayList<Usuario>();
-		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama", null,
-				"calle", 6541942));
+
+		// listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama", null,
+		// "calle", 6541942));
 
 		cargarFichero();
-		escribirFichero();
+//		escribirFichero();
 
 	}
 
@@ -78,7 +80,8 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 			while ((linea_usuario = entrada_de_datos_por_fichero.leerLinea()) != null) {
 
 				String datos[] = linea_usuario.split(":");
-				addUsuario(new Usuario(datos[0], datos[1], datos[2], null, null, 0));
+				addUsuario(new Usuario(datos[0], datos[1], datos[2], null,
+						null, 0));
 
 			}
 		} catch (Exception e) {
@@ -99,10 +102,21 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 			linea_usuario = "";
 			linea_usuario += u.getDni() + ":" + u.getNombre() + ":"
 					+ u.getApellidos() + "\n";
-			System.out.println(linea_usuario);
 
 			salida_de_datos_por_fichero.escribirLinea(linea_usuario);
 		}
+
+	}
+
+	@Override
+	public Usuario buscaUsuario(String DNI) {
+		Usuario usuario_a_devolver = null;
+		for (Usuario usuario_de_la_lista : listaUsuarios) {
+			if (usuario_de_la_lista.getDni().equalsIgnoreCase(DNI))
+				usuario_a_devolver = usuario_de_la_lista;
+		}
+
+		return usuario_a_devolver;
 
 	}
 

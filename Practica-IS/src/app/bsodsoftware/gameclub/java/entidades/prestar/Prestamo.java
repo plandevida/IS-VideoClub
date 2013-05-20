@@ -1,5 +1,6 @@
 package app.bsodsoftware.gameclub.java.entidades.prestar;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
@@ -16,7 +17,8 @@ public class Prestamo {
 	private Date fecha_a_devolver;
 
 	public Prestamo(Usuario usuario_a_prestar, Juego juego_a_prestar,
-			Date fecha_de_prestamos, Date fecha_a_devolver) {
+			Date fecha_de_prestamos,
+			Date fecha_a_devolver) {
 
 		this.usuario_a_prestar = usuario_a_prestar;
 		this.juego_a_prestar = juego_a_prestar;

@@ -18,6 +18,8 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import app.bsodsoftware.gameclub.java.gui.paneles.PanelPrestamos;
+import app.bsodsoftware.gameclub.java.gui.paneles.PrestamosPanel;
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 
 public class Ventana2 extends JFrame {
@@ -31,7 +33,7 @@ public class Ventana2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana2 frame = new Ventana2();
+					Ventana2 frame = new Ventana2("Game Club");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,11 +45,11 @@ public class Ventana2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ventana2() {
-		setTitle("Game Club");
+	public Ventana2(String titulo) {
+		setTitle(titulo);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 787, 685);
+		setBounds(100, 100, 1076, 819);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -77,7 +79,8 @@ public class Ventana2 extends JFrame {
 		JButton btnPrestamos = new JButton("    Prestamos    ");
 		btnPrestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				getContentPane().add(new PrestamosPanel(), BorderLayout.CENTER);
+				getContentPane().validate();
 			}
 		});
 		btnPrestamos.setAlignmentX(Component.CENTER_ALIGNMENT);

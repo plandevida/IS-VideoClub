@@ -48,11 +48,5 @@ public interface InterfazFachadaUsuario {
 	 */
 	public boolean existeUsuario(Usuario usuario);
 
-	/**
-	 * Carga un fichero que contiene datos
-	 */
-	public void cargarFichero();
-
-	public void escribirFichero();
-
+	public Usuario buscaUsuario(String DNI);
 }

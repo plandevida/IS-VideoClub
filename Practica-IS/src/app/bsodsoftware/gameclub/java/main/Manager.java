@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.swing.UIManager;
 
+import app.bsodsoftware.gameclub.java.gui.ventanas.Ventana2;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
@@ -21,7 +22,7 @@ public class Manager {
 			.getName());
 
 	@SuppressWarnings("unused")
-	private VentanaPrincipal gui;
+	private Ventana2 gui;
 	private String titulo;
 
 	/**
@@ -49,7 +50,7 @@ public class Manager {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				gui = new VentanaPrincipal(titulo);
+				gui = new Ventana2(titulo);
 			}
 		});
 	}
@@ -58,8 +59,8 @@ public class Manager {
 	 * Realiza tareas antes de cerrar la aplicación
 	 */
 	public void finalizar() {
-
-		sistema.getSistemaUsuarios().escribirFichero();
+		
+		sistema.escribirFichero();
 	}
 
 	public static void main(String[] args) {
