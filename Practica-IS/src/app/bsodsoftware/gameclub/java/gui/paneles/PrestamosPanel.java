@@ -18,6 +18,8 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class PrestamosPanel extends JPanel {
 	
@@ -25,6 +27,9 @@ public class PrestamosPanel extends JPanel {
 	private JTextField tNombreJuego;
 	private JTable table;
 	private JScrollPane scrollPane;
+	private JLabel lblNmeroDeJugadores;
+	private JComboBox comboBox;
+	private JLabel lblDescripcin;
 
 	/**
 	 * Create the panel.
@@ -60,6 +65,14 @@ public class PrestamosPanel extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		JLabel lblNombreDelJugeo = new JLabel("Nombre del jugeo:");
@@ -68,6 +81,16 @@ public class PrestamosPanel extends JPanel {
 		tNombreJuego = new JTextField();
 		panel.add(tNombreJuego, "4, 6, fill, default");
 		tNombreJuego.setColumns(10);
+		
+		lblNmeroDeJugadores = new JLabel("Número de jugadores");
+		panel.add(lblNmeroDeJugadores, "2, 10, right, default");
+		
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"2", "4", "6", "8", "10"}));
+		panel.add(comboBox, "4, 10, fill, default");
+		
+		lblDescripcin = new JLabel("Descripción");
+		panel.add(lblDescripcin, "2, 14");
 
 	}
 
