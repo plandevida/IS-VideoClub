@@ -51,6 +51,8 @@ public interface InterfazFachadaUsuario {
 	/**
 	 * Carga un fichero que contiene datos
 	 */
-	void cargarFichero();
+	public void cargarFichero();
+
+	public void escribirFichero();
 
 }

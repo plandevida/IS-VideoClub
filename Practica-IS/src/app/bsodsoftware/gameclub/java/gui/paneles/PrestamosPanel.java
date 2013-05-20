@@ -38,15 +38,18 @@ public class PrestamosPanel extends JPanel {
 	public PrestamosPanel() {
 		setLayout(new BorderLayout(0, 0));
 
+		Juego juego = new Juego("Colonos del Catan", 8, 10, 5,
+				"Muy Interesante", new ImageIcon());
+		Juego juego1 = new Juego("a", 2, 2, 5, "nada",
+				Imagenes.getPrestamos56x56());
+		Juego juego2 = new Juego("d", 2, 3, 5, "nada",
+				Imagenes.getDevoluciones56x56());
 
-		Juego juego = new Juego("Colonos del Catan", 8,10,5, "Muy Interesante", new ImageIcon());
-		Juego juego1 = new Juego("a", 2, 2, 5, "nada", Imagenes.getPrestamos56x56());
-		Juego juego2 = new Juego("d", 2,3,5, "nada", Imagenes.getDevoluciones56x56());
-		
-		String[] columnas = { "nombre", "imagen", "numero de jugadores", "descripción" };
-		
-		ModeloJuego model = new ModeloJuego(new Juego[]{ juego, juego1, juego2 }, columnas);
-		
+		String[] columnas = { "nombre", "imagen", "numero de jugadores",
+				"descripción" };
+
+		ModeloJuego model = new ModeloJuego(
+				new Juego[] { juego, juego1, juego2 }, columnas);
 
 		table = new TablaPrestamos(model);
 
