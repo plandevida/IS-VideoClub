@@ -27,8 +27,6 @@ public class TablaPrestamos extends JTable {
 
 		setShowGrid(true);
 		
-		
-		
 		crearSorter();
 	}
 

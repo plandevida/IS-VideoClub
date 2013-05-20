@@ -29,7 +29,7 @@ public class PrestamosPanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JLabel lblNmeroDeJugadores;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	private JLabel lblDescripcin;
 
 	/**
@@ -76,14 +76,6 @@ public class PrestamosPanel extends JPanel {
 		
 		lblNmeroDeJugadores = new JLabel("Número de jugadores");
 		panel.add(lblNmeroDeJugadores, "2, 10, right, default");
-		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"2", "4", "6", "8", "10"}));
-		panel.add(comboBox, "4, 10, fill, default");
-		
-		lblDescripcin = new JLabel("Descripción");
-		panel.add(lblDescripcin, "2, 14");
-
 	}
 
 }
