@@ -21,7 +21,7 @@ public class Usuario {
   private int telefono;
 
   public Usuario(String dni, String nombre, String apellidos, Date fecha_nacimiento, String direccion, int telefono) {
-	  
+
 	  this.dni = dni;
 	  this.nombre = nombre;
 	  this.apellidos = apellidos;

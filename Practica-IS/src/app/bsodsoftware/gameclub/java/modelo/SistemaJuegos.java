@@ -14,7 +14,9 @@ public class SistemaJuegos implements InterfazFachadaJuego {
 	@Override
 	public Juego addjuego(Juego juego) {
 
+
 		listaJuegos.add(new Juego("Colonos del Catan", 8,10,5, "Muy Interesante", new ImageIcon()));
+
 		// TODO Auto-generated method stub
 		return null;
 	}

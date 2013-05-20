@@ -19,7 +19,7 @@ public class Juego {
   private ImageIcon imagen;
   
   public Juego(String nombre, int num_jugadores, int unidades, int edad_minima, String descipcion, ImageIcon imagen) {
-	  
+
 	  this.nombre = nombre;
 	  this.num_jugadores = num_jugadores;
 	  this.unidades = unidades;

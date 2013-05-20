@@ -1,30 +1,26 @@
 package app.bsodsoftware.gameclub.java.gui.ventanas;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Image;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JInternalFrame;
-import javax.swing.JToolBar;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import java.awt.Component;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
 
-public class venata2 extends JFrame {
+public class Ventana2 extends JFrame {
 
 	private JPanel contentPane;
 
@@ -35,7 +31,7 @@ public class venata2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					venata2 frame = new venata2();
+					Ventana2 frame = new Ventana2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +43,7 @@ public class venata2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public venata2() {
+	public Ventana2() {
 		setTitle("Game Club");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

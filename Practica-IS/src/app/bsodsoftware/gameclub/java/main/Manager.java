@@ -59,6 +59,7 @@ public class Manager {
 	 */
 	public void finalizar() {
 
+		sistema.getSistemaUsuarios().escribirFichero();
 	}
 
 	public static void main(String[] args) {
