@@ -4,85 +4,86 @@ import javax.swing.ImageIcon;
 
 public class Juego {
 
-  private String nombre;
+	private String nombre;
 
-  private int num_jugadores;
+	private int num_jugadores;
 
-  private int unidades;
+	private int unidades;
 
-  private int unidades_prestadas;
+	private int unidades_prestadas;
 
-  private int edad_minima;
-  
-  private String descripcion;
-  
-  private ImageIcon imagen;
-  
-  public Juego(String nombre, int num_jugadores, int unidades, int edad_minima, String descipcion, ImageIcon imagen) {
+	private int edad_minima;
 
-	  this.nombre = nombre;
-	  this.num_jugadores = num_jugadores;
-	  this.unidades = unidades;
-	  this.edad_minima = edad_minima;
-	  this.descripcion = descipcion;
-	  this.imagen = imagen;
+	private String descripcion;
 
-  }
+	private ImageIcon imagen;
 
-public String getNombre() {
-	return nombre;
-}
+	public Juego(String nombre, int num_jugadores, int unidades,
+			int edad_minima, String descipcion, ImageIcon imagen) {
 
-public void setNombre(String nombre) {
-	this.nombre = nombre;
-}
+		this.nombre = nombre;
+		this.num_jugadores = num_jugadores;
+		this.unidades = unidades;
+		this.edad_minima = edad_minima;
+		this.descripcion = descipcion;
+		this.imagen = imagen;
 
-public int getNum_jugadores() {
-	return num_jugadores;
-}
+	}
 
-public void setNum_jugadores(int num_jugadores) {
-	this.num_jugadores = num_jugadores;
-}
+	public String getNombre() {
+		return nombre;
+	}
 
-public int getUnidades() {
-	return unidades;
-}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-public void setUnidades(int unidades) {
-	this.unidades = unidades;
-}
+	public int getNum_jugadores() {
+		return num_jugadores;
+	}
 
-public int getUnidades_prestadas() {
-	return unidades_prestadas;
-}
+	public void setNum_jugadores(int num_jugadores) {
+		this.num_jugadores = num_jugadores;
+	}
 
-public void setUnidades_prestadas(int unidades_prestadas) {
-	this.unidades_prestadas = unidades_prestadas;
-}
+	public int getUnidades() {
+		return unidades;
+	}
 
-public int getEdad_minima() {
-	return edad_minima;
-}
+	public void setUnidades(int unidades) {
+		this.unidades = unidades;
+	}
 
-public void setEdad_minima(int edad_minima) {
-	this.edad_minima = edad_minima;
-}
+	public int getUnidades_prestadas() {
+		return unidades_prestadas;
+	}
 
-public String getDescripcion() {
-	return descripcion;
-}
+	public void setUnidades_prestadas(int unidades_prestadas) {
+		this.unidades_prestadas = unidades_prestadas;
+	}
 
-public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
-}
+	public int getEdad_minima() {
+		return edad_minima;
+	}
 
-public ImageIcon getImagen() {
-	return imagen;
-}
+	public void setEdad_minima(int edad_minima) {
+		this.edad_minima = edad_minima;
+	}
 
-public void setImagen(ImageIcon imagen) {
-	this.imagen = imagen;
-}
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public ImageIcon getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(ImageIcon imagen) {
+		this.imagen = imagen;
+	}
 
 }

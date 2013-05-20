@@ -19,7 +19,7 @@ public interface InterfazFachadaJuego {
 	 *            Juego a añadir
 	 * @return El nuevo juego (con el id de la bbdd).
 	 */
-	public Juego addjuego(Juego juego);
+	public boolean addjuego(Juego juego);
 
 	/**
 	 * Modifica los datos de un juego en la bbdd.
@@ -28,7 +28,7 @@ public interface InterfazFachadaJuego {
 	 *            juego con los datos modificados.
 	 * @return El juego modificado si se ha podido guardar.
 	 */
-	public Juego modificarjuego(Juego juego);
+	public boolean modificarjuego(Juego juego);
 
 	/**
 	 * Borra un juego de la bbdd.
@@ -37,7 +37,7 @@ public interface InterfazFachadaJuego {
 	 *            Id de juego.
 	 * @return True si lo ha borrado, false EOC.
 	 */
-	public boolean borrarjuego(Integer idJuego);
+	public boolean borrarjuego(Juego juego);
 
 	/**
 	 * Comprueba si el juego ya está en la bbdd.
@@ -46,5 +46,9 @@ public interface InterfazFachadaJuego {
 	 *            Id de juego.
 	 * @return True si exite, false EOC.
 	 */
-	public boolean existejuego(Integer idJuego);
+	public boolean existejuego(Juego juego);
+
+	public void cargarFichero();
+
+	public void escribirFichero();
 }

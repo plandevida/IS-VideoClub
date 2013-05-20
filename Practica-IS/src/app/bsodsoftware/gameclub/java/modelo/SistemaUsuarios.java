@@ -15,10 +15,9 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 
 		listaUsuarios = new ArrayList<Usuario>();
 		// listaUsuarios = new ArrayList<Usuario>();
-		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama",null,"calle", 6541942));
+		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama", null,
+				"calle", 6541942));
 
-		
-	
 		cargarFichero();
 		escribirFichero();
 
@@ -79,7 +78,8 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 			while ((linea_usuario = entrada_de_datos_por_fichero.leerLinea()) != null) {
 
 				String datos[] = linea_usuario.split(":");
-				addUsuario(new Usuario(datos[0], datos[1], datos[2]));
+				addUsuario(new Usuario(datos[0], datos[1], datos[2], null,
+						null, 0));
 
 			}
 		} catch (Exception e) {
@@ -90,6 +90,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 
 	}
 
+	@Override
 	public void escribirFichero() {
 		Escritura salida_de_datos_por_fichero = new Escritura("usuarios.txt");
 		String linea_usuario;
