@@ -14,7 +14,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario {
 	public SistemaUsuarios() {
 
 		listaUsuarios = new ArrayList<Usuario>();
-		listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama"));
+		//listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama"));
 		cargarFichero();
 		escribirFichero();
 
