@@ -7,6 +7,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+/**
+ * 
+ * Esta clase genera las referencias de tipo BuffeWriter de la forma más general
+ * posible , haciendo posible que sea reutilizable para futuros usos.
+ * 
+ * @author Juan Luis Perez
+ * @author Daniel Serrano
+ * @author Emilio Alvarez
+ * @author Alvaro Quesada
+ * 
+ */
+
 public class Escritura {
 
 	private BufferedWriter escritura;
@@ -23,7 +35,6 @@ public class Escritura {
 		escritura = nuevo_escritor;
 
 	}
-	
 
 	public void escribirLinea(String linea) {
 

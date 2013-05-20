@@ -26,9 +26,7 @@ public class TablaPrestamos extends JTable {
 		setAutoCreateRowSorter(true);
 
 		setShowGrid(true);
-		
-		
-		
+
 		crearSorter();
 	}
 
@@ -40,22 +38,24 @@ public class TablaPrestamos extends JTable {
 	}
 
 	public void newFilter(String text) {
-		
-	    RowFilter<ModeloJuego, Object> rf = null;
-	    //If current expression doesn't parse, don't update.
-	    
-	    try {
-	    	
-	    	String expresionRegular = "";
-	    	
-	    	if ( !"".equals(text)) expresionRegular = "^.*REG.*$".replace("REG", text);
-	    	
-	        rf = RowFilter.regexFilter(expresionRegular, 0);
-	        
-	    } catch (java.util.regex.PatternSyntaxException e) { return; }
-	    
-	    
-	    sorter.setRowFilter(rf);
+
+		RowFilter<ModeloJuego, Object> rf = null;
+		// If current expression doesn't parse, don't update.
+
+		try {
+
+			String expresionRegular = "";
+
+			if (!"".equals(text))
+				expresionRegular = "^.*REG.*$".replace("REG", text);
+
+			rf = RowFilter.regexFilter(expresionRegular, 0);
+
+		} catch (java.util.regex.PatternSyntaxException e) {
+			return;
+		}
+
+		sorter.setRowFilter(rf);
 	}
 
 	public TableRowSorter<ModeloJuego> getSorter() {
