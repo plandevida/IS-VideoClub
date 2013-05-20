@@ -48,7 +48,6 @@ public interface InterfazFachadaJuego {
 	 */
 	public boolean existejuego(Juego juego);
 
-	public void cargarFichero();
+	public Juego buscaJuego(String nombre);
 
-	public void escribirFichero();
 }

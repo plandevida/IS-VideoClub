@@ -58,8 +58,8 @@ public class Manager {
 	 * Realiza tareas antes de cerrar la aplicación
 	 */
 	public void finalizar() {
-
-		sistema.getSistemaUsuarios().escribirFichero();
+		
+		sistema.escribirFichero();
 	}
 
 	public static void main(String[] args) {

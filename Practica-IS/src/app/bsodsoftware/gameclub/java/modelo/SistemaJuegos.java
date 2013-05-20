@@ -3,20 +3,21 @@ package app.bsodsoftware.gameclub.java.modelo;
 import java.util.ArrayList;
 
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
-import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
 import app.bsodsoftware.gameclub.java.entrada.Lectura;
 import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaJuego;
+import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFicheros;
 
-public class SistemaJuegos implements InterfazFachadaJuego {
+public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 	ArrayList<Juego> listaJuegos;
 
 	public SistemaJuegos() {
 		listaJuegos = new ArrayList<Juego>();
-		listaJuegos.add(new Juego("Catan the game", 4, 3 , 18, "altamente destructivo", null));
+		listaJuegos.add(new Juego("Catan the game", 4, 3, 18,
+				"altamente destructivo", null));
 		cargarFichero();
-		escribirFichero();
+//		escribirFichero();
 
 	}
 
@@ -86,12 +87,23 @@ public class SistemaJuegos implements InterfazFachadaJuego {
 
 			linea_juego = "";
 			linea_juego += j.getNombre() + ":" + j.getNum_jugadores() + ":"
-					+ j.getUnidades() + ":" + j.getEdad_minima() +":"
+					+ j.getUnidades() + ":" + j.getEdad_minima() + ":"
 					+ j.getDescripcion() + "\n";
-
-			System.out.println("linea->" + linea_juego);
+			// System.out.println("linea->" + linea_juego);
 			salida_de_datos_por_fichero.escribirLinea(linea_juego);
 		}
+
+	}
+
+	@Override
+	public Juego buscaJuego(String nombre) {
+		Juego juego_a_devolver = null;
+		for (Juego juego_de_la_lista : listaJuegos) {
+			if (juego_de_la_lista.getNombre().equalsIgnoreCase(nombre))
+				juego_a_devolver = juego_de_la_lista;
+		}
+
+		return juego_a_devolver;
 
 	}
 }

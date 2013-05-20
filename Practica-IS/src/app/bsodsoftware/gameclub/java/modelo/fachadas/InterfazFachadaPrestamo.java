@@ -37,7 +37,7 @@ public interface InterfazFachadaPrestamo {
 	 *            Id del prestamo.
 	 * @return True si lo ha borrado, false EOC.
 	 */
-	public boolean borrarPrestamo(Integer idPrestamo);
+	public boolean borrarPrestamo(Prestamo prestamo);
 
 	/**
 	 * Comprueba si el prestamo ya está en la bbdd.
@@ -46,5 +46,5 @@ public interface InterfazFachadaPrestamo {
 	 *            Id del prestamo.
 	 * @return True si exite, false EOC.
 	 */
-	public boolean existePrestamo(Integer idPrestamo);
+	public boolean existePrestamo(Prestamo prestamo);
 }
