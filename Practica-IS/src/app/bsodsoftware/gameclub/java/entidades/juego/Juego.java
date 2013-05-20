@@ -13,12 +13,13 @@ public class Juego {
 	private int num_copias;
 
 	private int num_copias_prestadas;
-	
+
 	private ImageIcon imagen;
-	
+
 	private int numero_jugadores;
 
-	public Juego(int nuevo_id, String nuevo_nombre, int nuevo_numero_juegadores, String nuevo_comentarios,
+	public Juego(int nuevo_id, String nuevo_nombre,
+			int nuevo_numero_juegadores, String nuevo_comentarios,
 			int nuevo_num_copias, ImageIcon imagenCaja) {
 
 		idjuego = nuevo_id;

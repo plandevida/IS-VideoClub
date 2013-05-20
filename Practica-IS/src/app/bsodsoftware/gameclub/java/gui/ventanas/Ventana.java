@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class ventana {
+public class Ventana {
 
 	private JFrame frame;
 
@@ -15,7 +15,7 @@ public class ventana {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventana window = new ventana();
+					Ventana window = new Ventana();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -27,7 +27,7 @@ public class ventana {
 	/**
 	 * Create the application.
 	 */
-	public ventana() {
+	public Ventana() {
 		initialize();
 	}
 

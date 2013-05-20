@@ -12,18 +12,18 @@ public class ModeloJuego extends DefaultTableModel {
 
 		super(rellenar(data, columns.length), columns);
 	}
-	
+
 	private static Object[][] rellenar(Juego[] juegos, int columnasLength) {
-		
+
 		Object[][] datos = new Object[juegos.length][columnasLength];
-		
+
 		for (int i = 0; i < juegos.length; i++) {
 			datos[i][0] = juegos[i].getNombre();
 			datos[i][1] = juegos[i].getImagen();
 			datos[i][2] = juegos[i].getNumero_jugadores();
 			datos[i][3] = juegos[i].getComentarios();
 		}
-		
+
 		return datos;
 	}
 

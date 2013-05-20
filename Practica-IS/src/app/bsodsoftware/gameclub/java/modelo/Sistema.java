@@ -1,13 +1,5 @@
 package app.bsodsoftware.gameclub.java.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
-import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
-import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaUsuario;
-
 public class Sistema {
 
 	private SistemaUsuarios sistemaUsuarios;
@@ -15,7 +7,7 @@ public class Sistema {
 	private SistemaPrestamos sistemaPrestamos;
 
 	public Sistema() {
-		sistemaUsuarios = new SistemaUsuarios();
+		setSistemaUsuarios(new SistemaUsuarios());
 		sistemaJuegos = new SistemaJuegos();
 		sistemaPrestamos = new SistemaPrestamos();
 
@@ -42,6 +34,14 @@ public class Sistema {
 	}
 
 	public void DevolverPrestamo() {
+	}
+
+	public SistemaUsuarios getSistemaUsuarios() {
+		return sistemaUsuarios;
+	}
+
+	public void setSistemaUsuarios(SistemaUsuarios sistemaUsuarios) {
+		this.sistemaUsuarios = sistemaUsuarios;
 	}
 
 }

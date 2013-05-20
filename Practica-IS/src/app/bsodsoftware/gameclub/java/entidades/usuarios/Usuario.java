@@ -17,8 +17,8 @@ public class Usuario {
 	public Usuario(String nuevo_dni, String nuevo_nombre, String nuevo_apellidos) {
 
 		setDni(nuevo_dni);
-		nombre = nuevo_nombre;
-		apellidos = nuevo_apellidos;
+		setNombre(nuevo_nombre);
+		setApellidos(nuevo_apellidos);
 		sancionado = false;
 		hasta = null;
 
@@ -37,6 +37,22 @@ public class Usuario {
 	 */
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 }
