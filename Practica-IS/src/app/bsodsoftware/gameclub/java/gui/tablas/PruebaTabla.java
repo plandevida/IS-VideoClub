@@ -2,7 +2,6 @@ package app.bsodsoftware.gameclub.java.gui.tablas;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,11 +27,11 @@ public class PruebaTabla extends JFrame {
 	
 	public void init() {
 		
-		Juego juego = new Juego(1, "Colonos del catán", 8, "Juego de estrategia", 5, Imagenes.getAdministracion56x56());
-		Juego juego1 = new Juego(2, "a", 2, "nada", 5, Imagenes.getPrestamos56x56());
-		Juego juego2 = new Juego(3, "d", 2, "nada", 5, Imagenes.getDevoluciones56x56());
+		Juego juego = new Juego("Colonos del catán", 8, 5, 5, "Juego de estrategia", Imagenes.getAdministracion56x56());
+		Juego juego1 = new Juego("a", 2,  5, 5,"nada", Imagenes.getPrestamos56x56());
+		Juego juego2 = new Juego("d", 2, 5, 5,"nada", Imagenes.getDevoluciones56x56());
 		
-		String[] columnas = { "nombre", "imagen", "numero de jugadores", "descripción" };
+		String[] columnas = { "Nombre", "Número de jugadores", "Edad mínima", "Descripción", "Imagen" };
 		
 		ModeloJuego model = new ModeloJuego(new Juego[]{ juego, juego1, juego2 }, columnas);
 		
@@ -47,7 +46,6 @@ public class PruebaTabla extends JFrame {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		final JTextField field = new JTextField();
-//		field.setBounds(new Rectangle(100, 20));
 		JButton boton = new JButton("filtrar");
 		
 		boton.addActionListener(new ActionListener() {

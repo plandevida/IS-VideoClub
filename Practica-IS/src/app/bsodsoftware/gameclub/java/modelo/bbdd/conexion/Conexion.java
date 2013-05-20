@@ -1,14 +1,9 @@
 package app.bsodsoftware.gameclub.java.modelo.bbdd.conexion;
 
-import java.net.InetAddress;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.ResultSetMetaData;
-
-import org.apache.derby.drda.NetworkServerControl;
 
 // http://www.vogella.com/articles/EclipseDataToolsPlatform/article.html
 

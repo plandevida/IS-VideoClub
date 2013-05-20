@@ -1,7 +1,6 @@
 package app.bsodsoftware.gameclub.java.modelo.fachadas;
 
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
-import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 
 /**
  * Interfaz para el acceso a los prestamos del modelo
