@@ -3,10 +3,13 @@ package app.bsodsoftware.gameclub.java.modelo;
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaJuego;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaPrestamo;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaUsuario;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFicheros;
+import app.bsodsoftware.gameclub.java.modelo.implementacion.SistemaJuegos;
+import app.bsodsoftware.gameclub.java.modelo.implementacion.SistemaPrestamos;
+import app.bsodsoftware.gameclub.java.modelo.implementacion.SistemaUsuarios;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFachadaJuego;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFachadaPrestamo;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFachadaUsuario;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFicheros;
 
 public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 		InterfazFachadaPrestamo, InterfazFachadaUsuario {

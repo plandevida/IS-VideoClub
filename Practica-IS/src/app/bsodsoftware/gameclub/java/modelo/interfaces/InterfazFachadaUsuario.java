@@ -1,4 +1,4 @@
-package app.bsodsoftware.gameclub.java.modelo.fachadas;
+package app.bsodsoftware.gameclub.java.modelo.interfaces;
 
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 

@@ -1,4 +1,4 @@
-package app.bsodsoftware.gameclub.java.modelo;
+package app.bsodsoftware.gameclub.java.modelo.implementacion;
 
 
 import java.text.ParseException;
@@ -9,8 +9,8 @@ import java.util.Date;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
 import app.bsodsoftware.gameclub.java.entrada.Lectura;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaPrestamo;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFicheros;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFachadaPrestamo;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFicheros;
 
 public class SistemaPrestamos implements InterfazFachadaPrestamo,
 		InterfazFicheros {

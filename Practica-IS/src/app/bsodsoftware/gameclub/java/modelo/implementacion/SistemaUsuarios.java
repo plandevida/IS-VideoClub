@@ -1,12 +1,12 @@
-package app.bsodsoftware.gameclub.java.modelo;
+package app.bsodsoftware.gameclub.java.modelo.implementacion;
 
 import java.util.ArrayList;
 
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
 import app.bsodsoftware.gameclub.java.entrada.Lectura;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaUsuario;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFicheros;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFachadaUsuario;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFicheros;
 
 public class SistemaUsuarios implements InterfazFachadaUsuario,
 		InterfazFicheros {

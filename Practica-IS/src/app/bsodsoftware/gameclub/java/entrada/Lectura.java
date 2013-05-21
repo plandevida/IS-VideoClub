@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -20,7 +22,11 @@ import java.io.InputStreamReader;
  */
 
 public class Lectura {
+	
+	private static final Logger logger = Logger.getLogger(Escritura.class.getName());
+	
 	private BufferedReader lectura;
+	private String ficheroPath;
 
 	/**
 	 * Crea una clase Superlectura que usa la entrada estándar del sistema con
@@ -41,12 +47,15 @@ public class Lectura {
 	 *            El fichero a abrir
 	 */
 	public Lectura(String Fichero) {
+		
+		ficheroPath = Fichero;
 		BufferedReader nuevo_lector = null;
 		try {
 			nuevo_lector = new BufferedReader(new InputStreamReader(
 					new BufferedInputStream(new FileInputStream(Fichero))));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
+			logger.log(Level.SEVERE, "**Error al abrir el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
 			e.printStackTrace();
 		}
 		lectura = nuevo_lector;
@@ -70,10 +79,10 @@ public class Lectura {
 			}
 		} catch (IOException e) {
 
+			logger.log(Level.SEVERE, "**Error al leer una línea el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
 			e.printStackTrace();
-		} finally {
-
 		}
+		
 		return salida;
 	}
 
@@ -85,11 +94,22 @@ public class Lectura {
 			}
 		} catch (IOException e) {
 
+			logger.log(Level.SEVERE, "**Error al leer el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
 			e.printStackTrace();
 		} finally {
-
+			cerrarFichero();
 		}
 		return salida;
 	}
 
+	
+	public void cerrarFichero() {
+		try {
+			lectura.close();
+		} catch (IOException e) {
+			
+			logger.log(Level.SEVERE, "**Error al cerrar el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
+			e.printStackTrace();
+		}
+	}
 }

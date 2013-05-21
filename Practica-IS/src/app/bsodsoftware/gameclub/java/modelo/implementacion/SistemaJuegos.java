@@ -1,12 +1,12 @@
-package app.bsodsoftware.gameclub.java.modelo;
+package app.bsodsoftware.gameclub.java.modelo.implementacion;
 
 import java.util.ArrayList;
 
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
 import app.bsodsoftware.gameclub.java.entrada.Lectura;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFachadaJuego;
-import app.bsodsoftware.gameclub.java.modelo.fachadas.InterfazFicheros;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFachadaJuego;
+import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFicheros;
 
 public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
@@ -74,7 +74,7 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 		} catch (Exception e) {
 
 		} finally {
-
+			entrada_de_datos_por_fichero.cerrarFichero();
 		}
 	}
 
@@ -92,7 +92,8 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 			// System.out.println("linea->" + linea_juego);
 			salida_de_datos_por_fichero.escribirLinea(linea_juego);
 		}
-
+		
+		salida_de_datos_por_fichero.cerrarFichero();
 	}
 
 	@Override
@@ -104,6 +105,5 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 		}
 
 		return juego_a_devolver;
-
 	}
 }

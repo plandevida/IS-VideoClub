@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 
 import javax.swing.UIManager;
 
-import app.bsodsoftware.gameclub.java.gui.ventanas.Ventana2;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
@@ -18,11 +17,10 @@ public class Manager {
 
 	private Sistema sistema;
 
-	private static final Logger logger = Logger.getLogger(Manager.class
-			.getName());
+	private static final Logger logger = Logger.getLogger(Manager.class.getName());
 
 	@SuppressWarnings("unused")
-	private Ventana2 gui;
+	private VentanaPrincipal gui;
 	private String titulo;
 
 	/**
@@ -41,16 +39,14 @@ public class Manager {
 
 		try {
 			// UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
-			UIManager
-					.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		} catch (Exception e) {
-			logger.log(Level.WARNING,
-					"No se ha podido cargar el look and feel personalizado.");
+			logger.log(Level.WARNING, "No se ha podido cargar el look and feel personalizado.");
 		}
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				gui = new Ventana2(titulo);
+				gui = new VentanaPrincipal(titulo);
 			}
 		});
 	}

@@ -27,6 +27,8 @@ public class TablaPrestamos extends JTable {
 
 		setShowGrid(true);
 		
+		celdasNoEditables();
+		
 		crearSorter();
 	}
 	
@@ -35,6 +37,7 @@ public class TablaPrestamos extends JTable {
 		for ( int i = 0; i < modelo.getRowCount(); i++) {
 			for ( int j = 0; j < modelo.getColumnCount(); j++) {
 				
+				// TODO Hacer NO editables las celdas del a tabla.
 //				modelo.
 			}
 		}
@@ -47,7 +50,7 @@ public class TablaPrestamos extends JTable {
 		setRowSorter(sorter);
 	}
 
-	public void newFilter(String text) {
+	public void filtrar(String text) {
 
 		RowFilter<ModeloJuego, Object> rf = null;
 		// If current expression doesn't parse, don't update.
