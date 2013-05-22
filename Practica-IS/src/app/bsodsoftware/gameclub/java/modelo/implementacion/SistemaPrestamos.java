@@ -49,6 +49,9 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 
 			listaPrestamos.add(prestamo);
 			resultado = true;
+			
+			//aumenta las unidades prestadas del juego en 1
+			prestamo.getJuego_a_prestar().setUnidades_prestadas((prestamo.getJuego_a_prestar().getUnidades_prestadas())+1);
 		}
 		return resultado;
 	}
@@ -71,6 +74,10 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 		if (!existePrestamo(prestamo)) {
 			resultado = false;
 		} else {
+			
+			//disminuye las unidades prestadas del juego en 1
+			prestamo.getJuego_a_prestar().setUnidades_prestadas((prestamo.getJuego_a_prestar().getUnidades_prestadas())-1);
+			
 			listaPrestamos.remove(prestamo);
 			resultado = true;
 		}
