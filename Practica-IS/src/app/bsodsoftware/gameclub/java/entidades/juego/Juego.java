@@ -27,6 +27,7 @@ public class Juego {
 		this.edad_minima = edad_minima;
 		this.descripcion = descipcion;
 		this.imagen = imagen;
+		this.unidades_prestadas = 0;
 
 	}
 

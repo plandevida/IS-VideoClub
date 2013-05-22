@@ -29,6 +29,9 @@ public class Usuario {
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.direccion = direccion;
 		this.telefono = telefono;
+		this.hasta = null;
+		this.sancionado = false;
+		
 	}
 
 	public String getDni() {
