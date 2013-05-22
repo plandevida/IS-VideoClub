@@ -15,8 +15,7 @@ public interface InterfazFachadaJuego {
 	/**
 	 * Añade un juego a la bbdd
 	 * 
-	 * @param juego
-	 *            Juego a añadir
+	 * @param juego Juego a añadir
 	 * @return El nuevo juego (con el id de la bbdd).
 	 */
 	public boolean addjuego(Juego juego);
@@ -24,8 +23,7 @@ public interface InterfazFachadaJuego {
 	/**
 	 * Modifica los datos de un juego en la bbdd.
 	 * 
-	 * @param juego
-	 *            juego con los datos modificados.
+	 * @param juego juego con los datos modificados.
 	 * @return El juego modificado si se ha podido guardar.
 	 */
 	public boolean modificarjuego(Juego juego);
@@ -33,8 +31,7 @@ public interface InterfazFachadaJuego {
 	/**
 	 * Borra un juego de la bbdd.
 	 * 
-	 * @param idJuego
-	 *            Id de juego.
+	 * @param idJuego Id de juego.
 	 * @return True si lo ha borrado, false EOC.
 	 */
 	public boolean borrarjuego(Juego juego);
@@ -48,6 +45,18 @@ public interface InterfazFachadaJuego {
 	 */
 	public boolean existejuego(Juego juego);
 
+	/**
+	 * Obtiene un juego a partir de su nombre.
+	 * 
+	 * @param nombre El nombre del juego
+	 * @return El juego buscado o null si no se encontró.
+	 */
 	public Juego buscaJuego(String nombre);
-
+	
+	/**
+	 * Obtiene todos los juegos almacenados.
+	 * 
+	 * @return Lista de juegos almancenados.
+	 */
+	public Juego[] consultarJuegos();
 }

@@ -106,4 +106,10 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 		return juego_a_devolver;
 	}
+
+	@Override
+	public Juego[] consultarJuegos() {
+		
+		return listaJuegos.toArray(new Juego[listaJuegos.size()]);
+	}
 }

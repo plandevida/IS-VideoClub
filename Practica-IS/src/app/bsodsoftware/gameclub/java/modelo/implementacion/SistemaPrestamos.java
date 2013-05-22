@@ -4,7 +4,6 @@ package app.bsodsoftware.gameclub.java.modelo.implementacion;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
@@ -127,6 +126,12 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 			salida_de_datos_por_fichero.escribirLinea(linea_prestamo);
 		}
 
+	}
+
+	@Override
+	public Prestamo[] consultarPrestamos() {
+		
+		return listaPrestamos.toArray(new Prestamo[listaPrestamos.size()]);
 	}
 
 }

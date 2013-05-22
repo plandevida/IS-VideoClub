@@ -57,7 +57,7 @@ public class PruebaTabla extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				tabla.filtrar(field.getText());
+				tabla.filtrar(field.getText(), 0);
 			}
 		});
 

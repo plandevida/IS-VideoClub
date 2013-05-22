@@ -120,4 +120,10 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 
 	}
 
+	@Override
+	public Usuario[] consultarUsuarios() {
+		
+		return listaUsuarios.toArray(new Usuario[listaUsuarios.size()]);
+	}
+
 }

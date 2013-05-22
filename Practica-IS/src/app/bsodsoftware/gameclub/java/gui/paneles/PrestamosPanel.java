@@ -16,13 +16,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.gui.tablas.ModeloJuego;
 import app.bsodsoftware.gameclub.java.gui.tablas.TablaPrestamos;
-import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
+import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -32,6 +30,9 @@ import com.jgoodies.forms.layout.RowSpec;
 public class PrestamosPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	
+	private Sistema miSistema;
+	
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JLabel lblNombreDelJuego;
@@ -46,25 +47,24 @@ public class PrestamosPanel extends JPanel {
 	private JRadioButton rdbtnOn_2;
 	private ButtonGroup grupoRadioBotones;
 	private JPanel panelRadioButtons;
+	private ModeloJuego model;
 
 	/**
 	 * Create the panel.
 	 */
-	public PrestamosPanel() {
+	public PrestamosPanel(Sistema sistema) {
 		setLayout(new BorderLayout(0, 0));
+	
+		init();
+		
+		miSistema = sistema;
+		
+		cargarTabla();
+	}
 
-		// Juegos de ejemplo para la tabla
-		Juego juego = new Juego("Colonos del Catan", 8, 10, 5,
-				"Muy Interesante", Imagenes.getAdministracion56x56());
-		Juego juego1 = new Juego("a", 2, 2, 5, "nada",
-				Imagenes.getPrestamos56x56());
-		Juego juego2 = new Juego("d", 2, 3, 5, "nada",
-				Imagenes.getDevoluciones56x56());
+	private void init() {
 
-		String[] columnas = { "Nombre", "Número de jugadores", "Edad mínima", "Descripción", "Imagen" };
-
-		ModeloJuego model = new ModeloJuego(
-				new Juego[] { juego, juego1, juego2 }, columnas);
+		model = new ModeloJuego( new Juego[] { /*juego, juego1, juego2*/ }, ModeloJuego.columnas);
 
 		table = new TablaPrestamos(model);
 
@@ -126,50 +126,35 @@ public class PrestamosPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				String action = e.getActionCommand();
-				
-				switch (action) {
-				
-				case "0":
-					tNombreJuego.setEditable(true);
-					tDescripcion.setEnabled(false);
-					cNumeroJugadores.setEnabled(false);
-					break;
-					
-				case "1":
-					tNombreJuego.setEditable(false);
-					tDescripcion.setEnabled(true);
-					cNumeroJugadores.setEnabled(false);
-					break;
-					
-				case "3":
-					tNombreJuego.setEditable(false);
-					tDescripcion.setEnabled(false);
-					cNumeroJugadores.setEnabled(true);
-					break;
-					
-				default:
-					tNombreJuego.setEditable(false);
-					tDescripcion.setEnabled(false);
-					cNumeroJugadores.setEnabled(false);
-					break;
-				}
+				tNombreJuego.setEnabled(rdbtnOn.isSelected());
+				tDescripcion.setEnabled(rdbtnOn_1.isSelected());
+				cNumeroJugadores.setEnabled(rdbtnOn_2.isSelected());
 			}
 		};
 		
 		// Lisener para el botón filtrar
-		ChangeListener listenerBotonFiltrar = new ChangeListener() {
+		ActionListener listenerBotonFiltrar = new ActionListener() {
 			
 			@Override
-			public void stateChanged(ChangeEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				
 				String filtro = "";
+				int columna = 0;
 				
-				if ( tNombreJuego.isEnabled() ) filtro = tNombreJuego.getText();
-				else if ( tDescripcion.isEnabled() ) filtro = tDescripcion.getText();
-				else if ( cNumeroJugadores.isEnabled() ) filtro = (String)cNumeroJugadores.getSelectedItem();
+				if ( tNombreJuego.isEnabled() ) {
+					filtro = tNombreJuego.getText();
+					columna = Integer.valueOf(rdbtnOn.getActionCommand());
+				}
+				else if ( tDescripcion.isEnabled() ) {
+					filtro = tDescripcion.getText();
+					columna = Integer.valueOf(rdbtnOn_1.getActionCommand());
+				}
+				else if ( cNumeroJugadores.isEnabled() ) { 
+					filtro = (String)cNumeroJugadores.getSelectedItem();
+					columna = Integer.valueOf(rdbtnOn_2.getActionCommand());
+				}
 				
-				((TablaPrestamos) table).filtrar(filtro);
+				((TablaPrestamos) table).filtrar(filtro, columna);
 			}
 		};
 		
@@ -184,14 +169,14 @@ public class PrestamosPanel extends JPanel {
 		rdbtnOn_1 = new JRadioButton("ON->");
 		rdbtnOn_1.setToolTipText("Permite habilitar este filtro");
 		// Este comando sirve para determinar en que columna se va a filtrar en la tabla
-		rdbtnOn_1.setActionCommand("1");
+		rdbtnOn_1.setActionCommand("3");
 		rdbtnOn_1.addActionListener(listenerRadioButton);
 		grupoRadioBotones.add(rdbtnOn_1);
 		
 		rdbtnOn_2 = new JRadioButton("ON->");
 		rdbtnOn_2.setToolTipText("Permite habilitar este filtro");
 		// Este comando sirve para determinar en que columna se va a filtrar en la tabla
-		rdbtnOn_2.setActionCommand("3");
+		rdbtnOn_2.setActionCommand("1");
 		rdbtnOn_2.addActionListener(listenerRadioButton);
 		grupoRadioBotones.add(rdbtnOn_2);
 		
@@ -216,7 +201,7 @@ public class PrestamosPanel extends JPanel {
 		tDescripcion.setColumns(10);
 		
 		btnFiltrar = new JButton("Filtrar");
-		btnFiltrar.addChangeListener(listenerBotonFiltrar);
+		btnFiltrar.addActionListener(listenerBotonFiltrar);
 		panel.add(btnFiltrar, "17, 6");
 		
 		lblNmeroDeJugadores = new JLabel("Número de jugadores");
@@ -226,5 +211,13 @@ public class PrestamosPanel extends JPanel {
 		cNumeroJugadores.setModel(new DefaultComboBoxModel<String>(new String[] { "2", "4", "6", "8", "10" }));
 		cNumeroJugadores.setEnabled(false);
 		panel.add(cNumeroJugadores, "12, 8, fill, default");
+	}
+	
+	private void cargarTabla() {
+		Juego[] juegos = miSistema.consultarJuegos();
+		
+		model.setObjetos(juegos);
+		
+		model.rellenar();
 	}
 }

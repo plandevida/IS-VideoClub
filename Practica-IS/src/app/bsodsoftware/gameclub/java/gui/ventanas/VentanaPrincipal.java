@@ -18,11 +18,17 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import app.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
 import app.bsodsoftware.gameclub.java.gui.paneles.PrestamosPanel;
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
+import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 public class VentanaPrincipal extends JFrame {
 
+	private static final long serialVersionUID = 5633360730065002268L;
+
+	private Sistema miSistema;
+	
 	private JPanel contentPane;
 
 	/**
@@ -32,7 +38,7 @@ public class VentanaPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal("Game Club");
+					VentanaPrincipal frame = new VentanaPrincipal("Game Club", new Sistema());
 //					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,11 +50,21 @@ public class VentanaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal(String titulo) {
+	public VentanaPrincipal(String titulo, Sistema sistema) {
+		
+		miSistema = sistema;
+		
 		setTitle(titulo);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1076, 819);
+		
+		init();
+
+		setVisible(true);
+	}
+	
+	private void init() {
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -57,10 +73,30 @@ public class VentanaPrincipal extends JFrame {
 		menuBar.add(mnArchivo);
 
 		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.exit(0);
+			}
+		});
 		mnArchivo.add(mntmSalir);
 
 		JMenu mnAbout = new JMenu("About");
 		menuBar.add(mnAbout);
+		
+		JMenuItem mntmDesarrolladores = new JMenuItem("Desarrolladores");
+		mntmDesarrolladores.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				new PanelAbout(Imagenes.getAbout().getImage()).setVisible(true);
+			}
+		});
+		mnAbout.add(mntmDesarrolladores);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -78,7 +114,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnPrestamos = new JButton("    Prestamos    ");
 		btnPrestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				getContentPane().add(new PrestamosPanel(), BorderLayout.CENTER);
+				getContentPane().add(new PrestamosPanel(miSistema), BorderLayout.CENTER);
 				getContentPane().validate();
 			}
 		});
@@ -107,8 +143,6 @@ public class VentanaPrincipal extends JFrame {
 
 		Component verticalGlue_1 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_1);
-		
-		setVisible(true);
 	}
 
 }

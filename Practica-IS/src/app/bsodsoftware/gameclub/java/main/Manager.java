@@ -15,13 +15,13 @@ import app.bsodsoftware.gameclub.java.modelo.Sistema;
  */
 public class Manager {
 
-	private Sistema sistema;
-
 	private static final Logger logger = Logger.getLogger(Manager.class.getName());
 
 	@SuppressWarnings("unused")
 	private VentanaPrincipal gui;
 	private String titulo;
+	
+	private Sistema sistema;
 
 	/**
 	 * Inicia y configura la aplicación
@@ -46,7 +46,7 @@ public class Manager {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				gui = new VentanaPrincipal(titulo);
+				gui = new VentanaPrincipal(titulo, sistema);
 			}
 		});
 	}

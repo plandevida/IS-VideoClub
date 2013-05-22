@@ -48,5 +48,13 @@ public interface InterfazFachadaUsuario {
 	 */
 	public boolean existeUsuario(Usuario usuario);
 
+	/**
+	 * Busca un usuario por su DNI
+	 * 
+	 * @param DNI Del usuario a buscar.
+	 * @return El usuario buscado o null si no se encontró;
+	 */
 	public Usuario buscaUsuario(String DNI);
+	
+	public Usuario[] consultarUsuarios();
 }

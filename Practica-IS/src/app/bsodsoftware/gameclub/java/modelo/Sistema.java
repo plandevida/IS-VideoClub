@@ -98,8 +98,24 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 	@Override
 	public void cargarFichero() {
 		
-	
+	}
 
+	@Override
+	public Usuario[] consultarUsuarios() {
+		
+		return sistemaUsuarios.consultarUsuarios();
+	}
+
+	@Override
+	public Prestamo[] consultarPrestamos() {
+		
+		return sistemaPrestamos.consultarPrestamos();
+	}
+
+	@Override
+	public Juego[] consultarJuegos() {
+		
+		return sistemaJuegos.consultarJuegos();
 	}
 
 	@Override
