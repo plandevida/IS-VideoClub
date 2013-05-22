@@ -10,7 +10,7 @@ import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFicheros;
 
 public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
-	ArrayList<Juego> listaJuegos;
+	private ArrayList<Juego> listaJuegos;
 
 	public SistemaJuegos() {
 		listaJuegos = new ArrayList<Juego>();
