@@ -1,28 +1,27 @@
 package app.bsodsoftware.gameclub.java.gui.paneles;
 
-import java.awt.Graphics;
-import java.awt.Image;
+import javax.swing.JDialog;
 
-import javax.swing.JPanel;
+import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
+import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 
-public class PanelAbout extends JPanel {
+public class PanelAbout extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	private Image foto;
+	private VentanaPrincipal ventana;
+	
+	public PanelAbout(VentanaPrincipal ventanaPrincipal) {
 
-	public PanelAbout(Image imagen) {
-		foto = imagen;
-
+		ventana = ventanaPrincipal;
+		
 		Init();
 	}
 
 	private void Init() {
-		setBounds(0, 0, 300, 300);
-	}
-
-	@Override
-	public void paint(Graphics g) {
-		g.drawImage(foto, 0, 0, getWidth(), getHeight(), null);
+		
+		setBounds(ventana.getWidth()/2-this.getWidth()/2, ventana.getY(), Imagenes.getAbout().getIconWidth(), Imagenes.getAbout().getIconHeight());
+		
+		add(new PanelImagen(Imagenes.getAbout()));
 	}
 }

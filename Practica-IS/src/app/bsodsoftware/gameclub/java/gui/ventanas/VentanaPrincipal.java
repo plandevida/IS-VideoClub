@@ -30,22 +30,10 @@ public class VentanaPrincipal extends JFrame {
 	private Sistema miSistema;
 	
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal frame = new VentanaPrincipal("Game Club", new Sistema());
-//					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+	// Creada para poder ser asiganda a un diálogo
+	// que está en la implementación de un listener.
+	private VentanaPrincipal mySelf;
 
 	/**
 	 * Create the frame.
@@ -58,6 +46,9 @@ public class VentanaPrincipal extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1076, 819);
+		
+		// Própositos de diálogos.
+		mySelf = this;
 		
 		init();
 
@@ -92,7 +83,7 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				new PanelAbout(Imagenes.getAbout().getImage()).setVisible(true);
+				new PanelAbout(mySelf).setVisible(true);
 			}
 		});
 		mnAbout.add(mntmDesarrolladores);
@@ -114,7 +105,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnPrestamos = new JButton("    Prestamos    ");
 		btnPrestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				getContentPane().add(new PrestamosPanel(miSistema), BorderLayout.CENTER);
+				getContentPane().add(new PrestamosPanel(miSistema, mySelf), BorderLayout.CENTER);
 				getContentPane().validate();
 			}
 		});

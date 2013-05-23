@@ -20,8 +20,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 		// listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama", null,
 		// "calle", 6541942));
 
-		cargarFichero();
-//		escribirFichero();
+//		cargarFichero();
 
 	}
 

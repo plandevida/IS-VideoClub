@@ -30,6 +30,7 @@ public class Manager {
 		titulo = "Video Game Club";
 
 		sistema = new Sistema();
+		sistema.cargarFichero();
 	}
 
 	/**

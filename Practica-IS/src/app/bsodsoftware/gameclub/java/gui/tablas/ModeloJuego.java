@@ -115,4 +115,15 @@ public class ModeloJuego extends AbstractTableModel {
 
 		return clazz;
 	}
+	
+	public Juego getJuego(int fila) {
+		
+		Juego juego = null;
+		
+		if (fila <= juegos.length) {
+			juego = juegos[fila];
+		}
+		
+		return juego;
+	}
 }

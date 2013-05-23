@@ -14,11 +14,9 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 	public SistemaJuegos() {
 		listaJuegos = new ArrayList<Juego>();
-		listaJuegos.add(new Juego("Catan the game", 4, 3, 18,
-				"altamente destructivo", null));
-		cargarFichero();
-//		escribirFichero();
-
+//		listaJuegos.add(new Juego("Catan the game", 4, 3, 18,
+//				"altamente destructivo", null));
+//		cargarFichero();
 	}
 
 	@Override

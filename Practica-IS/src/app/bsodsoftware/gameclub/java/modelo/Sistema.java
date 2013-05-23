@@ -97,7 +97,9 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 
 	@Override
 	public void cargarFichero() {
-		
+		sistemaJuegos.cargarFichero();
+		sistemaPrestamos.cargarFichero();
+		sistemaUsuarios.cargarFichero();
 	}
 
 	@Override
