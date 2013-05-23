@@ -1,5 +1,8 @@
 package app.bsodsoftware.gameclub.java.modelo;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
@@ -18,7 +21,11 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 	private SistemaJuegos sistemaJuegos;
 	private SistemaPrestamos sistemaPrestamos;
 
+
 	public Sistema() {
+		Calendar fecha=Calendar.getInstance();
+		fecha.add(Calendar.DATE, 15);
+		System.out.println(fecha.getTime());
 		sistemaUsuarios = new SistemaUsuarios();
 		sistemaJuegos = new SistemaJuegos();
 		sistemaPrestamos = new SistemaPrestamos(sistemaUsuarios, sistemaJuegos);
