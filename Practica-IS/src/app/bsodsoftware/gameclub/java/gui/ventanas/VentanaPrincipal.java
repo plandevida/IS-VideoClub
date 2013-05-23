@@ -47,9 +47,11 @@ public class VentanaPrincipal extends JFrame {
 		miManager = manager;
 		
 		setTitle(titulo);
-		setResizable(false);
+		//Si no es ajustable el tamaño no se pone en estado pantalla completa
+		//setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1076, 819);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setBounds(0, 0, java.awt.Toolkit.getDefaultToolkit().getScreenSize().width,java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
 		
 		// Própositos de diálogos.
 		mySelf = this;
