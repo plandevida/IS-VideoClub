@@ -168,7 +168,8 @@ public class PrestamosPanel extends JPanel {
 									if ( !miSistema.addPrestamo(prestamo) ) {
 											JOptionPane.showMessageDialog(ventana, "Error al crear un prestamo.", "Error", JOptionPane.ERROR_MESSAGE);
 									} else {
-										JOptionPane.showMessageDialog(ventana, "Prestamo realizado correctamente.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(ventana, "Prestamo realizado correctamente."+"\nEl prestamo expira: "+calendario.get(Calendar.DAY_OF_MONTH)+"/"+calendario.get(Calendar.MONTH)+"/"+calendario.get(Calendar.YEAR)//Solucion temporal
+												, "Aviso", JOptionPane.INFORMATION_MESSAGE);
 									}
 								} else {
 									JOptionPane.showMessageDialog(ventana, "El usuario no existe.", "Error", JOptionPane.ERROR_MESSAGE);

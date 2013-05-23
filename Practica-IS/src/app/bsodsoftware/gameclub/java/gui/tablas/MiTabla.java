@@ -83,6 +83,9 @@ public class MiTabla extends JTable {
         return false;
     }
 	
+	/** Asigna el nombre a las columnas del modelo
+	 * 
+	 */
 	private void setNombreColumnas(){
 		JTableHeader cabecera = getTableHeader();
 		TableColumnModel modeloColumna = cabecera.getColumnModel();
