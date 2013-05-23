@@ -21,7 +21,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 		// "calle", 6541942));
 
 		cargarFichero();
-//		escribirFichero();
+		escribirFichero();
 
 	}
 
@@ -30,7 +30,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 
 		boolean resultado = false;
 
-		if (!existeUsuario(usuario)) {
+		if (!existeUsuario(usuario) && buscaUsuario(usuario.getDni()) == null) {
 
 			listaUsuarios.add(usuario);
 			resultado = true;

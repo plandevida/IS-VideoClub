@@ -25,7 +25,7 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 		sistema_juegos = _sistema_juegos;
 		sistema_usuarios = _sistema_usuarios;
 
-		try {
+	/*	try {
 			listaPrestamos.add(new Prestamo(sistema_usuarios
 					.buscaUsuario("12345678A"), sistema_juegos
 					.buscaJuego("Catan the game"),
@@ -35,9 +35,9 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 			
 			e.printStackTrace();
 		}
-
+*/
 		cargarFichero();
-//		escribirFichero();
+        escribirFichero();
 	}
 
 	@Override
