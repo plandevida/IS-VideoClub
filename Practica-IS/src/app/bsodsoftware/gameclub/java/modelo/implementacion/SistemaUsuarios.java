@@ -17,11 +17,6 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 
 		listaUsuarios = new ArrayList<Usuario>();
 
-		// listaUsuarios.add(new Usuario("12345678A", "Juan", "Trama", null,
-		// "calle", 6541942));
-
-//		cargarFichero();
-
 	}
 
 	@Override
@@ -29,7 +24,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 
 		boolean resultado = false;
 
-		if (!existeUsuario(usuario)) {
+		if (!existeUsuario(usuario) && buscaUsuario(usuario.getDni()) == null) {
 
 			listaUsuarios.add(usuario);
 			resultado = true;

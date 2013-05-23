@@ -14,9 +14,6 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 	public SistemaJuegos() {
 		listaJuegos = new ArrayList<Juego>();
-//		listaJuegos.add(new Juego("Catan the game", 4, 3, 18,
-//				"altamente destructivo", null));
-//		cargarFichero();
 	}
 
 	@Override
@@ -24,7 +21,7 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 		boolean resultado = false;
 
-		if (!existejuego(juego)) {
+		if (!existejuego(juego)  && buscaJuego(juego.getNombre()) == null) {
 
 			listaJuegos.add(juego);
 			resultado = true;

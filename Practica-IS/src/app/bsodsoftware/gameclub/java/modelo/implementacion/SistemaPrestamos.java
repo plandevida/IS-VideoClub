@@ -23,19 +23,6 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 		listaPrestamos = new ArrayList<Prestamo>();
 		sistema_juegos = _sistema_juegos;
 		sistema_usuarios = _sistema_usuarios;
-
-//		try {
-//			listaPrestamos.add(new Prestamo(sistema_usuarios
-//					.buscaUsuario("12345678A"), sistema_juegos
-//					.buscaJuego("Catan the game"),
-//					new SimpleDateFormat("dd-MM-yyyy").parse("20-01-2010"),
-//					new SimpleDateFormat("dd-MM-yyyy").parse("20-01-2010")));
-//		} catch (ParseException e) {
-//			
-//			e.printStackTrace();
-//		}
-
-//		cargarFichero();
 	}
 
 	@Override
