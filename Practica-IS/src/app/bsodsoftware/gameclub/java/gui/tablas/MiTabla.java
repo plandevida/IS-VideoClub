@@ -3,6 +3,9 @@ package app.bsodsoftware.gameclub.java.gui.tablas;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -23,8 +26,9 @@ public class MiTabla extends JTable {
 	public MiTabla(AbstractTableModel model) {
 
 		modelo = model;
-
+		
 		init();
+		
 	}
 
 	private void init() {
@@ -36,11 +40,14 @@ public class MiTabla extends JTable {
 
 		setShowGrid(true);
 		
+		setNombreColumnas();
+	
 		crearSorter();
+
 	}
 
 	private void crearSorter() {
-
+		
 		sorter = new TableRowSorter<AbstractTableModel>(modelo);
 
 		setRowSorter(sorter);
@@ -75,4 +82,16 @@ public class MiTabla extends JTable {
 	public boolean isCellEditable(int rowIndex, int colIndex) {
         return false;
     }
+	
+	private void setNombreColumnas(){
+		JTableHeader cabecera = getTableHeader();
+		TableColumnModel modeloColumna = cabecera.getColumnModel();
+		TableColumn columna;
+		for(int i=0;i<modelo.getColumnCount();i++){
+			 columna = modeloColumna.getColumn(i); 
+			 columna.setHeaderValue(ModeloJuego.columnas[i]);
+		}
+		cabecera.repaint();
+		
+	}
 }
