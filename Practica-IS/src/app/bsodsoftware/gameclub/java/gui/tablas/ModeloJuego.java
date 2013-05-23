@@ -4,6 +4,14 @@ import javax.swing.table.AbstractTableModel;
 
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 
+/**
+ * Un modelo para las tablas.
+ * 
+ * @author Daniel Serrano Torres
+ * @author Alvaro Quesada Pimentel
+ * @author Juan Prérez Valbuena
+ * @author Emilio Alvarez
+ */
 public class ModeloJuego extends AbstractTableModel {
 
 	private static final long serialVersionUID = -6900850597743594873L;
@@ -12,12 +20,16 @@ public class ModeloJuego extends AbstractTableModel {
 	private int numFilas;
 	private Juego[] juegos;
 	
+	/**
+	 * Columnas predefinidas del modelo para los juegos.
+	 */
 	public final static String[] columnas = { "Nombre", "Número de jugadores", "Edad mínima",
 			"Descripción", "Imagen" };
 	
 	/**
-	 * MiJTable construction with a ItemContainer
-	 * @param obj
+	 * Crea un contenedor de juegos para una tabla.
+	 * @param juegosNuevos Nueva lista de juegos
+	 * @param columnas Nombres de las columnas.
 	 */
 	public ModeloJuego(Juego[] juegosNuevos, String[] columnas) {
 		numColum = columnas.length;
@@ -28,7 +40,7 @@ public class ModeloJuego extends AbstractTableModel {
 	@Override
 	
 	/**
-	 * This method returns number of columns
+	 * Obtiene el número de columnas.
 	 */
 	public int getColumnCount() {
 		
@@ -38,7 +50,7 @@ public class ModeloJuego extends AbstractTableModel {
 	@Override
 	
 	/**
-	 * This method returns number of rows
+	 * Obtiene el número de filas.
 	 */
 	public int getRowCount() {
 		
@@ -48,7 +60,7 @@ public class ModeloJuego extends AbstractTableModel {
 	@Override
 	
 	/**
-	 * This method returns object�ID or the Object�Description or null.
+	 * Este método devuelve el dato de cada celda.
 	 */
 	public Object getValueAt(int row, int column) {
 		
@@ -83,8 +95,8 @@ public class ModeloJuego extends AbstractTableModel {
 	}
 	
 	/**
-	 * This method changes the ItemContainer and changes the number of row by the number of items.
-	 * @param a - The ItemContainer to change.
+	 * Método que cambia los datos de la tabla.
+	 * @param juegosNuevos Nueva lista de datos.
 	 */
 	public void setObjetos(Juego[] juegosNuevos) {
 		juegos = juegosNuevos;
@@ -92,7 +104,7 @@ public class ModeloJuego extends AbstractTableModel {
 	}
 	
 	/**
-	 * This method Complete the JTble with the items of ItemContainer.
+	 * Método que rellena los datos en la tabla.
 	 */
 	public void rellenar() {
 		
@@ -116,6 +128,11 @@ public class ModeloJuego extends AbstractTableModel {
 		return clazz;
 	}
 	
+	/**
+	 * Método que obtiene un juego a partir de una fila.
+	 * @param fila Fila de la tabla que tenga el modelo.
+	 * @return El juego.
+	 */
 	public Juego getJuego(int fila) {
 		
 		Juego juego = null;

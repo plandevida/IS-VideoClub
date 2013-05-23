@@ -22,11 +22,15 @@ public class Manager {
 	private String titulo;
 	
 	private Sistema sistema;
+	private Manager mySelf;
 
 	/**
 	 * Inicia y configura la aplicación
 	 */
 	public void iniciar() {
+		
+		mySelf = this;
+		
 		titulo = "Video Game Club";
 
 		sistema = new Sistema();
@@ -47,7 +51,7 @@ public class Manager {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				gui = new VentanaPrincipal(titulo, sistema);
+				gui = new VentanaPrincipal(titulo, sistema, mySelf);
 			}
 		});
 	}

@@ -5,14 +5,22 @@ import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class TablaPrestamos extends JTable {
+/**
+ * Una tabla que permite filtrar el contenido
+ * 
+ * @author Daniel Serrano Torres
+ * @author Alvaro Quesada Pimentel
+ * @author Juan Prérez Valbuena
+ * @author Emilio Alvarez
+ */
+public class MiTabla extends JTable {
 
 	private static final long serialVersionUID = 6115560306703962276L;
 
 	AbstractTableModel modelo;
 	TableRowSorter<AbstractTableModel> sorter;
 
-	public TablaPrestamos(AbstractTableModel model) {
+	public MiTabla(AbstractTableModel model) {
 
 		modelo = model;
 
@@ -28,20 +36,7 @@ public class TablaPrestamos extends JTable {
 
 		setShowGrid(true);
 		
-		celdasNoEditables();
-		
 		crearSorter();
-	}
-	
-	private void celdasNoEditables() {
-		
-		for ( int i = 0; i < modelo.getRowCount(); i++) {
-			for ( int j = 0; j < modelo.getColumnCount(); j++) {
-				
-				// TODO Hacer NO editables las celdas del a tabla.
-//				modelo.
-			}
-		}
 	}
 
 	private void crearSorter() {
@@ -75,4 +70,9 @@ public class TablaPrestamos extends JTable {
 	public TableRowSorter<AbstractTableModel> getSorter() {
 		return sorter;
 	}
+	
+	@Override
+	public boolean isCellEditable(int rowIndex, int colIndex) {
+        return false;
+    }
 }

@@ -1,7 +1,6 @@
 package app.bsodsoftware.gameclub.java.modelo.implementacion;
 
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 

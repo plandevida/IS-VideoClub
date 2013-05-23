@@ -13,7 +13,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -27,8 +26,8 @@ import javax.swing.SwingConstants;
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
 import app.bsodsoftware.gameclub.java.gui.tablas.ModeloJuego;
-import app.bsodsoftware.gameclub.java.gui.tablas.TablaPrestamos;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
@@ -82,7 +81,7 @@ public class PrestamosPanel extends JPanel {
 
 		model = new ModeloJuego( new Juego[] { /*juego, juego1, juego2*/ }, ModeloJuego.columnas);
 
-		table = new TablaPrestamos(model);
+		table = new MiTabla(model);
 
 		scrollPane = new JScrollPane(table);
 
@@ -136,24 +135,40 @@ public class PrestamosPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-						
+					
+					// Consulto si se ha seleccionado alguna fila.
 					if (table.getSelectedRowCount() > 0) {
 							int rowSelected = table.getSelectedRow();
 							
+							// Obtengo el juego de la tabla.
 							Juego juegoAPrestar = model.getJuego(rowSelected);
 							
+							// Compruebo que se haya introducido algo en el campo DNI
 							if ( !"".equals(tDNI.getText()) ) {
 								
+								// Busco el ususario en la "BBDD"
 								Usuario usuario = miSistema.buscaUsuario(tDNI.getText().trim());
 							
+								// Si no se ha encontrado el usuario, se muestra un error.
 								if ( usuario != null ) {
 									
-									Date fechaDevolucion = Calendar.getInstance(new Locale("es")).getTime();
+									// Generamos una fecha de devolución posterior a la de prestamo.
+									Calendar calendario = Calendar.getInstance(new Locale("es"));
 									
-									Prestamo prestamo = new Prestamo(usuario, juegoAPrestar, Calendar.getInstance(new Locale("es")).getTime(), fechaDevolucion);
+									Date fechaPrestamo = calendario.getTime();
 									
+									calendario.add(Calendar.DATE, 15);
+									
+									Date fechaDevolucion = calendario.getTime();
+									
+									// Se genera el prestamo con el usuario, el juego, y la fecha actual, y de devolución.
+									Prestamo prestamo = new Prestamo(usuario, juegoAPrestar, fechaPrestamo, fechaDevolucion);
+									
+									// Se comprueba que el préstamo se a realizado corretamente.
 									if ( !miSistema.addPrestamo(prestamo) ) {
 											JOptionPane.showMessageDialog(ventana, "Error al crear un prestamo.", "Error", JOptionPane.ERROR_MESSAGE);
+									} else {
+										JOptionPane.showMessageDialog(ventana, "Prestamo realizado correctamente.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 									}
 								} else {
 									JOptionPane.showMessageDialog(ventana, "El usuario no existe.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -194,6 +209,7 @@ public class PrestamosPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				// En base a que el radio button está activo, se activa el filtro correspondiente.
 				tNombreJuego.setEnabled(rdbtnOn.isSelected());
 				tDescripcion.setEnabled(rdbtnOn_1.isSelected());
 				cNumeroJugadores.setEnabled(rdbtnOn_2.isSelected());
@@ -209,6 +225,7 @@ public class PrestamosPanel extends JPanel {
 				String filtro = "";
 				int columna = 0;
 				
+				// Dependiendo del filtro escogido se determina la columna por la que filtrar.
 				if ( tNombreJuego.isEnabled() ) {
 					filtro = tNombreJuego.getText();
 					columna = Integer.valueOf(rdbtnOn.getActionCommand());
@@ -222,7 +239,7 @@ public class PrestamosPanel extends JPanel {
 					columna = Integer.valueOf(rdbtnOn_2.getActionCommand());
 				}
 				
-				((TablaPrestamos) table).filtrar(filtro, columna);
+				((MiTabla) table).filtrar(filtro, columna);
 			}
 		};
 		
@@ -283,9 +300,13 @@ public class PrestamosPanel extends JPanel {
 		panel.add(cNumeroJugadores, "12, 10, fill, default");
 	}
 	
+	/**
+	 * Método que rellena la tabla con los datos del sistema.
+	 */
 	private void cargarTabla() {
 		Juego[] juegos = miSistema.consultarJuegos();
 		
+		// Configuro los nuevos datos en el modelo de la tabla.
 		model.setObjetos(juegos);
 		
 		model.rellenar();
