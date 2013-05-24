@@ -8,6 +8,13 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.Component;
 
 public class PanelAnadirUsuario extends JPanel {
 	/**
@@ -25,7 +32,7 @@ public class PanelAnadirUsuario extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelAnadirUsuario() {
-		
+	
 		JLabel lblDni = new JLabel("DNI");
 		
 		JLabel lblNombre = new JLabel("Nombre");
@@ -53,47 +60,51 @@ public class PanelAnadirUsuario extends JPanel {
 		txtFechaDeNacimiento = new JTextField();
 		txtFechaDeNacimiento.setColumns(10);
 		
-		JFormattedTextField frmtdtxtfldTelefono = new JFormattedTextField();
+		JTextField frmtdtxtfldTelefono = new JTextField();
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(155)
+					.addGap(129)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblDni)
-						.addComponent(lblNombre)
-						.addComponent(lblApellidos)
-						.addComponent(lblDireccion)
-						.addComponent(lblFechaNacimiento)
-						.addComponent(lblTelefono)
-						.addComponent(btnAceptar))
+						.addComponent(lblApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(lblDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(lblFechaNacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
 					.addGap(27)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnCancelar)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(txtFechaDeNacimiento)
-							.addComponent(txtDireccion)
-							.addComponent(txtApellidos)
-							.addComponent(txtNombre)
-							.addComponent(frmtdtxtfldTelefono)
-							.addComponent(txtDni, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(97, Short.MAX_VALUE))
+						.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(txtFechaDeNacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(txtDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(txtApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(txtNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(frmtdtxtfldTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+						.addComponent(txtDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
+					.addGap(128))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(101)
+					.addGap(71)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblDni)
-						.addComponent(txtDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDni))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNombre)
-						.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblApellidos)
@@ -114,7 +125,7 @@ public class PanelAnadirUsuario extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAceptar)
 						.addComponent(btnCancelar))
-					.addContainerGap(51, Short.MAX_VALUE))
+					.addContainerGap(303, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 
