@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
+import app.bsodsoftware.gameclub.java.gui.paneles.PanelAdministraciones;
 import app.bsodsoftware.gameclub.java.gui.paneles.PrestamoJuegosPanel;
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 import app.bsodsoftware.gameclub.java.main.Manager;
@@ -146,6 +147,14 @@ public class VentanaPrincipal extends JFrame {
 		toolBar.add(btnDevoluciones);
 
 		JButton btnAdministracion = new JButton("Administración");
+		btnAdministracion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Creo un panel nuevo y lo inserto en la ventana.
+				getContentPane().add(new PanelAdministraciones(), BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				getContentPane().validate();
+			}
+		});
 		btnAdministracion.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnAdministracion.setIcon(Imagenes.getAdministracion56x56());
 		btnAdministracion.setVerticalTextPosition(JButton.BOTTOM);
