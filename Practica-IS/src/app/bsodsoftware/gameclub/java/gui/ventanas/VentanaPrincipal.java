@@ -2,6 +2,11 @@ package app.bsodsoftware.gameclub.java.gui.ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.DisplayMode;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -51,7 +56,16 @@ public class VentanaPrincipal extends JFrame {
 		//setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setBounds(0, 0, java.awt.Toolkit.getDefaultToolkit().getScreenSize().width,java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
+//		setMinimumSize(new Dimension(600, 500));
+//		setBounds(0, 0, Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+		
+//		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		
+//		if (gd.isDisplayChangeSupported()) {
+//			DisplayMode d = gd.getDisplayMode();
+			
+//			setSize(d.getWidth(), d.getHeight());
+//		}
 		
 		// Própositos de diálogos.
 		mySelf = this;
