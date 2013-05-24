@@ -3,10 +3,6 @@ package app.bsodsoftware.gameclub.java.gui.ventanas;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.DisplayMode;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,7 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
-import app.bsodsoftware.gameclub.java.gui.paneles.PrestamosPanel;
+import app.bsodsoftware.gameclub.java.gui.paneles.PrestamoJuegosPanel;
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 import app.bsodsoftware.gameclub.java.main.Manager;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
@@ -52,20 +48,11 @@ public class VentanaPrincipal extends JFrame {
 		miManager = manager;
 		
 		setTitle(titulo);
-		//Si no es ajustable el tamaño no se pone en estado pantalla completa
-		//setResizable(false);
+		// Se usa dispose y no close para poder invocar un método antes del cierre
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		// Esto ajusta la ventana al tamaño de la pantalla
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-//		setMinimumSize(new Dimension(600, 500));
-//		setBounds(0, 0, Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-		
-//		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		
-//		if (gd.isDisplayChangeSupported()) {
-//			DisplayMode d = gd.getDisplayMode();
-			
-//			setSize(d.getWidth(), d.getHeight());
-//		}
+		setMinimumSize(new Dimension(600, 500));
 		
 		// Própositos de diálogos.
 		mySelf = this;
@@ -137,7 +124,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				// Creo un panel nuevo y lo inserto en la ventana.
-				getContentPane().add(new PrestamosPanel(miSistema, mySelf), BorderLayout.CENTER);
+				getContentPane().add(new PrestamoJuegosPanel(miSistema, mySelf), BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
 				getContentPane().validate();
 			}
