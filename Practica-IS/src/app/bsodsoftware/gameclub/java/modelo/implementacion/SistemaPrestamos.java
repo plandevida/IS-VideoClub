@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
+import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
 import app.bsodsoftware.gameclub.java.entrada.Lectura;
 import app.bsodsoftware.gameclub.java.modelo.interfaces.InterfazFachadaPrestamo;
@@ -130,6 +131,12 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 	public Prestamo[] consultarPrestamos() {
 		
 		return listaPrestamos.toArray(new Prestamo[listaPrestamos.size()]);
+	}
+
+	@Override
+	public boolean usuarioConPrestamos(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

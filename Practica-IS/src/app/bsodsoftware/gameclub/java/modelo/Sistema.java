@@ -134,4 +134,10 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 
 	}
 
+	@Override
+	public boolean usuarioConPrestamos(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

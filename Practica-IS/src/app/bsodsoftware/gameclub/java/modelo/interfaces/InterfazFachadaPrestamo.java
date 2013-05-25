@@ -1,6 +1,7 @@
 package app.bsodsoftware.gameclub.java.modelo.interfaces;
 
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
+import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 
 /**
  * Interfaz para el acceso a los prestamos del modelo
@@ -54,4 +55,11 @@ public interface InterfazFachadaPrestamo {
 	 * @return Lista de préstamos almacenados.
 	 */
 	public Prestamo[] consultarPrestamos();
+	
+	/**
+	 * De vuelve si el usuario tiene algún préstamo pendiente
+	 * @param usuario
+	 * @return
+	 */
+	public boolean usuarioConPrestamos(Usuario usuario);
 }
