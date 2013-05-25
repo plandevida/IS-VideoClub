@@ -20,11 +20,8 @@ public class PanelAdministraciones extends JPanel {
 	public PanelAdministraciones() {
 		setLayout(new BorderLayout(0, 0));
 		
-		JToolBar toolBar = new JToolBar();
-		add(toolBar, BorderLayout.NORTH);
-		
 		JMenuBar menuBar = new JMenuBar();
-		toolBar.add(menuBar);
+		add(menuBar, BorderLayout.NORTH);
 		
 		JMenu mnUsuarios = new JMenu("Usuarios");
 		menuBar.add(mnUsuarios);
