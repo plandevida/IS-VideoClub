@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAdministraciones;
+import app.bsodsoftware.gameclub.java.gui.paneles.PanelAnadirUsuario;
 import app.bsodsoftware.gameclub.java.gui.paneles.PrestamoJuegosPanel;
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 import app.bsodsoftware.gameclub.java.main.Manager;
@@ -35,6 +36,8 @@ public class VentanaPrincipal extends JFrame {
 	
 	private JPanel contentPane;
 	
+	private PrestamoJuegosPanel panelPrestamos;
+	private PanelAdministraciones panelAdministraciones;
 	// Creada para poder ser asiganda a un diálogo
 	// que está en la implementación de un listener.
 	private VentanaPrincipal mySelf;
@@ -57,6 +60,9 @@ public class VentanaPrincipal extends JFrame {
 		
 		// Própositos de diálogos.
 		mySelf = this;
+		
+		panelPrestamos=null;
+		panelAdministraciones=null;
 		
 		init();
 
@@ -123,9 +129,10 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnPrestamos = new JButton("    Prestamos    ");
 		btnPrestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if(panelAdministraciones != null)getContentPane().remove(panelAdministraciones);
+				panelPrestamos=new PrestamoJuegosPanel(miSistema, mySelf);
 				// Creo un panel nuevo y lo inserto en la ventana.
-				getContentPane().add(new PrestamoJuegosPanel(miSistema, mySelf), BorderLayout.CENTER);
+				getContentPane().add(panelPrestamos, BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
 				getContentPane().validate();
 			}
@@ -149,8 +156,10 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnAdministracion = new JButton("Administración");
 		btnAdministracion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(panelPrestamos!=null)getContentPane().remove(panelPrestamos);
+				panelAdministraciones=new PanelAdministraciones();
 				// Creo un panel nuevo y lo inserto en la ventana.
-				getContentPane().add(new PanelAdministraciones(), BorderLayout.CENTER);
+				getContentPane().add(panelAdministraciones, BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
 				getContentPane().validate();
 			}
