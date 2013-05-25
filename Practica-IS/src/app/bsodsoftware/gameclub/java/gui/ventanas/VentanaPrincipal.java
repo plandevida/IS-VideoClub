@@ -130,6 +130,7 @@ public class VentanaPrincipal extends JFrame {
 		btnPrestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(panelAdministraciones != null)getContentPane().remove(panelAdministraciones);
+				if(panelPrestamos!=null)getContentPane().remove(panelPrestamos);
 				panelPrestamos=new PrestamoJuegosPanel(miSistema, mySelf);
 				// Creo un panel nuevo y lo inserto en la ventana.
 				getContentPane().add(panelPrestamos, BorderLayout.CENTER);
@@ -157,6 +158,7 @@ public class VentanaPrincipal extends JFrame {
 		btnAdministracion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(panelPrestamos!=null)getContentPane().remove(panelPrestamos);
+				if(panelAdministraciones != null)getContentPane().remove(panelAdministraciones);
 				panelAdministraciones=new PanelAdministraciones();
 				// Creo un panel nuevo y lo inserto en la ventana.
 				getContentPane().add(panelAdministraciones, BorderLayout.CENTER);
