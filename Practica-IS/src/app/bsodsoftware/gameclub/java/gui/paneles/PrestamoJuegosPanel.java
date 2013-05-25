@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -166,7 +167,7 @@ public class PrestamoJuegosPanel extends JPanel {
 								
 								// Se comprueba que el préstamo se a realizado corretamente.
 								if ( !miSistema.addPrestamo(prestamo) ) {
-										JOptionPane.showMessageDialog(ventana, "Error al crear un prestamo.", "Error", JOptionPane.ERROR_MESSAGE);
+									JOptionPane.showMessageDialog(ventana, "Error al crear un prestamo.", "Error", JOptionPane.ERROR_MESSAGE);
 								} else {
 									JOptionPane.showMessageDialog(ventana, "Prestamo realizado correctamente."+"\nEl prestamo expira: "+calendario.get(Calendar.DAY_OF_MONTH)+"/"+calendario.get(Calendar.MONTH)+"/"+calendario.get(Calendar.YEAR)//Solucion temporal
 											, "Aviso", JOptionPane.INFORMATION_MESSAGE);

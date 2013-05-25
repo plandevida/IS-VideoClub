@@ -58,14 +58,14 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 		String linea_juego;
 
 		try {
-			while ((linea_juego = entrada_de_datos_por_fichero.leerLinea()) != null) {
+			while ( ! "EOF".equals(linea_juego = entrada_de_datos_por_fichero.leerLinea())) {
 
-				if ("".equals(linea_juego)) {
+				if ( !"".equals(linea_juego)) {
 				
-				String datos[] = linea_juego.split(":");
-				addjuego(new Juego(datos[0], Integer.parseInt(datos[1]),
-						Integer.parseInt(datos[2]), Integer.parseInt(datos[3]),
-						datos[4], null));
+					String datos[] = linea_juego.split(":");
+					addjuego(new Juego(datos[0], Integer.parseInt(datos[1]),
+							Integer.parseInt(datos[2]), Integer.parseInt(datos[3]),
+							datos[4], null));
 				}
 			}
 		} catch (Exception e) {
@@ -89,6 +89,8 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 			// System.out.println("linea->" + linea_juego);
 			salida_de_datos_por_fichero.escribirLinea(linea_juego);
 		}
+		
+		salida_de_datos_por_fichero.escribirLinea("EOF");
 		
 		salida_de_datos_por_fichero.cerrarFichero();
 	}

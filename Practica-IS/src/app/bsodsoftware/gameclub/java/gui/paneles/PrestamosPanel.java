@@ -1,7 +1,8 @@
 package app.bsodsoftware.gameclub.java.gui.paneles;
 
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
@@ -12,6 +13,8 @@ public class PrestamosPanel extends JTabbedPane {
 
 	private Sistema miSistema;
 	private VentanaPrincipal miVentana;
+	
+	private PrestamoInfoPanel prestamoInfo;
 	
 	public PrestamosPanel(Sistema sistema, VentanaPrincipal ventana) {
 		
@@ -24,15 +27,25 @@ public class PrestamosPanel extends JTabbedPane {
 	private void init() {
 		
 		addTab("Prestamo de juegos", crearPrestamosJuegosPanel());
-		addTab("Prestamos", crearPrestamoInfoPanel());
+		
+		prestamoInfo = crearPrestamoInfoPanel();
+		addTab("Prestamos", prestamoInfo);
+		
+		addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				prestamoInfo.recargarPrestamos();
+			}
+		});
 	}
 	
-	private JPanel crearPrestamosJuegosPanel() {
+	private PrestamoJuegosPanel crearPrestamosJuegosPanel() {
 		
 		return new PrestamoJuegosPanel(miSistema, miVentana);
 	}
 	
-	private JPanel crearPrestamoInfoPanel() {
+	private PrestamoInfoPanel crearPrestamoInfoPanel() {
 		
 		return new PrestamoInfoPanel(miSistema);
 	}

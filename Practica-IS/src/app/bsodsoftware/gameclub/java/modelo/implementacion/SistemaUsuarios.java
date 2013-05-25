@@ -71,9 +71,9 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 		String linea_usuario;
 
 		try {
-			while ((linea_usuario = entrada_de_datos_por_fichero.leerLinea()) != null) {
+			while ( ! "EOF".equals(linea_usuario = entrada_de_datos_por_fichero.leerLinea())) {
 
-				if ("".equals(linea_usuario)) {
+				if ( !"".equals(linea_usuario)) {
 					
 					String datos[] = linea_usuario.split(":");
 					addUsuario(new Usuario(datos[0], datos[1], datos[2], null,
@@ -84,9 +84,8 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 		} catch (Exception e) {
 
 		} finally {
-
+			entrada_de_datos_por_fichero.cerrarFichero();
 		}
-
 	}
 
 	@Override
@@ -103,6 +102,9 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 			salida_de_datos_por_fichero.escribirLinea(linea_usuario);
 		}
 
+		salida_de_datos_por_fichero.escribirLinea("EOF");
+		
+		salida_de_datos_por_fichero.cerrarFichero();
 	}
 
 	@Override

@@ -132,4 +132,8 @@ public class PrestamoInfoPanel extends JPanel {
 		
 		model.rellenar();
 	}
+	
+	public void recargarPrestamos() {
+		cargarTabla();
+	}
 }

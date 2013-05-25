@@ -86,9 +86,9 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 		String linea_prestamo;
 
 		try {
-			while ((linea_prestamo = entrada_de_datos_por_fichero.leerLinea()) != null) {
+			while (! "EOF".equals(linea_prestamo = entrada_de_datos_por_fichero.leerLinea())) {
 				
-				if ("".equals(linea_prestamo)) {
+				if ( !"".equals(linea_prestamo)) {
 					String datos[] = linea_prestamo.split(":");
 	
 					addPrestamo(new Prestamo(
@@ -100,8 +100,9 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 			}
 		} catch (Exception e) {
 			
+		} finally {
+			entrada_de_datos_por_fichero.cerrarFichero();
 		}
-
 	}
 
 	@Override
@@ -119,7 +120,10 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 					
 			salida_de_datos_por_fichero.escribirLinea(linea_prestamo);
 		}
+		
+		salida_de_datos_por_fichero.escribirLinea("EOF");
 
+		salida_de_datos_por_fichero.cerrarFichero();
 	}
 
 	@Override
