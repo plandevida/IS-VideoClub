@@ -2,7 +2,7 @@ package app.bsodsoftware.gameclub.java.gui.tablas;
 
 import javax.swing.table.AbstractTableModel;
 
-import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
+import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 
 /**
  * Un modelo para las tablas.
@@ -12,29 +12,29 @@ import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
  * @author Juan Prérez Valbuena
  * @author Emilio Alvarez
  */
-public class ModeloJuego extends AbstractTableModel {
+public class ModeloPrestamo extends AbstractTableModel {
 
 	private static final long serialVersionUID = -6900850597743594873L;
 	
 	private int numColum;
 	private int numFilas;
-	private Juego[] juegos;
+	private Prestamo[] prestamos;
 	
 	/**
 	 * Columnas predefinidas del modelo para los juegos.
 	 */
-	public final static String[] columnas = { "Nombre", "Número de jugadores", "Edad mínima",
-			"Descripción", "Imagen" };
+	public final static String[] columnas = { "DNI", "Nombre usuario", "Juego",
+			"Fecha de prestamo", "Fecha de devolución" };
 	
 	/**
 	 * Crea un contenedor de juegos para una tabla.
-	 * @param juegosNuevos Nueva lista de juegos
+	 * @param prestamosNuevos Nueva lista de juegos
 	 * @param columnas Nombres de las columnas.
 	 */
-	public ModeloJuego(Juego[] juegosNuevos, String[] columnas) {
+	public ModeloPrestamo(Prestamo[] prestamosNuevos, String[] columnas) {
 		numColum = columnas.length;
-		numFilas = juegosNuevos.length;
-		juegos = juegosNuevos;
+		numFilas = prestamosNuevos.length;
+		prestamos = prestamosNuevos;
 	}
 	
 	@Override
@@ -66,26 +66,26 @@ public class ModeloJuego extends AbstractTableModel {
 		
 		Object dato = null;
 		
-		if (juegos.length > 0) {
+		if (prestamos.length > 0) {
 			switch (column) {
 			case 0:
-				dato = juegos[row].getNombre();
+				dato = prestamos[row].getUsuario_a_prestar().getDni();
 				break;
 				
 			case 1:
-				dato = juegos[row].getNum_jugadores();
+				dato = prestamos[row].getUsuario_a_prestar().getNombre();
 				break;
 				
 			case 2:
-				dato = juegos[row].getEdad_minima();
+				dato = prestamos[row].getJuego_a_prestar().getNombre();
 				break;
 				
 			case 3:
-				dato = juegos[row].getDescripcion();
+				dato = prestamos[row].getFecha_de_prestamos();
 				break;
 				
 			case 4:
-				dato = juegos[row].getImagen(); 
+				dato = prestamos[row].getFecha_a_devolver();
 				break;
 			default:
 				dato = "";
@@ -100,9 +100,9 @@ public class ModeloJuego extends AbstractTableModel {
 	 * Método que cambia los datos de la tabla.
 	 * @param juegosNuevos Nueva lista de datos.
 	 */
-	public void setObjetos(Juego[] juegosNuevos) {
-		juegos = juegosNuevos;
-		numFilas = juegos.length;
+	public void setObjetos(Prestamo[] juegosNuevos) {
+		prestamos = juegosNuevos;
+		numFilas = prestamos.length;
 	}
 	
 	/**
@@ -110,12 +110,12 @@ public class ModeloJuego extends AbstractTableModel {
 	 */
 	public void rellenar() {
 		
-		for (int i = 0; i < juegos.length; i++) {
-			setValueAt(juegos[i].getNombre(), i, 0);
-			setValueAt(juegos[i].getNum_jugadores(), i, 1);
-			setValueAt(juegos[i].getEdad_minima(), i, 2);
-			setValueAt(juegos[i].getDescripcion(), i, 3);
-			setValueAt(juegos[i].getImagen(), i, 4);
+		for (int i = 0; i < prestamos.length; i++) {
+			setValueAt(prestamos[i].getUsuario_a_prestar().getDni(), i, 0);
+			setValueAt(prestamos[i].getUsuario_a_prestar().getNombre(), i, 1);
+			setValueAt(prestamos[i].getJuego_a_prestar().getNombre(), i, 2);
+			setValueAt(prestamos[i].getFecha_de_prestamos(), i, 3);
+			setValueAt(prestamos[i].getFecha_a_devolver(), i, 4);
 		}
 	}
 
@@ -135,14 +135,14 @@ public class ModeloJuego extends AbstractTableModel {
 	 * @param fila Fila de la tabla que tenga el modelo.
 	 * @return El juego.
 	 */
-	public Juego getJuego(int fila) {
+	public Prestamo getPrestamo(int fila) {
 		
-		Juego juego = null;
+		Prestamo prestamo = null;
 		
-		if (fila <= juegos.length) {
-			juego = juegos[fila];
+		if (fila <= prestamos.length) {
+			prestamo = prestamos[fila];
 		}
 		
-		return juego;
+		return prestamo;
 	}
 }

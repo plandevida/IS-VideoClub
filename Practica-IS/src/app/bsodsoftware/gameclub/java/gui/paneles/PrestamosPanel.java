@@ -34,6 +34,6 @@ public class PrestamosPanel extends JTabbedPane {
 	
 	private JPanel crearPrestamoInfoPanel() {
 		
-		return new JPanel();
+		return new PrestamoInfoPanel(miSistema, miVentana);
 	}
 }

@@ -79,7 +79,7 @@ public class PrestamoJuegosPanel extends JPanel {
 
 	private void init() {
 
-		model = new ModeloJuego( new Juego[] { /*juego, juego1, juego2*/ }, ModeloJuego.columnas);
+		model = new ModeloJuego( new Juego[] {}, ModeloJuego.columnas);
 
 		table = new MiTabla(model);
 
@@ -138,45 +138,45 @@ public class PrestamoJuegosPanel extends JPanel {
 					
 					// Consulto si se ha seleccionado alguna fila.
 					if (table.getSelectedRowCount() > 0) {
-							int rowSelected = table.getSelectedRow();
+						int rowSelected = table.getSelectedRow();
+						
+						// Obtengo el juego de la tabla.
+						Juego juegoAPrestar = model.getJuego(rowSelected);
+						
+						// Compruebo que se haya introducido algo en el campo DNI
+						if ( !"".equals(tDNI.getText()) ) {
 							
-							// Obtengo el juego de la tabla.
-							Juego juegoAPrestar = model.getJuego(rowSelected);
-							
-							// Compruebo que se haya introducido algo en el campo DNI
-							if ( !"".equals(tDNI.getText()) ) {
+							// Busco el ususario en la "BBDD"
+							Usuario usuario = miSistema.buscaUsuario(tDNI.getText().trim());
+						
+							// Si no se ha encontrado el usuario, se muestra un error.
+							if ( usuario != null ) {
 								
-								// Busco el ususario en la "BBDD"
-								Usuario usuario = miSistema.buscaUsuario(tDNI.getText().trim());
-							
-								// Si no se ha encontrado el usuario, se muestra un error.
-								if ( usuario != null ) {
-									
-									// Generamos una fecha de devolución posterior a la de prestamo.
-									Calendar calendario = Calendar.getInstance(new Locale("es"));
-									
-									Date fechaPrestamo = calendario.getTime();
-									
-									calendario.add(Calendar.DATE, 15);
-									
-									Date fechaDevolucion = calendario.getTime();
-									
-									// Se genera el prestamo con el usuario, el juego, y la fecha actual, y de devolución.
-									Prestamo prestamo = new Prestamo(usuario, juegoAPrestar, fechaPrestamo, fechaDevolucion);
-									
-									// Se comprueba que el préstamo se a realizado corretamente.
-									if ( !miSistema.addPrestamo(prestamo) ) {
-											JOptionPane.showMessageDialog(ventana, "Error al crear un prestamo.", "Error", JOptionPane.ERROR_MESSAGE);
-									} else {
-										JOptionPane.showMessageDialog(ventana, "Prestamo realizado correctamente."+"\nEl prestamo expira: "+calendario.get(Calendar.DAY_OF_MONTH)+"/"+calendario.get(Calendar.MONTH)+"/"+calendario.get(Calendar.YEAR)//Solucion temporal
-												, "Aviso", JOptionPane.INFORMATION_MESSAGE);
-									}
+								// Generamos una fecha de devolución posterior a la de prestamo.
+								Calendar calendario = Calendar.getInstance(new Locale("es"));
+								
+								Date fechaPrestamo = calendario.getTime();
+								
+								calendario.add(Calendar.DATE, 15);
+								
+								Date fechaDevolucion = calendario.getTime();
+								
+								// Se genera el prestamo con el usuario, el juego, y la fecha actual, y de devolución.
+								Prestamo prestamo = new Prestamo(usuario, juegoAPrestar, fechaPrestamo, fechaDevolucion);
+								
+								// Se comprueba que el préstamo se a realizado corretamente.
+								if ( !miSistema.addPrestamo(prestamo) ) {
+										JOptionPane.showMessageDialog(ventana, "Error al crear un prestamo.", "Error", JOptionPane.ERROR_MESSAGE);
 								} else {
-									JOptionPane.showMessageDialog(ventana, "El usuario no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+									JOptionPane.showMessageDialog(ventana, "Prestamo realizado correctamente."+"\nEl prestamo expira: "+calendario.get(Calendar.DAY_OF_MONTH)+"/"+calendario.get(Calendar.MONTH)+"/"+calendario.get(Calendar.YEAR)//Solucion temporal
+											, "Aviso", JOptionPane.INFORMATION_MESSAGE);
 								}
 							} else {
-								JOptionPane.showMessageDialog(ventana, "Es necesario introducir el DNI (con letra y sin espacios).", "Aviso", JOptionPane.WARNING_MESSAGE);
+								JOptionPane.showMessageDialog(ventana, "El usuario no existe.", "Error", JOptionPane.ERROR_MESSAGE);
 							}
+						} else {
+							JOptionPane.showMessageDialog(ventana, "Es necesario introducir el DNI (con letra y sin espacios).", "Aviso", JOptionPane.WARNING_MESSAGE);
+						}
 					} else {
 						JOptionPane.showMessageDialog(ventana, "Debe seleccionar un juego.", "Aviso", JOptionPane.WARNING_MESSAGE);
 					}
@@ -290,7 +290,7 @@ public class PrestamoJuegosPanel extends JPanel {
 		
 		btnFiltrar = new JButton("Filtrar");
 		btnFiltrar.addActionListener(listenerBotonFiltrar);
-		panel.add(btnFiltrar, "17, 8");
+		panel.add(btnFiltrar, "17, 8, left, default");
 		
 		lblNmeroDeJugadores = new JLabel("Número de jugadores");
 		panel.add(lblNmeroDeJugadores, "6, 10");

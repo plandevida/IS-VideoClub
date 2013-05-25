@@ -1,18 +1,18 @@
 package app.bsodsoftware.gameclub.java.gui.paneles;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JToolBar;
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 public class PanelAdministraciones extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Create the panel.
@@ -33,6 +33,8 @@ public class PanelAdministraciones extends JPanel {
 		mnUsuarios.add(mntmAnadir_usuario);
 		mntmAnadir_usuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				borraPanelCentral();
 				
 				add(new PanelAnadirUsuario(), BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
@@ -58,9 +60,17 @@ public class PanelAdministraciones extends JPanel {
 		
 		JMenuItem mntmModificar_juego = new JMenuItem("Modificar");
 		mnJuegos.add(mntmModificar_juego);
+	}
+	
+	private void borraPanelCentral() {
+		BorderLayout layout  = (BorderLayout) getLayout();
 		
+		JPanel panelAnterior = (JPanel) layout.getLayoutComponent(BorderLayout.CENTER);
 		
-
+		if ( panelAnterior != null ) {
+			// Se borra el panel anterior.
+			getLayout().removeLayoutComponent(panelAnterior);
+		}
 	}
 
 }

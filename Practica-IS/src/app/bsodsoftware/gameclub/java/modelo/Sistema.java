@@ -99,9 +99,12 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 
 	@Override
 	public void cargarFichero() {
+		
+		// Es importante que los préstamos se cargen los últimos
+		// ya que buscane el la lista de usuarios.
 		sistemaJuegos.cargarFichero();
-		sistemaPrestamos.cargarFichero();
 		sistemaUsuarios.cargarFichero();
+		sistemaPrestamos.cargarFichero();
 	}
 
 	@Override

@@ -60,11 +60,13 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 		try {
 			while ((linea_juego = entrada_de_datos_por_fichero.leerLinea()) != null) {
 
+				if ("".equals(linea_juego)) {
+				
 				String datos[] = linea_juego.split(":");
 				addjuego(new Juego(datos[0], Integer.parseInt(datos[1]),
 						Integer.parseInt(datos[2]), Integer.parseInt(datos[3]),
 						datos[4], null));
-
+				}
 			}
 		} catch (Exception e) {
 

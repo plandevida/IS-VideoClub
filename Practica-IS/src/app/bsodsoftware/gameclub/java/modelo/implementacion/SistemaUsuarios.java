@@ -73,9 +73,12 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 		try {
 			while ((linea_usuario = entrada_de_datos_por_fichero.leerLinea()) != null) {
 
-				String datos[] = linea_usuario.split(":");
-				addUsuario(new Usuario(datos[0], datos[1], datos[2], null,
-						null, 0));
+				if ("".equals(linea_usuario)) {
+					
+					String datos[] = linea_usuario.split(":");
+					addUsuario(new Usuario(datos[0], datos[1], datos[2], null,
+							null, 0));
+				}
 
 			}
 		} catch (Exception e) {

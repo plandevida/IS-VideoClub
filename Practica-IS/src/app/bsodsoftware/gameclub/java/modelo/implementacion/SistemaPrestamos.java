@@ -87,23 +87,19 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 
 		try {
 			while ((linea_prestamo = entrada_de_datos_por_fichero.leerLinea()) != null) {
-
-				String datos[] = linea_prestamo.split(":");
-				// public Prestamo(Usuario usuario_a_prestar, Juego
-				// juego_a_prestar,
-				// Date fecha_de_prestamos, Date fecha_a_devolver) {
-
-				addPrestamo(new Prestamo(
-						sistema_usuarios.buscaUsuario(datos[0]),
-						sistema_juegos.buscaJuego(datos[1]),
-						new SimpleDateFormat("dd-MM-YYYY").parse(datos[2]),
-						new SimpleDateFormat("dd-MM-YYYY").parse(datos[3])));
-						
+				
+				if ("".equals(linea_prestamo)) {
+					String datos[] = linea_prestamo.split(":");
+	
+					addPrestamo(new Prestamo(
+							sistema_usuarios.buscaUsuario(datos[0]),
+							sistema_juegos.buscaJuego(datos[1]),
+							new SimpleDateFormat("dd-MM-YYYY").parse(datos[2]),
+							new SimpleDateFormat("dd-MM-YYYY").parse(datos[3])));
+				}
 			}
 		} catch (Exception e) {
-
-		} finally {
-
+			
 		}
 
 	}
