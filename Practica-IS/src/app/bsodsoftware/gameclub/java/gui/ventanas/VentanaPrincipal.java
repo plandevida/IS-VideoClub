@@ -155,6 +155,7 @@ public class VentanaPrincipal extends JFrame {
 				panel.add(new JLabel("COMING SOON"));
 				
 				getContentPane().add(panel);
+				getContentPane().validate();
 				
 				// Creo un panel nuevo y lo inserto en la ventana.
 				//getContentPane().add(new PanelAdministraciones(), BorderLayout.CENTER);

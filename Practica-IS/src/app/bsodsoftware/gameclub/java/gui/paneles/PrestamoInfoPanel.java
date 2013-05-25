@@ -16,7 +16,6 @@ import javax.swing.SwingConstants;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
 import app.bsodsoftware.gameclub.java.gui.tablas.ModeloPrestamo;
-import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -29,7 +28,6 @@ public class PrestamoInfoPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Sistema miSistema;
-	private VentanaPrincipal ventana;
 	
 	private JTable table;
 	private JScrollPane scrollPane;
@@ -41,13 +39,12 @@ public class PrestamoInfoPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PrestamoInfoPanel(Sistema sistema, VentanaPrincipal ventanaPadre) {
+	public PrestamoInfoPanel(Sistema sistema) {
 		setLayout(new BorderLayout(0, 0));
 	
 		init();
 		
 		miSistema = sistema;
-		ventana = ventanaPadre;
 		
 		cargarTabla();
 	}
