@@ -15,12 +15,13 @@ import app.bsodsoftware.gameclub.java.modelo.Sistema;
  */
 public class Manager {
 
-	private static final Logger logger = Logger.getLogger(Manager.class.getName());
+	private static final Logger logger = Logger.getLogger(Manager.class
+			.getName());
 
 	@SuppressWarnings("unused")
 	private VentanaPrincipal gui;
 	private String titulo;
-	
+
 	private Sistema sistema;
 	private Manager mySelf;
 
@@ -28,9 +29,9 @@ public class Manager {
 	 * Inicia y configura la aplicación
 	 */
 	public void iniciar() {
-		
+
 		mySelf = this;
-		
+
 		titulo = "Video Game Club";
 
 		sistema = new Sistema();
@@ -44,9 +45,11 @@ public class Manager {
 
 		try {
 			// UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
-			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			UIManager
+					.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		} catch (Exception e) {
-			logger.log(Level.WARNING, "No se ha podido cargar el look and feel personalizado.");
+			logger.log(Level.WARNING,
+					"No se ha podido cargar el look and feel personalizado.");
 		}
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -60,7 +63,7 @@ public class Manager {
 	 * Realiza tareas antes de cerrar la aplicación
 	 */
 	public void finalizar() {
-		
+
 		sistema.escribirFichero();
 	}
 

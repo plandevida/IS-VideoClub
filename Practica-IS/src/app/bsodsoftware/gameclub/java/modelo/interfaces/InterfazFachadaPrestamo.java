@@ -48,16 +48,17 @@ public interface InterfazFachadaPrestamo {
 	 * @return True si exite, false EOC.
 	 */
 	public boolean existePrestamo(Prestamo prestamo);
-	
+
 	/**
 	 * Obtiene todos los préstamos.
 	 * 
 	 * @return Lista de préstamos almacenados.
 	 */
 	public Prestamo[] consultarPrestamos();
-	
+
 	/**
 	 * De vuelve si el usuario tiene algún préstamo pendiente
+	 * 
 	 * @param usuario
 	 * @return
 	 */

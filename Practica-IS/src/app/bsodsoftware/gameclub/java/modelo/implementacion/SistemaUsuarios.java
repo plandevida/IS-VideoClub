@@ -19,7 +19,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 	public SistemaUsuarios() {
 
 		listaUsuarios = new ArrayList<Usuario>();
-		
+
 	}
 
 	@Override
@@ -38,18 +38,18 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 	@Override
 	public boolean modificarUsuario(Usuario usuario) {
 		boolean resultado = true;
-		
+
 		if (!existeUsuario(usuario)) {
 			resultado = false;
 
 		} else {
 			int indice = listaUsuarios.indexOf(usuario);
-			
+
 			listaUsuarios.remove(indice);
-			
+
 			listaUsuarios.add(indice, usuario);
 		}
-		
+
 		return resultado;
 	}
 
