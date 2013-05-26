@@ -15,6 +15,8 @@ import javax.swing.GroupLayout.Alignment;
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
+import javax.swing.SwingConstants;
+import java.awt.Component;
 
 
 
@@ -29,9 +31,9 @@ public class PanelAnadirJuego extends JPanel{
 	private JTextField txtNJugadores;
 	private JTextField txtUnidades;
 	private JTextField txtDescripcion;
-	private JTextField txtEdadminima;
 	private Sistema miSistema;
 	private VentanaPrincipal ventana;
+	private JTextField txtEdadminima;
 
 	/**
 	 * Create the panel.
@@ -68,9 +70,6 @@ public class PanelAnadirJuego extends JPanel{
 		
 		txtDescripcion = new JTextField();
 		txtDescripcion.setColumns(10);
-		
-		txtEdadminima = new JTextField();
-		txtEdadminima.setColumns(10);
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
@@ -112,6 +111,9 @@ public class PanelAnadirJuego extends JPanel{
 			}
 		});
 		
+		txtEdadminima = new JTextField();
+		txtEdadminima.setColumns(10);
+		
 	
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -121,14 +123,14 @@ public class PanelAnadirJuego extends JPanel{
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblUnidades, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-								.addComponent(lblDescripcion, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-								.addComponent(lblEdadminima, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-								.addComponent(lblNJugadores, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-								.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+								.addComponent(lblUnidades, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+								.addComponent(lblDescripcion, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+								.addComponent(lblEdadminima, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+								.addComponent(lblNJugadores, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+								.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
 							.addGap(27))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblImagen, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+							.addComponent(lblImagen, GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
 							.addGap(18)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(txtEdadminima)
@@ -136,13 +138,13 @@ public class PanelAnadirJuego extends JPanel{
 						.addComponent(txtUnidades)
 						.addComponent(txtNombre)
 						.addComponent(txtNJugadores, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
-					.addContainerGap(297, Short.MAX_VALUE))
+					.addContainerGap(70, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(189)
-					.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-					.addGap(120)
-					.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-					.addGap(356))
+					.addGap(188)
+					.addComponent(btnAceptar, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+					.addGap(94)
+					.addComponent(btnCancelar, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(183, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -166,15 +168,16 @@ public class PanelAnadirJuego extends JPanel{
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEdadminima)
-						.addComponent(txtEdadminima, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtEdadminima, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(29)
 					.addComponent(lblImagen)
 					.addGap(49)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(btnCancelar)
+						.addComponent(btnAceptar))
 					.addGap(231))
 		);
+		groupLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnAceptar, btnCancelar});
 		setLayout(groupLayout);
 	}
 }
