@@ -12,7 +12,7 @@ import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
  * @author Juan Prérez Valbuena
  * @author Emilio Alvarez
  */
-public class ModeloJuego extends AbstractTableModel {
+public class ModeloJuego extends AbstractTableModel implements MiModelo {
 
 	private static final long serialVersionUID = -6900850597743594873L;
 	
@@ -23,8 +23,12 @@ public class ModeloJuego extends AbstractTableModel {
 	/**
 	 * Columnas predefinidas del modelo para los juegos.
 	 */
-	public final static String[] columnas = { "Nombre", "Número de jugadores", "Edad mínima",
+	private String[] columnas = { "Nombre", "Número de jugadores", "Edad mínima",
 			"Descripción", "Imagen" };
+	
+	public ModeloJuego() {
+		init(new Juego[]{});
+	}
 	
 	/**
 	 * Crea un contenedor de juegos para una tabla.
@@ -32,6 +36,10 @@ public class ModeloJuego extends AbstractTableModel {
 	 * @param columnas Nombres de las columnas.
 	 */
 	public ModeloJuego(Juego[] juegosNuevos, String[] columnas) {
+		init(juegosNuevos);
+	}
+	
+	private void init(Juego[] juegosNuevos) {
 		numColum = columnas.length;
 		numFilas = juegosNuevos.length;
 		juegos = juegosNuevos;
@@ -144,5 +152,11 @@ public class ModeloJuego extends AbstractTableModel {
 		}
 		
 		return juego;
+	}
+
+	@Override
+	public String[] getColumnas() {
+		
+		return columnas;
 	}
 }

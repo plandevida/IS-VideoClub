@@ -12,7 +12,7 @@ import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
  * @author Juan Prérez Valbuena
  * @author Emilio Alvarez
  */
-public class ModeloPrestamo extends AbstractTableModel {
+public class ModeloPrestamo extends AbstractTableModel implements MiModelo {
 
 	private static final long serialVersionUID = -6900850597743594873L;
 	
@@ -23,8 +23,12 @@ public class ModeloPrestamo extends AbstractTableModel {
 	/**
 	 * Columnas predefinidas del modelo para los juegos.
 	 */
-	public final static String[] columnas = { "DNI", "Nombre usuario", "Juego",
+	private String[] columnas = { "DNI", "Nombre usuario", "Juego",
 			"Fecha de prestamo", "Fecha de devolución" };
+	
+	public ModeloPrestamo() {
+		init(new Prestamo[]{});
+	}
 	
 	/**
 	 * Crea un contenedor de juegos para una tabla.
@@ -32,6 +36,10 @@ public class ModeloPrestamo extends AbstractTableModel {
 	 * @param columnas Nombres de las columnas.
 	 */
 	public ModeloPrestamo(Prestamo[] prestamosNuevos, String[] columnas) {
+		init(prestamosNuevos);
+	}
+	
+	private void init(Prestamo[] prestamosNuevos) {
 		numColum = columnas.length;
 		numFilas = prestamosNuevos.length;
 		prestamos = prestamosNuevos;
@@ -144,5 +152,11 @@ public class ModeloPrestamo extends AbstractTableModel {
 		}
 		
 		return prestamo;
+	}
+
+	@Override
+	public String[] getColumnas() {
+		
+		return columnas;
 	}
 }

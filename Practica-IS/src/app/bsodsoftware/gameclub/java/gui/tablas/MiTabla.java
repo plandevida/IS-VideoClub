@@ -86,13 +86,18 @@ public class MiTabla extends JTable {
 	/** Asigna el nombre a las columnas del modelo
 	 * 
 	 */
-	private void setNombreColumnas(){
+	private void setNombreColumnas() {
+		
 		JTableHeader cabecera = getTableHeader();
 		TableColumnModel modeloColumna = cabecera.getColumnModel();
 		TableColumn columna;
-		for(int i=0;i<modelo.getColumnCount();i++){
+		
+		String[] columnasModelo = ((MiModelo)getModel()).getColumnas();
+		
+		for(int i=0;i<modelo.getColumnCount();i++) {
+			
 			 columna = modeloColumna.getColumn(i); 
-			 columna.setHeaderValue(ModeloJuego.columnas[i]);
+			 columna.setHeaderValue(columnasModelo[i]);
 		}
 		cabecera.repaint();
 		

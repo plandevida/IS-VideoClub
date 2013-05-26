@@ -51,7 +51,7 @@ public class PrestamoInfoPanel extends JPanel {
 
 	private void init() {
 
-		model = new ModeloPrestamo( new Prestamo[] {}, ModeloPrestamo.columnas);
+		model = new ModeloPrestamo();
 
 		table = new MiTabla(model);
 

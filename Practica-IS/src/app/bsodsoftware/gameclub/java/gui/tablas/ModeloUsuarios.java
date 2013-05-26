@@ -13,7 +13,7 @@ import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
  * @author Juan Prérez Valbuena
  * @author Emilio Alvarez
  */
-public class ModeloUsuarios extends AbstractTableModel {
+public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
 
 	private static final long serialVersionUID = -6900850597743594873L;
 	
@@ -24,14 +24,22 @@ public class ModeloUsuarios extends AbstractTableModel {
 	/**
 	 * Columnas predefinidas del modelo para los juegos.
 	 */
-	public final static String[] columnas = {"DNI", "Nombre", "Apellidos"};
+	private String[] columnas = {"DNI", "Nombre", "Apellidos"};
+	
+	public ModeloUsuarios() {
+		init(new Usuario[]{});
+	}
 	
 	/**
 	 * Crea un contenedor de usuarios para una tabla.
 	 * @param usuariosNuevos Nueva lista de juegos
 	 * @param columnas Nombres de las columnas.
 	 */
-	public ModeloUsuarios(Usuario[] usuariosNuevos, String[] columnas) {
+	public ModeloUsuarios(Usuario[] usuariosNuevos) {
+		init(usuariosNuevos);
+	}
+	
+	private void init(Usuario[] usuariosNuevos) {
 		numColum = columnas.length;
 		numFilas = usuariosNuevos.length;
 		usuarios = usuariosNuevos;
@@ -132,5 +140,11 @@ public class ModeloUsuarios extends AbstractTableModel {
 		}
 		
 		return usuario;
+	}
+
+	@Override
+	public String[] getColumnas() {
+		
+		return columnas;
 	}
 }

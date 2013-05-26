@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -80,7 +79,7 @@ public class PrestamoJuegosPanel extends JPanel {
 
 	private void init() {
 
-		model = new ModeloJuego( new Juego[] {}, ModeloJuego.columnas);
+		model = new ModeloJuego();
 
 		table = new MiTabla(model);
 

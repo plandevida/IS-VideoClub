@@ -1,27 +1,26 @@
 package app.bsodsoftware.gameclub.java.gui.paneles;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
-
 import app.bsodsoftware.gameclub.java.gui.tablas.ModeloUsuarios;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
 
 
@@ -58,7 +57,7 @@ public class PanelBorrarUsuario extends JPanel {
 
 	private void init() {
 	
-		 model = new ModeloUsuarios( new Usuario[] {}, ModeloUsuarios.columnas);
+		 model = new ModeloUsuarios( new Usuario[] {});
 	
 		table = new MiTabla(model);
 	
