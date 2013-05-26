@@ -7,16 +7,16 @@ import javax.swing.event.ChangeListener;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
-public class PrestamosPanel extends JTabbedPane {
+public class PanelPrestamos extends JTabbedPane {
 
 	private static final long serialVersionUID = 1L;
 
 	private Sistema miSistema;
 	private VentanaPrincipal miVentana;
 	
-	private PrestamoInfoPanel prestamoInfo;
+	private PanelPrestamoInfo prestamoInfo;
 	
-	public PrestamosPanel(Sistema sistema, VentanaPrincipal ventana) {
+	public PanelPrestamos(Sistema sistema, VentanaPrincipal ventana) {
 		
 		miSistema = sistema;
 		miVentana = ventana;
@@ -40,13 +40,13 @@ public class PrestamosPanel extends JTabbedPane {
 		});
 	}
 	
-	private PrestamoJuegosPanel crearPrestamosJuegosPanel() {
+	private PanelPrestamoJuegos crearPrestamosJuegosPanel() {
 		
-		return new PrestamoJuegosPanel(miSistema, miVentana);
+		return new PanelPrestamoJuegos(miSistema, miVentana);
 	}
 	
-	private PrestamoInfoPanel crearPrestamoInfoPanel() {
+	private PanelPrestamoInfo crearPrestamoInfoPanel() {
 		
-		return new PrestamoInfoPanel(miSistema);
+		return new PanelPrestamoInfo(miSistema);
 	}
 }

@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAdministraciones;
-import app.bsodsoftware.gameclub.java.gui.paneles.prestamo.PrestamosPanel;
+import app.bsodsoftware.gameclub.java.gui.paneles.prestamo.PanelPrestamos;
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 import app.bsodsoftware.gameclub.java.main.Manager;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
@@ -127,7 +127,7 @@ public class VentanaPrincipal extends JFrame {
 				borraPanelCentral();
 				
 				// Creo un panel nuevo y lo inserto en la ventana.
-				getContentPane().add(new PrestamosPanel(miSistema, mySelf), BorderLayout.CENTER);
+				getContentPane().add(new PanelPrestamos(miSistema, mySelf), BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
 				getContentPane().validate();
 			}

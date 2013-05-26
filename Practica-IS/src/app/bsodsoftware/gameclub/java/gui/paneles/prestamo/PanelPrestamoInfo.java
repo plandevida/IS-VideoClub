@@ -23,7 +23,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PrestamoInfoPanel extends JPanel {
+public class PanelPrestamoInfo extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -39,7 +39,7 @@ public class PrestamoInfoPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PrestamoInfoPanel(Sistema sistema) {
+	public PanelPrestamoInfo(Sistema sistema) {
 		setLayout(new BorderLayout(0, 0));
 	
 		init();

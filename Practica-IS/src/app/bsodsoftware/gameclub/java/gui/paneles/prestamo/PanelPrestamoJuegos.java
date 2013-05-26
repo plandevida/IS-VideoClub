@@ -36,7 +36,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PrestamoJuegosPanel extends JPanel {
+public class PanelPrestamoJuegos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -66,7 +66,7 @@ public class PrestamoJuegosPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PrestamoJuegosPanel(Sistema sistema, VentanaPrincipal ventanaPadre) {
+	public PanelPrestamoJuegos(Sistema sistema, VentanaPrincipal ventanaPadre) {
 		setLayout(new BorderLayout(0, 0));
 	
 		init();
