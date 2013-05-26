@@ -77,7 +77,18 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 
 	@Override
 	public boolean existePrestamo(Prestamo prestamo) {
-		return listaPrestamos.contains(prestamo);
+		boolean resultado =listaPrestamos.contains(prestamo);
+		
+		for(Prestamo p : listaPrestamos)
+		{
+			// Si el usuario ya tiene prestado ese juego , el prestamo no se puede realizar.
+			if(p.getUsuario_a_prestar() == prestamo.getUsuario_a_prestar() && p.getJuego_a_prestar() == prestamo.getJuego_a_prestar())
+			{
+				resultado=true;
+			}
+		}
+		
+		return resultado;
 
 	}
 
