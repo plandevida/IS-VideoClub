@@ -77,21 +77,26 @@ public class PanelAnadirUsuario extends JPanel {
 					JOptionPane.showMessageDialog(ventana, "Faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
-					
-					Usuario usuario = new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText()));
-					//comprueba si ya existe el usuario
-					if(!miSistema.existeUsuario(usuario)){
-						//añade el usuario
-						if(miSistema.addUsuario(usuario)){
-							
-							JOptionPane.showMessageDialog(ventana, "Usuario añadido correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-						}
-						else{
-							JOptionPane.showMessageDialog(ventana, "No se a podido añadir","Error", JOptionPane.ERROR_MESSAGE);
-						}
+					if(!comprobarEntero(txtTelefono.getText())){
+						txtTelefono.setText("");
+						JOptionPane.showMessageDialog(ventana, "Introduce un telefono valido","Error", JOptionPane.ERROR_MESSAGE);
 					}
-					else JOptionPane.showMessageDialog(ventana, "Ya existe el usuario", "Error", JOptionPane.ERROR_MESSAGE);
-				//miSistema.addUsuario(new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText())));
+					else{
+					
+						Usuario usuario = new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText()));
+						//comprueba si ya existe el usuario
+						if(!miSistema.existeUsuario(usuario)){
+							//añade el usuario
+							if(miSistema.addUsuario(usuario)){
+								
+								JOptionPane.showMessageDialog(ventana, "Usuario añadido correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+							}
+							else{
+								JOptionPane.showMessageDialog(ventana, "No se a podido añadir","Error", JOptionPane.ERROR_MESSAGE);
+							}
+						}
+						else JOptionPane.showMessageDialog(ventana, "Ya existe el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			
@@ -184,5 +189,19 @@ public class PanelAnadirUsuario extends JPanel {
 					.addContainerGap(132, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
+	}
+	
+	private boolean comprobarEntero(String campo){
+		boolean entero = true;
+		try
+		{
+
+			Integer.parseInt(campo);
+		
+		}catch(NumberFormatException e1)
+		{
+			entero = false;
+		}
+		return entero;
 	}
 }
