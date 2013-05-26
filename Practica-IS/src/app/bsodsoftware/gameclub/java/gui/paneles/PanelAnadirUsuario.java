@@ -7,8 +7,15 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
+import app.bsodsoftware.gameclub.java.modelo.Sistema;
+import com.toedter.calendar.JCalendar;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class PanelAnadirUsuario extends JPanel {
 	/**
@@ -20,13 +27,23 @@ public class PanelAnadirUsuario extends JPanel {
 	private JTextField txtNombre;
 	private JTextField txtApellidos;
 	private JTextField txtDireccion;
-	private JTextField txtFechaDeNacimiento;
+	private JTextField txtTelefono;
+	private Sistema miSistema;
+	private JCalendar calendar;
+	private VentanaPrincipal ventana;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelAnadirUsuario() {
+	public PanelAnadirUsuario(Sistema sistema, VentanaPrincipal ventana) {
+		
+		init();
+		miSistema = sistema;
+		this.ventana = ventana;
+ 
+	}
 	
+	private void  init(){
 		JLabel lblDni = new JLabel("DNI");
 		
 		JLabel lblNombre = new JLabel("Nombre");
@@ -35,9 +52,9 @@ public class PanelAnadirUsuario extends JPanel {
 		
 		JLabel lblDireccion = new JLabel("Direccion");
 		
-		JLabel lblFechaNacimiento = new JLabel("Fecha Nacimiento");
-		
 		JLabel lblTelefono = new JLabel("Teléfono");
+		
+		JLabel lblFechanacimiento = new JLabel("Fecha de Nacimiento");
 		
 		txtDni = new JTextField();
 		txtDni.setColumns(10);
@@ -51,41 +68,48 @@ public class PanelAnadirUsuario extends JPanel {
 		txtDireccion = new JTextField();
 		txtDireccion.setColumns(10);
 		
-		txtFechaDeNacimiento = new JTextField();
-		txtFechaDeNacimiento.setColumns(10);
-		
-		JTextField frmtdtxtfldTelefono = new JTextField();
-		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if(txtDni.getText().equals("") && txtNombre.getText().equals("") && txtApellidos.getText().equals("") && calendar.getDate()==null && txtDireccion.getText().equals("") && txtTelefono.getText().equals("")){
+					JOptionPane.showMessageDialog(ventana, "Faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				miSistema.addUsuario(new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText())));
 			}
 		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		
+		txtTelefono = new JTextField();
+		txtTelefono.setColumns(10);
+		
+		calendar = new JCalendar();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(129)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(lblDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(lblFechaNacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
-					.addGap(27)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(txtFechaDeNacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(txtDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(txtApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(txtNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(frmtdtxtfldTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-						.addComponent(txtDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(lblDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(lblFechanacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
+							.addGap(27)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(calendar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(txtTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))))
 					.addGap(128))
 		);
 		groupLayout.setVerticalGroup(
@@ -109,19 +133,18 @@ public class PanelAnadirUsuario extends JPanel {
 						.addComponent(txtDireccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblFechaNacimiento)
-						.addComponent(txtFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblTelefono)
-						.addComponent(frmtdtxtfldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(44)
+						.addComponent(txtTelefono, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblFechanacimiento)
+						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(15)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnAceptar)
-						.addComponent(btnCancelar))
-					.addContainerGap(303, Short.MAX_VALUE))
+						.addComponent(btnCancelar)
+						.addComponent(btnAceptar))
+					.addContainerGap(198, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
-
 	}
 }

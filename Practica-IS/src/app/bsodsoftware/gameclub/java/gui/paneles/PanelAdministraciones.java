@@ -9,14 +9,25 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
+import app.bsodsoftware.gameclub.java.modelo.Sistema;
+
 public class PanelAdministraciones extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-
+	private Sistema sistema;
+	private VentanaPrincipal ventana;
 	/**
 	 * Create the panel.
 	 */
-	public PanelAdministraciones() {
+	public PanelAdministraciones(Sistema sistema, VentanaPrincipal ventanaPadre ) {
+		init();
+		
+		this.sistema = sistema;
+		ventana = ventanaPadre;
+	}
+	
+	private void init(){
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -32,7 +43,7 @@ public class PanelAdministraciones extends JPanel {
 				
 				borraPanelCentral();
 				
-				add(new PanelAnadirUsuario(), BorderLayout.CENTER);
+				add(new PanelAnadirUsuario(sistema,ventana), BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
 				validate();
 				
@@ -57,7 +68,6 @@ public class PanelAdministraciones extends JPanel {
 		JMenuItem mntmModificar_juego = new JMenuItem("Modificar");
 		mnJuegos.add(mntmModificar_juego);
 	}
-	
 	private void borraPanelCentral() {
 		BorderLayout layout  = (BorderLayout) getLayout();
 		

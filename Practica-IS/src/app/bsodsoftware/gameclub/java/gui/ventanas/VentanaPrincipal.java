@@ -171,7 +171,7 @@ public class VentanaPrincipal extends JFrame {
 				
 				borraPanelCentral();
 				// Creo un panel nuevo y lo inserto en la ventana.
-				getContentPane().add(new PanelAdministraciones(), BorderLayout.CENTER);
+				getContentPane().add(new PanelAdministraciones(miSistema,mySelf), BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
 				getContentPane().validate();
 			}
