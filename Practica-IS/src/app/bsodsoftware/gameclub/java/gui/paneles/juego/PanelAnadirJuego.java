@@ -78,21 +78,27 @@ public class PanelAnadirJuego extends JPanel{
 					JOptionPane.showMessageDialog(ventana, "Faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
-					
-					Juego juego = new Juego(txtNombre.getText(), Integer.parseInt(txtNJugadores.getText()), Integer.parseInt(txtUnidades.getText()),Integer.parseInt(txtEdadminima.getText()), txtDescripcion.getText(),null);
-					//comprueba si ya existe el usuario
-					if(!miSistema.existejuego(juego)){
-						//añade el usuario
-						if(miSistema.addjuego(juego)){
-							
-							JOptionPane.showMessageDialog(ventana, "Juego añadido correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-						}
-						else{
-							JOptionPane.showMessageDialog(ventana, "No se a podido añadir","Error", JOptionPane.ERROR_MESSAGE);
-						}
+					if(!comprobarEntero(txtNJugadores.getText()) || !comprobarEntero(txtUnidades.getText()) || !comprobarEntero(txtEdadminima.getText())){
+						txtNJugadores.setText("");
+						txtUnidades.setText("");
+						txtEdadminima.setText("");
+						JOptionPane.showMessageDialog(ventana, "El numero de jugadores, las unidades o la edad minima no son validos","Error", JOptionPane.ERROR_MESSAGE);
 					}
-					else JOptionPane.showMessageDialog(ventana, "Ya existe el usuario", "Error", JOptionPane.ERROR_MESSAGE);
-				//miSistema.addUsuario(new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText())));
+					else{
+						Juego juego = new Juego(txtNombre.getText(), Integer.parseInt(txtNJugadores.getText()), Integer.parseInt(txtUnidades.getText()),Integer.parseInt(txtEdadminima.getText()), txtDescripcion.getText(),null);
+						//comprueba si ya existe el usuario
+						if(!miSistema.existejuego(juego)){
+							//añade el usuario
+							if(miSistema.addjuego(juego)){
+								
+								JOptionPane.showMessageDialog(ventana, "Juego añadido correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+							}
+							else{
+								JOptionPane.showMessageDialog(ventana, "No se a podido añadir","Error", JOptionPane.ERROR_MESSAGE);
+							}
+						}
+						else JOptionPane.showMessageDialog(ventana, "Ya existe el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			
@@ -180,5 +186,20 @@ public class PanelAnadirJuego extends JPanel{
 		groupLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnAceptar, btnCancelar});
 		setLayout(groupLayout);
 	}
+	
+	private boolean comprobarEntero(String campo){
+		
+	
+		boolean entero = true;
+		try
+		{
 
+			Integer.parseInt(campo);
+		
+		}catch(NumberFormatException e1)
+		{
+			entero = false;
+		}
+		return entero;
+	}
 }

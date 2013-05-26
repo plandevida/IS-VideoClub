@@ -26,6 +26,8 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class PanelBorrarJuego extends JPanel{
 	/**
@@ -38,11 +40,10 @@ public class PanelBorrarJuego extends JPanel{
 
 	private JScrollPane scrollPane;
 
-
+	private JComboBox comboBox;
 	private JButton btnBuscar;
 	private JSeparator separator;
-	private JLabel lblNombre;
-	private JTextField txtNombre;
+	private JTextField txtFiltro;
 	private JButton btnBorrar;
 	private JButton btnCancelar;
 	private Sistema miSistema;
@@ -76,11 +77,13 @@ public class PanelBorrarJuego extends JPanel{
 		add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("35dlu"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("51dlu"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -118,28 +121,44 @@ public class PanelBorrarJuego extends JPanel{
 				String filtro = "";
 				int columna = 0;
 				
+				switch((String)comboBox.getSelectedItem()) {
+				 case "Nombre": 
+				     columna = 0;
+				     break;
+				
+				 case "Número de jugadores": 
+				     columna = 1;
+				     break;
+			     
+				 case "Edad Mínima": 
+				     columna = 2;
+				     break;
+				     
+				 case "Descripción": 
+				     columna = 3;
+				     break;
+				}
+				
 				// Dependiendo del filtro escogido se determina la columna por la que filtrar.
 				
-					filtro = txtNombre.getText();
+					filtro = txtFiltro.getText();
 			
 				((MiTabla) table).filtrar(filtro, columna);
 			
 			}
 		});
 		
-	
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Nombre", "Número de jugadores", "Edad Mínima", "Descripción"}));
+		panel.add(comboBox, "2, 3, 3, 1, fill, default");
 		
-		lblNombre = new JLabel("Nombre");
-		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(lblNombre, "2, 3");
-		
-		txtNombre = new JTextField();
-		panel.add(txtNombre, "6, 3, fill, default");
-		txtNombre.setColumns(10);
+		txtFiltro = new JTextField();
+		panel.add(txtFiltro, "6, 3, 3, 1, fill, default");
+		txtFiltro.setColumns(10);
 		btnBuscar.setActionCommand("Prestar");
-		panel.add(btnBuscar, "12, 3");	
+		panel.add(btnBuscar, "14, 3");	
 		separator = new JSeparator();
-		panel.add(separator, "2, 4, 21, 1");
+		panel.add(separator, "2, 4, 23, 1");
 		
 		
 		btnBorrar = new JButton("Borrar");
@@ -165,7 +184,7 @@ public class PanelBorrarJuego extends JPanel{
 		panel.add(btnBorrar, "6, 8");
 		
 		btnCancelar = new JButton("Cancelar");
-		panel.add(btnCancelar, "12, 8");
+		panel.add(btnCancelar, "14, 8");
 		
 	}
 	

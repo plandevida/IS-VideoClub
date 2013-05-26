@@ -25,6 +25,8 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 
 
@@ -42,12 +44,12 @@ public class PanelBorrarUsuario extends JPanel {
 
 	private JButton btnBuscar;
 	private JSeparator separator;
-	private JLabel lblDni;
-	private JTextField txtDNI;
+	private JTextField txtFiltro;
 	private JButton btnBorrar;
 	private JButton btnCancelar;
 	private Sistema miSistema;
 	private VentanaPrincipal ventanaprincipal;
+	private JComboBox comboBox;
 
 	/**
 	 * Create the panel.
@@ -77,7 +79,7 @@ public class PanelBorrarUsuario extends JPanel {
 		add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("35dlu"),
+				ColumnSpec.decode("47dlu:grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -119,24 +121,37 @@ public class PanelBorrarUsuario extends JPanel {
 				String filtro = "";
 				int columna = 0;
 				
+				switch((String)comboBox.getSelectedItem()) {
+				
+				 case "DNI": 
+				     columna = 0;
+				     break;
+				
+				 case "Nombre": 
+				     columna = 1;
+				     break;
+			     
+				 case "Apellidos": 
+				     columna = 2;
+				     break;
+				     
+				}
 				// Dependiendo del filtro escogido se determina la columna por la que filtrar.
 				
-					filtro = txtDNI.getText();
+					filtro = txtFiltro.getText();
 			
 				((MiTabla) table).filtrar(filtro, columna);
 			
 			}
 		});
 		
-	
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"DNI", "Nombre", "Apellidos"}));
+		panel.add(comboBox, "2, 3, 3, 1, fill, default");
 		
-		lblDni = new JLabel("DNI:");
-		lblDni.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(lblDni, "2, 3");
-		
-		txtDNI = new JTextField();
-		panel.add(txtDNI, "6, 3, fill, default");
-		txtDNI.setColumns(10);
+		txtFiltro = new JTextField();
+		panel.add(txtFiltro, "6, 3, 3, 1, fill, default");
+		txtFiltro.setColumns(10);
 		btnBuscar.setActionCommand("Prestar");
 		panel.add(btnBuscar, "12, 3");	
 		separator = new JSeparator();
