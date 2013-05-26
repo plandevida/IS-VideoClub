@@ -74,9 +74,9 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 				if (!"".equals(linea_juego)) {
 
 					String datos[] = linea_juego.split(":");
-					addjuego(new Juego(datos[0], Integer.parseInt(datos[1]),
-							Integer.parseInt(datos[2]),
-							Integer.parseInt(datos[3]), datos[4], null));
+					addjuego(new Juego(Integer.valueOf(datos[0]), datos[1], Integer.parseInt(datos[2]),
+							Integer.parseInt(datos[3]),
+							Integer.parseInt(datos[4]), datos[5], null));
 				}
 			}
 		} catch (Exception e) {
@@ -94,7 +94,7 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 		for (Juego j : listaJuegos) {
 
 			linea_juego = "";
-			linea_juego += j.getNombre() + ":" + j.getNum_jugadores() + ":"
+			linea_juego += j.getId() + ":" + j.getNombre() + ":" + j.getNum_jugadores() + ":"
 					+ j.getUnidades() + ":" + j.getEdad_minima() + ":"
 					+ j.getDescripcion() + "\n";
 			// System.out.println("linea->" + linea_juego);

@@ -1,6 +1,7 @@
 package app.bsodsoftware.gameclub.java.gui.tablas.modelos;
 
-public interface MiModelo {
+
+public interface MiModelo<E> {
 
 	/**
 	 * Obtiene las columnas del modelo
@@ -14,4 +15,17 @@ public interface MiModelo {
 	 * datos.
 	 */
 	public void rellenar();
+	
+	/**
+	 * Modifica un elemento de la tabla.
+	 * El indice conincide con la fila.
+	 */
+	public void modificar(int indice, E elementoModificado);
+	
+	/**
+	 * Busca un elemento, si está devuelve su indice, sino -1.
+	 * @param elementoaBuscar
+	 * @return indice
+	 */
+	public int buscar(E elementoaBuscar);
 }

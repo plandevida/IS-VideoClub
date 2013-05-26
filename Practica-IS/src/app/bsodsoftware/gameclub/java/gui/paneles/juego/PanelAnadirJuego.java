@@ -3,6 +3,7 @@ package app.bsodsoftware.gameclub.java.gui.paneles.juego;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -93,10 +94,12 @@ public class PanelAnadirJuego extends JPanel {
 										"El numero de jugadores, las unidades o la edad minima no son validos",
 										"Error", JOptionPane.ERROR_MESSAGE);
 					} else {
-						Juego juego = new Juego(txtNombre.getText(), Integer
-								.parseInt(txtNJugadores.getText()), Integer
-								.parseInt(txtUnidades.getText()), Integer
-								.parseInt(txtEdadminima.getText()),
+						int idRandom = new Random().nextInt(100000000);
+						
+						Juego juego = new Juego(idRandom,
+								txtNombre.getText(), Integer.parseInt(txtNJugadores.getText()), 
+								Integer.parseInt(txtUnidades.getText()),
+								Integer.parseInt(txtEdadminima.getText()),
 								txtDescripcion.getText(), null);
 						// comprueba si ya existe el usuario
 						if (!miSistema.existejuego(juego)) {

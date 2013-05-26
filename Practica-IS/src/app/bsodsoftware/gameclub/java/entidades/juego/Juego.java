@@ -4,6 +4,8 @@ import javax.swing.ImageIcon;
 
 public class Juego {
 
+	private int id;
+	
 	private String nombre;
 
 	private int num_jugadores;
@@ -18,9 +20,10 @@ public class Juego {
 
 	private ImageIcon imagen;
 
-	public Juego(String nombre, int num_jugadores, int unidades,
+	public Juego(int id, String nombre, int num_jugadores, int unidades,
 			int edad_minima, String descipcion, ImageIcon imagen) {
 
+		this.id = id;
 		this.nombre = nombre;
 		this.num_jugadores = num_jugadores;
 		this.unidades = unidades;
@@ -87,6 +90,14 @@ public class Juego {
 		this.imagen = imagen;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 
@@ -96,7 +107,7 @@ public class Juego {
 
 			Juego j = (Juego) o;
 
-			if (this.getNombre().equals(j.getNombre())) {
+			if (this.getId() == j.getId()) {
 				igual = true;
 			}
 		}

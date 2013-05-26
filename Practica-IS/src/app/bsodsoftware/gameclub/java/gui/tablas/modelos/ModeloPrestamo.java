@@ -12,7 +12,7 @@ import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
  * @author Juan Prérez Valbuena
  * @author Emilio Alvarez
  */
-public class ModeloPrestamo extends AbstractTableModel implements MiModelo {
+public class ModeloPrestamo extends AbstractTableModel implements MiModelo<Prestamo> {
 
 	private static final long serialVersionUID = -6900850597743594873L;
 
@@ -165,5 +165,25 @@ public class ModeloPrestamo extends AbstractTableModel implements MiModelo {
 	public String[] getColumnas() {
 
 		return columnas;
+	}
+
+	@Override
+	public void modificar(int indice, Prestamo prestamoModificado) {
+		
+		prestamos[indice] = prestamoModificado;
+		fireTableDataChanged();
+	}
+
+	@Override
+	public int buscar(Prestamo elementoaBuscar) {
+		int indice = -1;
+		
+		for (int i = 0; i < prestamos.length; i++) {
+			if (prestamos[i].equals(elementoaBuscar)) {
+				indice = i;
+			}
+		}
+		
+		return indice;
 	}
 }

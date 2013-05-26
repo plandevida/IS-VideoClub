@@ -1,3 +1,4 @@
-Catan the game:4:3:18:altamente destructivo
-Pilla la cola:2:1:18:Agarrasela al otro
+1:Catan the game:4:3:18:altamente destructivo
+2:Pilla la cola:2:1:18:Agarrasela al otro
+95165501:JuegoMod:4:3:10:aaaaaaaaa
 EOF

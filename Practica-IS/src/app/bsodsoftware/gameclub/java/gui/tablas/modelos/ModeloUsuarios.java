@@ -12,7 +12,7 @@ import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
  * @author Juan Prérez Valbuena
  * @author Emilio Alvarez
  */
-public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
+public class ModeloUsuarios extends AbstractTableModel implements MiModelo<Usuario> {
 
 	private static final long serialVersionUID = -6900850597743594873L;
 
@@ -23,7 +23,7 @@ public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
 	/**
 	 * Columnas predefinidas del modelo para los juegos.
 	 */
-	private String[] columnas = { "DNI", "Nombre", "Apellidos" };
+	private String[] columnas = { "DNI", "Nombre", "Apellidos", "Telefono", "Dirección", "Fecha de Nacimiento" };
 
 	public ModeloUsuarios() {
 		init(new Usuario[] {});
@@ -86,6 +86,17 @@ public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
 			case 2:
 				dato = usuarios[row].getApellidos();
 				break;
+			case 3:
+				dato = usuarios[row].getTelefono();
+				break;
+
+			case 4:
+				dato = usuarios[row].getDireccion();
+				break;
+
+			case 5:
+				dato = usuarios[row].getFecha_nacimiento();
+				break;
 
 			}
 		}
@@ -114,6 +125,9 @@ public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
 			setValueAt(usuarios[i].getDni(), i, 0);
 			setValueAt(usuarios[i].getNombre(), i, 1);
 			setValueAt(usuarios[i].getApellidos(), i, 2);
+			setValueAt(usuarios[i].getTelefono(), i , 3);
+			setValueAt(usuarios[i].getDireccion(), i , 4);
+			setValueAt(usuarios[i].getFecha_nacimiento(), i , 5);
 		}
 
 		fireTableDataChanged();
@@ -152,5 +166,25 @@ public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
 	public String[] getColumnas() {
 
 		return columnas;
+	}
+
+	@Override
+	public void modificar(int indice, Usuario usuarioModificado) {
+
+		usuarios[indice] = usuarioModificado;
+		fireTableDataChanged();
+	}
+
+	@Override
+	public int buscar(Usuario elementoaBuscar) {
+		int indice = -1;
+		
+		for (int i = 0; i < usuarios.length; i++) {
+			if (usuarios[i].equals(elementoaBuscar)) {
+				indice = i;
+			}
+		}
+		
+		return indice;
 	}
 }

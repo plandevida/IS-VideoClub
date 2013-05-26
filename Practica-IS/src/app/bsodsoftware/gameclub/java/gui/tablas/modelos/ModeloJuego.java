@@ -12,7 +12,7 @@ import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
  * @author Juan Prérez Valbuena
  * @author Emilio Alvarez
  */
-public class ModeloJuego extends AbstractTableModel implements MiModelo {
+public class ModeloJuego extends AbstractTableModel implements MiModelo<Juego> {
 
 	private static final long serialVersionUID = -6900850597743594873L;
 
@@ -165,5 +165,25 @@ public class ModeloJuego extends AbstractTableModel implements MiModelo {
 	public String[] getColumnas() {
 
 		return columnas;
+	}
+
+	@Override
+	public void modificar(int indice, Juego juegoModificado) {
+		juegos[indice] = juegoModificado;
+		
+		fireTableDataChanged();
+	}
+
+	@Override
+	public int buscar(Juego elementoaBuscar) {
+		int indice = -1;
+		
+		for (int i = 0; i < juegos.length; i++) {
+			if (juegos[i].equals(elementoaBuscar)) {
+				indice = i;
+			}
+		}
+		
+		return indice;
 	}
 }

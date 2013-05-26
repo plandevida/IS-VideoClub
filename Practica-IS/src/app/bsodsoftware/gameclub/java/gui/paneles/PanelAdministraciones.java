@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import app.bsodsoftware.gameclub.java.gui.paneles.juego.PanelAnadirJuego;
 import app.bsodsoftware.gameclub.java.gui.paneles.juego.PanelBorrarJuego;
+import app.bsodsoftware.gameclub.java.gui.paneles.juego.PanelModificarJuego;
 import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelAnadirUsuario;
 import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelBorrarUsuario;
 import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelModificarUsurario;
@@ -109,9 +110,9 @@ public class PanelAdministraciones extends JPanel {
 			}
 		});
 
-		JMenuItem mntmBorrar_juego = new JMenuItem("Borrar");
-		mnJuegos.add(mntmBorrar_juego);
-		mntmBorrar_juego.addActionListener(new ActionListener() {
+		JMenuItem mntmBorrarJuego = new JMenuItem("Borrar");
+		mnJuegos.add(mntmBorrarJuego);
+		mntmBorrarJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				borraPanelCentral();
@@ -124,8 +125,21 @@ public class PanelAdministraciones extends JPanel {
 			}
 		});
 
-		JMenuItem mntmModificar_juego = new JMenuItem("Modificar");
-		mnJuegos.add(mntmModificar_juego);
+		JMenuItem mntmModificarJuego = new JMenuItem("Modificar");
+		mntmModificarJuego.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				borraPanelCentral();
+				
+				add(new PanelModificarJuego(sistema, ventana));
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
+				validate();
+			}
+		});
+		mnJuegos.add(mntmModificarJuego);
 	}
 
 	private void borraPanelCentral() {

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -225,15 +226,24 @@ public class PanelModificarUsurario extends JPanel {
 									"dd-MM-YYY").parse(tFNacimiento.getText())
 									: null, tDireccion.getText(), Integer
 									.valueOf(tTlf.getText()));
-
-					miSistema.modificarUsuario(usuario);
 					
-					JOptionPane.showMessageDialog(ventana, "Modificación correcta.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+					Date fnacimiento = !"".equals(tFNacimiento.getText()) ? new SimpleDateFormat("dd-MM-YYYY").parse(tFNacimiento.getText()) : null;
+					usuario.setFecha_nacimiento(fnacimiento);
+
+					if ( miSistema.modificarUsuario(usuario) ) {
+						
+						// Se actualiza el dato en la vista.
+						int indice = model.buscar(usuario);
+						
+						model.modificar(indice, usuario);
+						
+						JOptionPane.showMessageDialog(ventana, "Modificación correcta.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(ventana, "Error al modificar el usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
 				} catch (Exception ex) {
 					ex.printStackTrace();
-					JOptionPane.showMessageDialog(ventana,
-							"Revise los campos.", "Error",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana, "Revise los campos.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
