@@ -245,6 +245,7 @@ public class PanelModificarUsurario extends JPanel {
 					
 					miSistema.modificarUsuario(usuario);
 					
+					JOptionPane.showMessageDialog(ventana, "Modificación correcta.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, "Revise los campos.", "Error", JOptionPane.ERROR_MESSAGE);
