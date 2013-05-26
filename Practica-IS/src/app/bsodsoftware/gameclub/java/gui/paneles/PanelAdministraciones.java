@@ -18,119 +18,127 @@ import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 public class PanelAdministraciones extends JPanel {
-	
+
 	private static final long serialVersionUID = 1L;
 	private Sistema sistema;
 	private VentanaPrincipal ventana;
+
 	/**
 	 * Create the panel.
 	 */
-	public PanelAdministraciones(Sistema sistema, VentanaPrincipal ventanaPadre ) {
+	public PanelAdministraciones(Sistema sistema, VentanaPrincipal ventanaPadre) {
 		init();
-		
+
 		this.sistema = sistema;
 		ventana = ventanaPadre;
 	}
-	
-	private void init(){
+
+	private void init() {
 		setLayout(new BorderLayout(0, 0));
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		add(menuBar, BorderLayout.NORTH);
-		
+
 		JMenu mnUsuarios = new JMenu("Usuarios");
 		menuBar.add(mnUsuarios);
-		
+
 		JMenuItem mntmAnadirUsuario = new JMenuItem("Añadir");
 		mnUsuarios.add(mntmAnadirUsuario);
 		mntmAnadirUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				borraPanelCentral();
-				
-				add(new PanelAnadirUsuario(sistema,ventana), BorderLayout.CENTER);
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+
+				add(new PanelAnadirUsuario(sistema, ventana),
+						BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
 				validate();
-				
+
 			}
 		});
-		
+
 		JMenuItem mntmBorrarUsuario = new JMenuItem("Borrar");
 		mnUsuarios.add(mntmBorrarUsuario);
 		mntmBorrarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				borraPanelCentral();
-				
-				add(new PanelBorrarUsuario(sistema,ventana), BorderLayout.CENTER);
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+
+				add(new PanelBorrarUsuario(sistema, ventana),
+						BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
 				validate();
-				
+
 			}
 		});
-		
+
 		JMenuItem mntmModificarUsuario = new JMenuItem("Modificar");
 		mntmModificarUsuario.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				borraPanelCentral();
-				
+
 				add(new PanelModificarUsurario(sistema, ventana));
 
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
 				validate();
 			}
 		});
 		mnUsuarios.add(mntmModificarUsuario);
-		
+
 		JMenu mnJuegos = new JMenu("Juegos");
 		menuBar.add(mnJuegos);
-		
+
 		JMenuItem mntmAnadirJuego = new JMenuItem("Añadir");
 		mnJuegos.add(mntmAnadirJuego);
 		mntmAnadirJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				borraPanelCentral();
-				
-				add(new PanelAnadirJuego(sistema,ventana), BorderLayout.CENTER);
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+
+				add(new PanelAnadirJuego(sistema, ventana), BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
 				validate();
-				
+
 			}
 		});
-				
-		
+
 		JMenuItem mntmBorrar_juego = new JMenuItem("Borrar");
 		mnJuegos.add(mntmBorrar_juego);
 		mntmBorrar_juego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				borraPanelCentral();
-				
-				add(new PanelBorrarJuego(sistema,ventana), BorderLayout.CENTER);
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+
+				add(new PanelBorrarJuego(sistema, ventana), BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
 				validate();
-				
+
 			}
 		});
-		
+
 		JMenuItem mntmModificar_juego = new JMenuItem("Modificar");
 		mnJuegos.add(mntmModificar_juego);
 	}
+
 	private void borraPanelCentral() {
-		BorderLayout layout  = (BorderLayout) getLayout();
-		
-	
-		JPanel panelAnterior = (JPanel) layout.getLayoutComponent(BorderLayout.CENTER);
-		
-		if ( panelAnterior != null ) {
+		BorderLayout layout = (BorderLayout) getLayout();
+
+		JPanel panelAnterior = (JPanel) layout
+				.getLayoutComponent(BorderLayout.CENTER);
+
+		if (panelAnterior != null) {
 			// Se borra el panel anterior.
 			remove(panelAnterior);
 		}
-		
+
 	}
 
 }

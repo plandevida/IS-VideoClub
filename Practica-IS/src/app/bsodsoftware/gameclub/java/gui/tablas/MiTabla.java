@@ -29,9 +29,9 @@ public class MiTabla extends JTable {
 	public MiTabla(AbstractTableModel model) {
 
 		modelo = model;
-		
+
 		init();
-		
+
 	}
 
 	private void init() {
@@ -42,17 +42,17 @@ public class MiTabla extends JTable {
 		setAutoCreateRowSorter(true);
 
 		setShowGrid(true);
-		
+
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+
 		setNombreColumnas();
-	
+
 		crearSorter();
 
 	}
 
 	private void crearSorter() {
-		
+
 		sorter = new TableRowSorter<AbstractTableModel>(modelo);
 
 		setRowSorter(sorter);
@@ -82,29 +82,30 @@ public class MiTabla extends JTable {
 	public TableRowSorter<AbstractTableModel> getSorter() {
 		return sorter;
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int colIndex) {
-        return false;
-    }
-	
-	/** Asigna el nombre a las columnas del modelo
+		return false;
+	}
+
+	/**
+	 * Asigna el nombre a las columnas del modelo
 	 * 
 	 */
 	private void setNombreColumnas() {
-		
+
 		JTableHeader cabecera = getTableHeader();
 		TableColumnModel modeloColumna = cabecera.getColumnModel();
 		TableColumn columna;
-		
-		String[] columnasModelo = ((MiModelo)getModel()).getColumnas();
-		
-		for(int i=0;i<modelo.getColumnCount();i++) {
-			
-			 columna = modeloColumna.getColumn(i); 
-			 columna.setHeaderValue(columnasModelo[i]);
+
+		String[] columnasModelo = ((MiModelo) getModel()).getColumnas();
+
+		for (int i = 0; i < modelo.getColumnCount(); i++) {
+
+			columna = modeloColumna.getColumn(i);
+			columna.setHeaderValue(columnasModelo[i]);
 		}
 		cabecera.repaint();
-		
+
 	}
 }

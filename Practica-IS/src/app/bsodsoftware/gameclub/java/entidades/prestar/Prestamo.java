@@ -15,7 +15,8 @@ public class Prestamo {
 
 	private Date fecha_a_devolver;
 
-	public Prestamo(Usuario usuario_a_prestar, Juego juego_a_prestar, Date fecha_de_prestamos, Date fecha_a_devolver) {
+	public Prestamo(Usuario usuario_a_prestar, Juego juego_a_prestar,
+			Date fecha_de_prestamos, Date fecha_a_devolver) {
 
 		this.usuario_a_prestar = usuario_a_prestar;
 		this.juego_a_prestar = juego_a_prestar;
@@ -54,21 +55,22 @@ public class Prestamo {
 	public void setFecha_a_devolver(Date fecha_a_devolver) {
 		this.fecha_a_devolver = fecha_a_devolver;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
-		
+
 		boolean igual = false;
-		
-		if ( o instanceof Prestamo ) {
-			
+
+		if (o instanceof Prestamo) {
+
 			Prestamo p = (Prestamo) o;
-			
-			if ( this.getUsuario_a_prestar().equals(p.getUsuario_a_prestar()) && this.getJuego_a_prestar().equals(p.getJuego_a_prestar()) ) {
+
+			if (this.getUsuario_a_prestar().equals(p.getUsuario_a_prestar())
+					&& this.getJuego_a_prestar().equals(p.getJuego_a_prestar())) {
 				igual = true;
 			}
 		}
-		
+
 		return igual;
 	}
 }

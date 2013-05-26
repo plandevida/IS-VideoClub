@@ -51,10 +51,11 @@ public interface InterfazFachadaUsuario {
 	/**
 	 * Busca un usuario por su DNI
 	 * 
-	 * @param DNI Del usuario a buscar.
+	 * @param DNI
+	 *            Del usuario a buscar. io a buscar.
 	 * @return El usuario buscado o null si no se encontró;
 	 */
 	public Usuario buscaUsuario(String DNI);
-	
+
 	public Usuario[] consultarUsuarios();
 }

@@ -30,11 +30,11 @@ public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 5633360730065002268L;
 
 	private Sistema miSistema;
-	
+
 	private Manager miManager;
-	
+
 	private JPanel contentPane;
-	
+
 	// Creada para poder ser asiganda a un diálogo
 	// que está en la implementación de un listener.
 	private VentanaPrincipal mySelf;
@@ -43,32 +43,33 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal(String titulo, Sistema sistema, Manager manager) {
-		
+
 		miSistema = sistema;
-		
+
 		miManager = manager;
-		
+
 		setTitle(titulo);
-		// Se usa dispose y no close para poder invocar un método antes del cierre
+		// Se usa dispose y no close para poder invocar un método antes del
+		// cierre
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		// Esto ajusta la ventana al tamaño de la pantalla
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setMinimumSize(new Dimension(600, 500));
-		
+
 		// Própositos de diálogos.
 		mySelf = this;
-		
+
 		init();
 
 		setVisible(true);
 	}
-	
+
 	@Override
 	public void dispose() {
 		miManager.finalizar();
 		System.exit(0);
 	}
-	
+
 	private void init() {
 
 		JMenuBar menuBar = new JMenuBar();
@@ -79,12 +80,12 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				miManager.finalizar();
-				
+
 				// Salimos de la applicación
 				System.exit(0);
 			}
@@ -93,19 +94,19 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenu mnAbout = new JMenu("About");
 		menuBar.add(mnAbout);
-		
+
 		JMenuItem mntmDesarrolladores = new JMenuItem("Desarrolladores");
 		mntmDesarrolladores.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				// Muestro el panel de bsodsoftware.
 				new PanelAbout(mySelf).setVisible(true);
 			}
 		});
 		mnAbout.add(mntmDesarrolladores);
-		
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -123,17 +124,20 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnPrestamos = new JButton("    Prestamos    ");
 		btnPrestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				borraPanelCentral();
-				
+
 				// Creo un panel nuevo y lo inserto en la ventana.
-				getContentPane().add(new PanelPrestamos(miSistema, mySelf), BorderLayout.CENTER);
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				getContentPane().add(new PanelPrestamos(miSistema, mySelf),
+						BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
 				getContentPane().validate();
 			}
 		});
 		btnPrestamos.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnPrestamos.setToolTipText("Abre la sección de prestamos de juegos de mesa.");
+		btnPrestamos
+				.setToolTipText("Abre la sección de prestamos de juegos de mesa.");
 		btnPrestamos.setIcon(Imagenes.getPrestamos56x56());
 		btnPrestamos.setVerticalTextPosition(JButton.BOTTOM);
 		btnPrestamos.setHorizontalTextPosition(JLabel.CENTER);
@@ -147,20 +151,22 @@ public class VentanaPrincipal extends JFrame {
 		btnDevoluciones.setHorizontalTextPosition(JButton.CENTER);
 		btnDevoluciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				borraPanelCentral();
-				
+
 				// TODO Quitar este panel y poner la implementación real
 				JPanel panel = new JPanel();
 				panel.add(new JLabel("COMING SOON"));
-				
+
 				getContentPane().add(panel);
 				getContentPane().validate();
-				
+
 				// Creo un panel nuevo y lo inserto en la ventana.
-				//getContentPane().add(new PanelAdministraciones(), BorderLayout.CENTER);
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
-				//getContentPane().validate();
+				// getContentPane().add(new PanelAdministraciones(),
+				// BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
+				// getContentPane().validate();
 			}
 		});
 		toolBar.add(btnDevoluciones);
@@ -168,11 +174,14 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnAdministracion = new JButton("Administración");
 		btnAdministracion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				borraPanelCentral();
 				// Creo un panel nuevo y lo inserto en la ventana.
-				getContentPane().add(new PanelAdministraciones(miSistema,mySelf), BorderLayout.CENTER);
-				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				getContentPane().add(
+						new PanelAdministraciones(miSistema, mySelf),
+						BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de
+				// ejecución.
 				getContentPane().validate();
 			}
 		});
@@ -185,13 +194,14 @@ public class VentanaPrincipal extends JFrame {
 		Component verticalGlue_1 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_1);
 	}
-	
+
 	private void borraPanelCentral() {
-		BorderLayout layout  = (BorderLayout) getContentPane().getLayout();
-		
-		Component panelAnterior = layout.getLayoutComponent(BorderLayout.CENTER);
-		
-		if ( panelAnterior != null ) {
+		BorderLayout layout = (BorderLayout) getContentPane().getLayout();
+
+		Component panelAnterior = layout
+				.getLayoutComponent(BorderLayout.CENTER);
+
+		if (panelAnterior != null) {
 			// Se borra el panel anterior.
 			getContentPane().remove(panelAnterior);
 		}

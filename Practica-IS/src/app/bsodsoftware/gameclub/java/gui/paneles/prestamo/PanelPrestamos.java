@@ -13,40 +13,40 @@ public class PanelPrestamos extends JTabbedPane {
 
 	private Sistema miSistema;
 	private VentanaPrincipal miVentana;
-	
+
 	private PanelPrestamoInfo prestamoInfo;
-	
+
 	public PanelPrestamos(Sistema sistema, VentanaPrincipal ventana) {
-		
+
 		miSistema = sistema;
 		miVentana = ventana;
-		
+
 		init();
 	}
-	
+
 	private void init() {
-		
+
 		addTab("Prestamo de juegos", crearPrestamosJuegosPanel());
-		
+
 		prestamoInfo = crearPrestamoInfoPanel();
 		addTab("Prestamos", prestamoInfo);
-		
+
 		addChangeListener(new ChangeListener() {
-			
+
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				prestamoInfo.recargarPrestamos();
 			}
 		});
 	}
-	
+
 	private PanelPrestamoJuegos crearPrestamosJuegosPanel() {
-		
+
 		return new PanelPrestamoJuegos(miSistema, miVentana);
 	}
-	
+
 	private PanelPrestamoInfo crearPrestamoInfoPanel() {
-		
+
 		return new PanelPrestamoInfo(miSistema);
 	}
 }

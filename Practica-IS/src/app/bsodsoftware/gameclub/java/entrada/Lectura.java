@@ -22,9 +22,10 @@ import java.util.logging.Logger;
  */
 
 public class Lectura {
-	
-	private static final Logger logger = Logger.getLogger(Escritura.class.getName());
-	
+
+	private static final Logger logger = Logger.getLogger(Escritura.class
+			.getName());
+
 	private BufferedReader lectura;
 	private String ficheroPath;
 
@@ -47,15 +48,16 @@ public class Lectura {
 	 *            El fichero a abrir
 	 */
 	public Lectura(String Fichero) {
-		
+
 		ficheroPath = Fichero;
 		BufferedReader nuevo_lector = null;
 		try {
 			nuevo_lector = new BufferedReader(new InputStreamReader(
 					new BufferedInputStream(new FileInputStream(Fichero))));
 		} catch (FileNotFoundException e) {
-			
-			logger.log(Level.SEVERE, "**Error al abrir el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
+
+			logger.log(Level.SEVERE, "**Error al abrir el fichero: \""
+					+ ficheroPath + "\"**\n" + e.getStackTrace());
 			e.printStackTrace();
 		}
 		lectura = nuevo_lector;
@@ -79,10 +81,11 @@ public class Lectura {
 			}
 		} catch (IOException e) {
 
-			logger.log(Level.SEVERE, "**Error al leer una línea el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
+			logger.log(Level.SEVERE, "**Error al leer una línea el fichero: \""
+					+ ficheroPath + "\"**\n" + e.getStackTrace());
 			e.printStackTrace();
 		}
-		
+
 		return salida;
 	}
 
@@ -94,7 +97,8 @@ public class Lectura {
 			}
 		} catch (IOException e) {
 
-			logger.log(Level.SEVERE, "**Error al leer el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
+			logger.log(Level.SEVERE, "**Error al leer el fichero: \""
+					+ ficheroPath + "\"**\n" + e.getStackTrace());
 			e.printStackTrace();
 		} finally {
 			cerrarFichero();
@@ -102,13 +106,13 @@ public class Lectura {
 		return salida;
 	}
 
-	
 	public void cerrarFichero() {
 		try {
 			lectura.close();
 		} catch (IOException e) {
-			
-			logger.log(Level.SEVERE, "**Error al cerrar el fichero: \"" + ficheroPath + "\"**\n" + e.getStackTrace());
+
+			logger.log(Level.SEVERE, "**Error al cerrar el fichero: \""
+					+ ficheroPath + "\"**\n" + e.getStackTrace());
 			e.printStackTrace();
 		}
 	}

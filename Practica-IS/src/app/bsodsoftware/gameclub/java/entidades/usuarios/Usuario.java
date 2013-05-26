@@ -31,7 +31,7 @@ public class Usuario {
 		this.telefono = telefono;
 		this.hasta = null;
 		this.sancionado = false;
-		
+
 	}
 
 	public String getDni() {
@@ -97,21 +97,21 @@ public class Usuario {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
-		
+
 		boolean igual = false;
-		
-		if ( o instanceof Usuario ) {
-			
+
+		if (o instanceof Usuario) {
+
 			Usuario u = (Usuario) o;
-			
-			if ( this.getDni().equals(u.getDni()) ) {
+
+			if (this.getDni().equals(u.getDni())) {
 				igual = true;
 			}
 		}
-		
+
 		return igual;
 	}
 }

@@ -18,9 +18,8 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 	private SistemaJuegos sistemaJuegos;
 	private SistemaPrestamos sistemaPrestamos;
 
-
 	public Sistema() {
-		
+
 		sistemaUsuarios = new SistemaUsuarios();
 		sistemaJuegos = new SistemaJuegos();
 		sistemaPrestamos = new SistemaPrestamos(sistemaUsuarios, sistemaJuegos);
@@ -99,7 +98,7 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 
 	@Override
 	public void cargarFichero() {
-		
+
 		// Es importante que los préstamos se cargen los últimos
 		// ya que buscane el la lista de usuarios.
 		sistemaJuegos.cargarFichero();
@@ -109,25 +108,25 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 
 	@Override
 	public Usuario[] consultarUsuarios() {
-		
+
 		return sistemaUsuarios.consultarUsuarios();
 	}
 
 	@Override
 	public Prestamo[] consultarPrestamos() {
-		
+
 		return sistemaPrestamos.consultarPrestamos();
 	}
 
 	@Override
 	public Juego[] consultarJuegos() {
-		
+
 		return sistemaJuegos.consultarJuegos();
 	}
 
 	@Override
 	public void escribirFichero() {
-		
+
 		sistemaJuegos.escribirFichero();
 		sistemaPrestamos.escribirFichero();
 		sistemaUsuarios.escribirFichero();
