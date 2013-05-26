@@ -1,4 +1,4 @@
-package app.bsodsoftware.gameclub.java.gui.paneles;
+package app.bsodsoftware.gameclub.java.gui.paneles.prestamo;
 
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;

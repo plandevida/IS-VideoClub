@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAbout;
 import app.bsodsoftware.gameclub.java.gui.paneles.PanelAdministraciones;
-import app.bsodsoftware.gameclub.java.gui.paneles.PrestamosPanel;
+import app.bsodsoftware.gameclub.java.gui.paneles.prestamo.PrestamosPanel;
 import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
 import app.bsodsoftware.gameclub.java.main.Manager;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;

@@ -1,4 +1,4 @@
-package app.bsodsoftware.gameclub.java.gui.paneles;
+package app.bsodsoftware.gameclub.java.gui.paneles.prestamo;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
