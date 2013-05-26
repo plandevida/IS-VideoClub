@@ -1,6 +1,9 @@
 package app.bsodsoftware.gameclub.java.modelo.implementacion;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
@@ -16,7 +19,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 	public SistemaUsuarios() {
 
 		listaUsuarios = new ArrayList<Usuario>();
-
+		
 	}
 
 	@Override
@@ -77,13 +80,16 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 		String linea_usuario;
 
 		try {
-			while ( ! "EOF".equals(linea_usuario = entrada_de_datos_por_fichero.leerLinea())) {
+			while (!"EOF"
+					.equalsIgnoreCase(linea_usuario = entrada_de_datos_por_fichero
+							.leerLinea())) {
 
-				if ( !"".equals(linea_usuario)) {
-					
+				if (!"".equals(linea_usuario)) {
+
 					String datos[] = linea_usuario.split(":");
-					addUsuario(new Usuario(datos[0], datos[1], datos[2], null,
-							null, 0));
+					addUsuario(new Usuario(datos[0], datos[1], datos[2],
+							new SimpleDateFormat("dd-MM-YYYY").parse(datos[3]),
+							datos[4], Integer.parseInt(datos[5])));
 				}
 
 			}
@@ -101,15 +107,26 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 
 		for (Usuario u : listaUsuarios) {
 
+			/*
+			 * public Usuario(String dni, String nombre, String apellidos, Date
+			 * fecha_nacimiento, String direccion, int telefono) {
+			 */
 			linea_usuario = "";
-			linea_usuario += u.getDni() + ":" + u.getNombre() + ":"
-					+ u.getApellidos() + "\n";
+			linea_usuario += u.getDni()
+					+ ":"
+					+ u.getNombre()
+					+ ":"
+					+ u.getApellidos()
+					+ ":"
+					+ new SimpleDateFormat("dd-MM-YYYY").format(u
+							.getFecha_nacimiento()) + ":" + u.getDireccion()
+					+ ":" + u.getTelefono() + "\n";
 
 			salida_de_datos_por_fichero.escribirLinea(linea_usuario);
 		}
 
 		salida_de_datos_por_fichero.escribirLinea("EOF");
-		
+
 		salida_de_datos_por_fichero.cerrarFichero();
 	}
 
@@ -127,7 +144,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 
 	@Override
 	public Usuario[] consultarUsuarios() {
-		
+
 		return listaUsuarios.toArray(new Usuario[listaUsuarios.size()]);
 	}
 
