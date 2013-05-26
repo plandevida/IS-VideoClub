@@ -1,4 +1,4 @@
-package app.bsodsoftware.gameclub.java.gui.tablas;
+package app.bsodsoftware.gameclub.java.gui.tablas.modelos;
 
 import javax.swing.table.AbstractTableModel;
 

@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
-import app.bsodsoftware.gameclub.java.gui.tablas.ModeloUsuarios;
+import app.bsodsoftware.gameclub.java.gui.tablas.modelos.ModeloUsuarios;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 

@@ -97,4 +97,21 @@ public class Usuario {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		
+		boolean igual = false;
+		
+		if ( o instanceof Usuario ) {
+			
+			Usuario u = (Usuario) o;
+			
+			if ( this.getDni().equals(u.getDni()) ) {
+				igual = true;
+			}
+		}
+		
+		return igual;
+	}
 }

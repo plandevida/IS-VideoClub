@@ -86,4 +86,21 @@ public class Juego {
 	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		
+		boolean igual = false;
+		
+		if ( o instanceof Juego ) {
+			
+			Juego j = (Juego) o;
+			
+			if ( this.getNombre().equals(j.getNombre()) ) {
+				igual = true;
+			}
+		}
+		
+		return igual;
+	}
 }

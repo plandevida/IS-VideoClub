@@ -13,6 +13,7 @@ import app.bsodsoftware.gameclub.java.gui.paneles.juego.PanelAnadirJuego;
 import app.bsodsoftware.gameclub.java.gui.paneles.juego.PanelBorrarJuego;
 import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelAnadirUsuario;
 import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelBorrarUsuario;
+import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelModificarUsurario;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
@@ -40,9 +41,9 @@ public class PanelAdministraciones extends JPanel {
 		JMenu mnUsuarios = new JMenu("Usuarios");
 		menuBar.add(mnUsuarios);
 		
-		JMenuItem mntmAnadir_usuario = new JMenuItem("Añadir");
-		mnUsuarios.add(mntmAnadir_usuario);
-		mntmAnadir_usuario.addActionListener(new ActionListener() {
+		JMenuItem mntmAnadirUsuario = new JMenuItem("Añadir");
+		mnUsuarios.add(mntmAnadirUsuario);
+		mntmAnadirUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				borraPanelCentral();
@@ -54,9 +55,9 @@ public class PanelAdministraciones extends JPanel {
 			}
 		});
 		
-		JMenuItem mntmBorrar_usuario = new JMenuItem("Borrar");
-		mnUsuarios.add(mntmBorrar_usuario);
-		mntmBorrar_usuario.addActionListener(new ActionListener() {
+		JMenuItem mntmBorrarUsuario = new JMenuItem("Borrar");
+		mnUsuarios.add(mntmBorrarUsuario);
+		mntmBorrarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				borraPanelCentral();
@@ -68,15 +69,28 @@ public class PanelAdministraciones extends JPanel {
 			}
 		});
 		
-		JMenuItem mntmModificar_usuario = new JMenuItem("Modificar");
-		mnUsuarios.add(mntmModificar_usuario);
+		JMenuItem mntmModificarUsuario = new JMenuItem("Modificar");
+		mntmModificarUsuario.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				borraPanelCentral();
+				
+				add(new PanelModificarUsurario(sistema, ventana));
+
+				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				validate();
+			}
+		});
+		mnUsuarios.add(mntmModificarUsuario);
 		
 		JMenu mnJuegos = new JMenu("Juegos");
 		menuBar.add(mnJuegos);
 		
-		JMenuItem mntmAnadir_juego = new JMenuItem("Añadir");
-		mnJuegos.add(mntmAnadir_juego);
-		mntmAnadir_juego.addActionListener(new ActionListener() {
+		JMenuItem mntmAnadirJuego = new JMenuItem("Añadir");
+		mnJuegos.add(mntmAnadirJuego);
+		mntmAnadirJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				borraPanelCentral();

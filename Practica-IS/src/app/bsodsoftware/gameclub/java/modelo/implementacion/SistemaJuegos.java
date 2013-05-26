@@ -31,8 +31,18 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 	@Override
 	public boolean modificarjuego(Juego juego) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resultado = true;
+		if (!existejuego(juego)) {
+			resultado = false;
+
+		} else {
+			int indice = listaJuegos.indexOf(juego);
+			
+			listaJuegos.remove(indice);
+			
+			listaJuegos.add(indice, juego);
+		}
+		return resultado;
 	}
 
 	@Override

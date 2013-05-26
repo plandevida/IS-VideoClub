@@ -52,7 +52,11 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 			resultado = false;
 
 		} else {
-
+			int indice = listaPrestamos.indexOf(prestamo);
+			
+			listaPrestamos.remove(indice);
+			
+			listaPrestamos.add(indice, prestamo);
 		}
 		return resultado;
 	}

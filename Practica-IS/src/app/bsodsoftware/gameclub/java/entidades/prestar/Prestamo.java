@@ -54,4 +54,21 @@ public class Prestamo {
 	public void setFecha_a_devolver(Date fecha_a_devolver) {
 		this.fecha_a_devolver = fecha_a_devolver;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		
+		boolean igual = false;
+		
+		if ( o instanceof Prestamo ) {
+			
+			Prestamo p = (Prestamo) o;
+			
+			if ( this.getUsuario_a_prestar().equals(p.getUsuario_a_prestar()) && this.getJuego_a_prestar().equals(p.getJuego_a_prestar()) ) {
+				igual = true;
+			}
+		}
+		
+		return igual;
+	}
 }

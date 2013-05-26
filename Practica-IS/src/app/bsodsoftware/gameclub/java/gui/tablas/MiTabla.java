@@ -9,6 +9,8 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 
+import app.bsodsoftware.gameclub.java.gui.tablas.modelos.MiModelo;
+
 /**
  * Una tabla que permite filtrar el contenido
  * 

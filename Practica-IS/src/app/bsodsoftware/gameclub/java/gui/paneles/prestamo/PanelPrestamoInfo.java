@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
-import app.bsodsoftware.gameclub.java.gui.tablas.ModeloPrestamo;
+import app.bsodsoftware.gameclub.java.gui.tablas.modelos.ModeloPrestamo;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 import com.jgoodies.forms.factories.FormFactory;

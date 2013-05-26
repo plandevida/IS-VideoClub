@@ -27,7 +27,7 @@ import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entidades.prestar.Prestamo;
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
-import app.bsodsoftware.gameclub.java.gui.tablas.ModeloJuego;
+import app.bsodsoftware.gameclub.java.gui.tablas.modelos.ModeloJuego;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
