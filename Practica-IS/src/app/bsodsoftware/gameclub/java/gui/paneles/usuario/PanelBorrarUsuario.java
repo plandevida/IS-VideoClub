@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -17,6 +18,7 @@ import javax.swing.SwingConstants;
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
 import app.bsodsoftware.gameclub.java.gui.tablas.ModeloUsuarios;
+import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -45,14 +47,16 @@ public class PanelBorrarUsuario extends JPanel {
 	private JButton btnBorrar;
 	private JButton btnCancelar;
 	private Sistema miSistema;
+	private VentanaPrincipal ventanaprincipal;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelBorrarUsuario(Sistema sistema) {
+	public PanelBorrarUsuario(Sistema sistema, VentanaPrincipal ventana) {
 		setLayout(new BorderLayout(0, 0));
 		
 		miSistema = sistema;
+		ventanaprincipal = ventana;
 		init();
 		cargarTabla();
 	}
@@ -148,8 +152,14 @@ public class PanelBorrarUsuario extends JPanel {
 				Usuario usuario = model.getUsuario(rowSelected);
 				
 				if(miSistema.existeUsuario(usuario)){
+					
 					miSistema.borrarUsuario(usuario);
+					JOptionPane.showMessageDialog(ventanaprincipal, "Usuario borrado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 					cargarTabla();
+				}
+				else{
+					
+					JOptionPane.showMessageDialog(ventanaprincipal, "No se a podido borrar","Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

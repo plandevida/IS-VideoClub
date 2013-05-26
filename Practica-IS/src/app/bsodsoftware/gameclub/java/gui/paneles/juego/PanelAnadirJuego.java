@@ -1,0 +1,180 @@
+package app.bsodsoftware.gameclub.java.gui.paneles.juego;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout.Alignment;
+
+
+import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
+import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
+import app.bsodsoftware.gameclub.java.modelo.Sistema;
+
+
+
+public class PanelAnadirJuego extends JPanel{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private JTextField txtNombre;
+	private JTextField txtNJugadores;
+	private JTextField txtUnidades;
+	private JTextField txtDescripcion;
+	private JTextField txtEdadminima;
+	private Sistema miSistema;
+	private VentanaPrincipal ventana;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelAnadirJuego(Sistema sistema, VentanaPrincipal ventana) {
+		
+		init();
+		miSistema = sistema;
+		this.ventana = ventana;
+ 
+	}
+	
+	private void  init(){
+		JLabel lblNombre = new JLabel("Nombre");
+		
+		JLabel lblNJugadores = new JLabel("Nº Jugadores");
+		
+		JLabel lblUnidades = new JLabel("Unidades");
+		
+		JLabel lblDescripcion = new JLabel("Descripcion");
+		
+		JLabel lblEdadminima = new JLabel("Edad Minima");
+		
+		JLabel lblImagen = new JLabel("Imagen");
+		
+		txtNombre = new JTextField();
+		txtNombre.setColumns(10);
+		
+		txtNJugadores = new JTextField();
+		txtNJugadores.setColumns(10);
+		
+		txtUnidades = new JTextField();
+		txtUnidades.setColumns(10);
+		
+		txtDescripcion = new JTextField();
+		txtDescripcion.setColumns(10);
+		
+		txtEdadminima = new JTextField();
+		txtEdadminima.setColumns(10);
+		
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//comprueba que hay datos en los campos
+				if(("".equals(txtNombre.getText())) || ("".equals(txtNJugadores.getText())) || ("".equals(txtUnidades.getText())) || ("".equals(txtDescripcion.getText())) || ("".equals(txtEdadminima.getText()))){
+					JOptionPane.showMessageDialog(ventana, "Faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+					
+					Juego juego = new Juego(txtNombre.getText(), Integer.parseInt(txtNJugadores.getText()), Integer.parseInt(txtUnidades.getText()),Integer.parseInt(txtEdadminima.getText()), txtDescripcion.getText(),null);
+					//comprueba si ya existe el usuario
+					if(!miSistema.existejuego(juego)){
+						//añade el usuario
+						if(miSistema.addjuego(juego)){
+							
+							JOptionPane.showMessageDialog(ventana, "Juego añadido correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+						}
+						else{
+							JOptionPane.showMessageDialog(ventana, "No se a podido añadir","Error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+					else JOptionPane.showMessageDialog(ventana, "Ya existe el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+				//miSistema.addUsuario(new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText())));
+				}
+			}
+			
+		});
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtNombre.setText("");
+				txtNJugadores.setText("");
+				txtUnidades.setText("");
+				txtDescripcion.setText("");
+				txtEdadminima.setText("");
+		
+			}
+		});
+		
+	
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(129)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblUnidades, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+								.addComponent(lblDescripcion, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+								.addComponent(lblEdadminima, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+								.addComponent(lblNJugadores, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+								.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+							.addGap(27))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblImagen, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+							.addGap(18)))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(txtEdadminima)
+						.addComponent(txtDescripcion)
+						.addComponent(txtUnidades)
+						.addComponent(txtNombre)
+						.addComponent(txtNJugadores, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
+					.addContainerGap(297, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(189)
+					.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+					.addGap(120)
+					.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+					.addGap(356))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(71)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNJugadores)
+						.addComponent(txtNJugadores, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblUnidades)
+						.addComponent(txtUnidades, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblDescripcion)
+						.addComponent(txtDescripcion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblEdadminima)
+						.addComponent(txtEdadminima, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(29)
+					.addComponent(lblImagen)
+					.addGap(49)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(231))
+		);
+		setLayout(groupLayout);
+	}
+}
