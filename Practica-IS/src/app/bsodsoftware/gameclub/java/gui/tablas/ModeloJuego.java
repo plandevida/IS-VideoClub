@@ -116,6 +116,7 @@ public class ModeloJuego extends AbstractTableModel implements MiModelo {
 	/**
 	 * Método que rellena los datos en la tabla.
 	 */
+	@Override
 	public void rellenar() {
 		
 		for (int i = 0; i < juegos.length; i++) {
@@ -125,6 +126,8 @@ public class ModeloJuego extends AbstractTableModel implements MiModelo {
 			setValueAt(juegos[i].getDescripcion(), i, 3);
 			setValueAt(juegos[i].getImagen(), i, 4);
 		}
+		
+		fireTableDataChanged();
 	}
 
 	@Override

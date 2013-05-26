@@ -106,6 +106,7 @@ public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
 	/**
 	 * Método que rellena los datos en la tabla.
 	 */
+	@Override
 	public void rellenar() {
 		
 		for (int i = 0; i < usuarios.length; i++) {
@@ -113,6 +114,8 @@ public class ModeloUsuarios extends AbstractTableModel implements MiModelo {
 			setValueAt(usuarios[i].getNombre(), i, 1);
 			setValueAt(usuarios[i].getApellidos(), i, 2);
 		}
+		
+		fireTableDataChanged();
 	}
 
 	@Override

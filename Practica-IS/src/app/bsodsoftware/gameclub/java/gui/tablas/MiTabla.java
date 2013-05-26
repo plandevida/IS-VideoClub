@@ -1,6 +1,7 @@
 package app.bsodsoftware.gameclub.java.gui.tablas;
 
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.JTableHeader;
@@ -39,6 +40,8 @@ public class MiTabla extends JTable {
 		setAutoCreateRowSorter(true);
 
 		setShowGrid(true);
+		
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		setNombreColumnas();
 	

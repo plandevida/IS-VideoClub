@@ -106,16 +106,17 @@ public class ModeloPrestamo extends AbstractTableModel implements MiModelo {
 	
 	/**
 	 * Método que cambia los datos de la tabla.
-	 * @param juegosNuevos Nueva lista de datos.
+	 * @param prestamosNuevos Nueva lista de datos.
 	 */
-	public void setObjetos(Prestamo[] juegosNuevos) {
-		prestamos = juegosNuevos;
+	public void setObjetos(Prestamo[] prestamosNuevos) {
+		prestamos = prestamosNuevos;
 		numFilas = prestamos.length;
 	}
 	
 	/**
 	 * Método que rellena los datos en la tabla.
 	 */
+	@Override
 	public void rellenar() {
 		
 		for (int i = 0; i < prestamos.length; i++) {
@@ -125,6 +126,8 @@ public class ModeloPrestamo extends AbstractTableModel implements MiModelo {
 			setValueAt(prestamos[i].getFecha_de_prestamos(), i, 3);
 			setValueAt(prestamos[i].getFecha_a_devolver(), i, 4);
 		}
+		
+		fireTableDataChanged();
 	}
 
 	@Override
