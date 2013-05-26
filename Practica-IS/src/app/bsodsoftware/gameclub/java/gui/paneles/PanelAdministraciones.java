@@ -114,7 +114,7 @@ public class PanelAdministraciones extends JPanel {
 		
 		if ( panelAnterior != null ) {
 			// Se borra el panel anterior.
-			getLayout().removeLayoutComponent(panelAnterior);
+			remove(panelAnterior);
 		}
 	}
 
