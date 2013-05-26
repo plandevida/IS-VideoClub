@@ -42,7 +42,7 @@ public class PanelBorrarUsuario extends JPanel {
 	private JSeparator separator;
 	private JLabel lblDni;
 	private JTextField txtDNI;
-	private JButton btnAceptar;
+	private JButton btnBorrar;
 	private JButton btnCancelar;
 	private Sistema miSistema;
 
@@ -139,8 +139,21 @@ public class PanelBorrarUsuario extends JPanel {
 		panel.add(separator, "2, 4, 21, 1");
 		
 		
-		btnAceptar = new JButton("Aceptar");
-		panel.add(btnAceptar, "6, 8");
+		btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int rowSelected = table.getSelectedRow();
+				
+				Usuario usuario = model.getUsuario(rowSelected);
+				
+				if(miSistema.existeUsuario(usuario)){
+					miSistema.borrarUsuario(usuario);
+					cargarTabla();
+				}
+			}
+		});
+		panel.add(btnBorrar, "6, 8");
 		
 		btnCancelar = new JButton("Cancelar");
 		panel.add(btnCancelar, "12, 8");
