@@ -5,15 +5,15 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
@@ -25,8 +25,6 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 
 
@@ -49,7 +47,7 @@ public class PanelBorrarUsuario extends JPanel {
 	private JButton btnCancelar;
 	private Sistema miSistema;
 	private VentanaPrincipal ventanaprincipal;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 
 	/**
 	 * Create the panel.
@@ -145,8 +143,8 @@ public class PanelBorrarUsuario extends JPanel {
 			}
 		});
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"DNI", "Nombre", "Apellidos"}));
+		comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"DNI", "Nombre", "Apellidos"}));
 		panel.add(comboBox, "2, 3, 3, 1, fill, default");
 		
 		txtFiltro = new JTextField();
