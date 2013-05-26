@@ -2,6 +2,7 @@ package app.bsodsoftware.gameclub.java.gui.paneles;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -71,10 +72,26 @@ public class PanelAnadirUsuario extends JPanel {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(txtDni.getText().equals("") && txtNombre.getText().equals("") && txtApellidos.getText().equals("") && calendar.getDate()==null && txtDireccion.getText().equals("") && txtTelefono.getText().equals("")){
+				
+				if(("".equals(txtDni.getText())) || ("".equals(txtNombre.getText())) || ("".equals(txtApellidos.getText())) || ("".equals(txtDireccion.getText())) || ("".equals(txtTelefono.getText()))){
 					JOptionPane.showMessageDialog(ventana, "Faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-				miSistema.addUsuario(new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText())));
+				else{
+					
+					Usuario usuario = new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText()));
+					if(!miSistema.existeUsuario(usuario)){
+						
+						if(miSistema.addUsuario(usuario)){
+							
+							JOptionPane.showMessageDialog(ventana, "Usuario añadido correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+						}
+						else{
+							JOptionPane.showMessageDialog(ventana, "No se a podido añadir","Error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+					else JOptionPane.showMessageDialog(ventana, "Ya existe el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+				//miSistema.addUsuario(new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText())));
+				}
 			}
 		});
 		
@@ -91,25 +108,30 @@ public class PanelAnadirUsuario extends JPanel {
 					.addGap(129)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(lblDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(lblFechanacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
-							.addGap(27)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(calendar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(txtTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))))
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+										.addComponent(lblDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+										.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+										.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+										.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
+									.addGap(27))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblFechanacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+									.addGap(18)))
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(calendar, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtTelefono, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtDireccion, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtApellidos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtNombre, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+								.addComponent(txtDni, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))))
 					.addGap(128))
 		);
 		groupLayout.setVerticalGroup(
@@ -135,15 +157,15 @@ public class PanelAnadirUsuario extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblTelefono)
 						.addComponent(txtTelefono, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(29)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblFechanacimiento)
-						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(15)
+						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblFechanacimiento))
+					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
 						.addComponent(btnAceptar))
-					.addContainerGap(198, Short.MAX_VALUE))
+					.addContainerGap(184, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 	}
