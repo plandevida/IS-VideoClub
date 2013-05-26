@@ -9,6 +9,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelAnadirUsuario;
+import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelBorrarUsuario;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
@@ -82,6 +84,7 @@ public class PanelAdministraciones extends JPanel {
 	private void borraPanelCentral() {
 		BorderLayout layout  = (BorderLayout) getLayout();
 		
+	
 		JPanel panelAnterior = (JPanel) layout.getLayoutComponent(BorderLayout.CENTER);
 		
 		if ( panelAnterior != null ) {
