@@ -9,6 +9,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import app.bsodsoftware.gameclub.java.gui.paneles.juego.PanelAnadirJuego;
+import app.bsodsoftware.gameclub.java.gui.paneles.juego.PanelBorrarJuego;
+import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelAnadirUsuario;
+import app.bsodsoftware.gameclub.java.gui.paneles.usuario.PanelBorrarUsuario;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
@@ -57,7 +61,7 @@ public class PanelAdministraciones extends JPanel {
 				
 				borraPanelCentral();
 				
-				add(new PanelBorrarUsuario(sistema), BorderLayout.CENTER);
+				add(new PanelBorrarUsuario(sistema,ventana), BorderLayout.CENTER);
 				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
 				validate();
 				
@@ -72,9 +76,32 @@ public class PanelAdministraciones extends JPanel {
 		
 		JMenuItem mntmAnadir_juego = new JMenuItem("Añadir");
 		mnJuegos.add(mntmAnadir_juego);
+		mntmAnadir_juego.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				borraPanelCentral();
+				
+				add(new PanelAnadirJuego(sistema,ventana), BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				validate();
+				
+			}
+		});
+				
 		
 		JMenuItem mntmBorrar_juego = new JMenuItem("Borrar");
 		mnJuegos.add(mntmBorrar_juego);
+		mntmBorrar_juego.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				borraPanelCentral();
+				
+				add(new PanelBorrarJuego(sistema,ventana), BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				validate();
+				
+			}
+		});
 		
 		JMenuItem mntmModificar_juego = new JMenuItem("Modificar");
 		mnJuegos.add(mntmModificar_juego);
@@ -82,6 +109,7 @@ public class PanelAdministraciones extends JPanel {
 	private void borraPanelCentral() {
 		BorderLayout layout  = (BorderLayout) getLayout();
 		
+	
 		JPanel panelAnterior = (JPanel) layout.getLayoutComponent(BorderLayout.CENTER);
 		
 		if ( panelAnterior != null ) {

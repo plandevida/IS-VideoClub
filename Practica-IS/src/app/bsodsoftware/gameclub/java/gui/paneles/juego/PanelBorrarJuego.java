@@ -1,4 +1,4 @@
-package app.bsodsoftware.gameclub.java.gui.paneles;
+package app.bsodsoftware.gameclub.java.gui.paneles.juego;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -14,9 +15,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import app.bsodsoftware.gameclub.java.entidades.usuarios.Usuario;
+
+import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.gui.tablas.MiTabla;
-import app.bsodsoftware.gameclub.java.gui.tablas.ModeloUsuarios;
+import app.bsodsoftware.gameclub.java.gui.tablas.ModeloJuego;
+import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -24,42 +27,42 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-
-
-public class PanelBorrarUsuario extends JPanel {
+public class PanelBorrarJuego extends JPanel{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private JTable table;
-	private ModeloUsuarios model;
+	private ModeloJuego model;
 
 	private JScrollPane scrollPane;
 
 
 	private JButton btnBuscar;
 	private JSeparator separator;
-	private JLabel lblDni;
-	private JTextField txtDNI;
-	private JButton btnAceptar;
+	private JLabel lblNombre;
+	private JTextField txtNombre;
+	private JButton btnBorrar;
 	private JButton btnCancelar;
 	private Sistema miSistema;
+	private VentanaPrincipal ventanaprincipal;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelBorrarUsuario(Sistema sistema) {
+	public PanelBorrarJuego(Sistema sistema, VentanaPrincipal ventana) {
 		setLayout(new BorderLayout(0, 0));
 		
 		miSistema = sistema;
+		ventanaprincipal = ventana;
 		init();
 		cargarTabla();
 	}
 
 	private void init() {
 	
-		 model = new ModeloUsuarios( new Usuario[] {});
+		 model = new ModeloJuego();
 	
 		table = new MiTabla(model);
 	
@@ -117,7 +120,7 @@ public class PanelBorrarUsuario extends JPanel {
 				
 				// Dependiendo del filtro escogido se determina la columna por la que filtrar.
 				
-					filtro = txtDNI.getText();
+					filtro = txtNombre.getText();
 			
 				((MiTabla) table).filtrar(filtro, columna);
 			
@@ -126,21 +129,40 @@ public class PanelBorrarUsuario extends JPanel {
 		
 	
 		
-		lblDni = new JLabel("DNI:");
-		lblDni.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(lblDni, "2, 3");
+		lblNombre = new JLabel("Nombre");
+		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblNombre, "2, 3");
 		
-		txtDNI = new JTextField();
-		panel.add(txtDNI, "6, 3, fill, default");
-		txtDNI.setColumns(10);
+		txtNombre = new JTextField();
+		panel.add(txtNombre, "6, 3, fill, default");
+		txtNombre.setColumns(10);
 		btnBuscar.setActionCommand("Prestar");
 		panel.add(btnBuscar, "12, 3");	
 		separator = new JSeparator();
 		panel.add(separator, "2, 4, 21, 1");
 		
 		
-		btnAceptar = new JButton("Aceptar");
-		panel.add(btnAceptar, "6, 8");
+		btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int rowSelected = table.getSelectedRow();
+				
+				Juego juego = model.getJuego(rowSelected);
+				
+				if(miSistema.existejuego(juego)){
+					
+					miSistema.borrarjuego(juego);
+					JOptionPane.showMessageDialog(ventanaprincipal, "Juego borrado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+					cargarTabla();
+				}
+				else{
+					
+					JOptionPane.showMessageDialog(ventanaprincipal, "No se a podido borrar","Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		panel.add(btnBorrar, "6, 8");
 		
 		btnCancelar = new JButton("Cancelar");
 		panel.add(btnCancelar, "12, 8");
@@ -148,12 +170,14 @@ public class PanelBorrarUsuario extends JPanel {
 	}
 	
 	private void cargarTabla() {
-		Usuario[] usuario = miSistema.consultarUsuarios();
+		Juego[] juegos = miSistema.consultarJuegos();
 		
 		// Configuro los nuevos datos en el modelo de la tabla.
-		model.setObjetos(usuario);
+		model.setObjetos(juegos);
 		
 		model.rellenar();
 	}
 }
 	
+
+
