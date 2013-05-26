@@ -41,8 +41,8 @@ public class PanelBorrarJuego extends JPanel{
 
 	private JButton btnBuscar;
 	private JSeparator separator;
-	private JLabel lblDni;
-	private JTextField txtDNI;
+	private JLabel lblNombre;
+	private JTextField txtNombre;
 	private JButton btnBorrar;
 	private JButton btnCancelar;
 	private Sistema miSistema;
@@ -120,7 +120,7 @@ public class PanelBorrarJuego extends JPanel{
 				
 				// Dependiendo del filtro escogido se determina la columna por la que filtrar.
 				
-					filtro = txtDNI.getText();
+					filtro = txtNombre.getText();
 			
 				((MiTabla) table).filtrar(filtro, columna);
 			
@@ -129,31 +129,31 @@ public class PanelBorrarJuego extends JPanel{
 		
 	
 		
-		lblDni = new JLabel("DNI:");
-		lblDni.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(lblDni, "2, 3");
+		lblNombre = new JLabel("Nombre");
+		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblNombre, "2, 3");
 		
-		txtDNI = new JTextField();
-		panel.add(txtDNI, "6, 3, fill, default");
-		txtDNI.setColumns(10);
+		txtNombre = new JTextField();
+		panel.add(txtNombre, "6, 3, fill, default");
+		txtNombre.setColumns(10);
 		btnBuscar.setActionCommand("Prestar");
 		panel.add(btnBuscar, "12, 3");	
 		separator = new JSeparator();
 		panel.add(separator, "2, 4, 21, 1");
 		
 		
-		btnBorrar = new JButton("Borrar");/*
+		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				int rowSelected = table.getSelectedRow();
 				
-				Usuario usuario = model.getUsuario(rowSelected);
+				Juego juego = model.getJuego(rowSelected);
 				
-				if(miSistema.existeUsuario(usuario)){
+				if(miSistema.existejuego(juego)){
 					
-					miSistema.borrarUsuario(usuario);
-					JOptionPane.showMessageDialog(ventanaprincipal, "Usuario borrado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+					miSistema.borrarjuego(juego);
+					JOptionPane.showMessageDialog(ventanaprincipal, "Juego borrado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 					cargarTabla();
 				}
 				else{
@@ -161,7 +161,7 @@ public class PanelBorrarJuego extends JPanel{
 					JOptionPane.showMessageDialog(ventanaprincipal, "No se a podido borrar","Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		});*/
+		});
 		panel.add(btnBorrar, "6, 8");
 		
 		btnCancelar = new JButton("Cancelar");
