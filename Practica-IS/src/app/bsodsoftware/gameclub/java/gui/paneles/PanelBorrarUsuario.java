@@ -2,6 +2,8 @@ package app.bsodsoftware.gameclub.java.gui.paneles;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -107,6 +109,20 @@ public class PanelBorrarUsuario extends JPanel {
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String filtro = "";
+				int columna = 0;
+				
+				// Dependiendo del filtro escogido se determina la columna por la que filtrar.
+				
+					filtro = txtDNI.getText();
+			
+				((MiTabla) table).filtrar(filtro, columna);
+			
+			}
+		});
 		
 	
 		
