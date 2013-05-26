@@ -52,6 +52,17 @@ public class PanelAdministraciones extends JPanel {
 		
 		JMenuItem mntmBorrar_usuario = new JMenuItem("Borrar");
 		mnUsuarios.add(mntmBorrar_usuario);
+		mntmBorrar_usuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				borraPanelCentral();
+				
+				add(new PanelBorrarUsuario(sistema), BorderLayout.CENTER);
+				// Este método hace que se vea el panel nuevo en tiempo de ejecución.
+				validate();
+				
+			}
+		});
 		
 		JMenuItem mntmModificar_usuario = new JMenuItem("Modificar");
 		mnUsuarios.add(mntmModificar_usuario);

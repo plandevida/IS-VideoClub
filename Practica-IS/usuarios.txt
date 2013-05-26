@@ -1,7 +1,2 @@
 12345678A:Juan:Trama
-a4:a:a
-4:a:a
-1:a:a
-2:a:a
-47829714v:Alvaro:Quesada
 EOF

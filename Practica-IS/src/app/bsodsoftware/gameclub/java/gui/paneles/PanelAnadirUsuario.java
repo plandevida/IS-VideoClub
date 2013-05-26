@@ -72,15 +72,16 @@ public class PanelAnadirUsuario extends JPanel {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//comprueba que hay datos en los campos
 				if(("".equals(txtDni.getText())) || ("".equals(txtNombre.getText())) || ("".equals(txtApellidos.getText())) || ("".equals(txtDireccion.getText())) || ("".equals(txtTelefono.getText()))){
 					JOptionPane.showMessageDialog(ventana, "Faltan campos por rellenar", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 					
 					Usuario usuario = new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText()));
+					//comprueba si ya existe el usuario
 					if(!miSistema.existeUsuario(usuario)){
-						
+						//añade el usuario
 						if(miSistema.addUsuario(usuario)){
 							
 							JOptionPane.showMessageDialog(ventana, "Usuario añadido correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
@@ -93,9 +94,20 @@ public class PanelAnadirUsuario extends JPanel {
 				//miSistema.addUsuario(new Usuario(txtDni.getText(), txtNombre.getText(), txtApellidos.getText(), calendar.getDate(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText())));
 				}
 			}
+			
 		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtDni.setText("");
+				txtNombre.setText("");
+				txtApellidos.setText("");
+				txtDireccion.setText("");
+				txtTelefono.setText("");
+		
+			}
+		});
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setColumns(10);
@@ -104,35 +116,34 @@ public class PanelAnadirUsuario extends JPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(129)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblApellidos, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+								.addComponent(lblDireccion, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+								.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+								.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+								.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+							.addGap(27))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblApellidos, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-										.addComponent(lblDireccion, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-										.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-										.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-										.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
-									.addGap(27))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblFechanacimiento, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-									.addGap(18)))
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(calendar, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtTelefono, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtDireccion, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtApellidos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtNombre, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-								.addComponent(txtDni, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))))
-					.addGap(128))
+							.addComponent(lblFechanacimiento, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+							.addGap(18)))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtTelefono, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+						.addComponent(txtDireccion, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+						.addComponent(txtApellidos, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+						.addComponent(txtNombre, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+						.addComponent(txtDni, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, 364, GroupLayout.PREFERRED_SIZE))
+					.addGap(58))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(202)
+					.addComponent(btnAceptar, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+					.addGap(103)
+					.addComponent(btnCancelar, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(216, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -159,13 +170,13 @@ public class PanelAnadirUsuario extends JPanel {
 						.addComponent(txtTelefono, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
 					.addGap(29)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblFechanacimiento))
-					.addGap(18)
+						.addComponent(lblFechanacimiento)
+						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCancelar)
-						.addComponent(btnAceptar))
-					.addContainerGap(184, Short.MAX_VALUE))
+						.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(51))
 		);
 		setLayout(groupLayout);
 	}

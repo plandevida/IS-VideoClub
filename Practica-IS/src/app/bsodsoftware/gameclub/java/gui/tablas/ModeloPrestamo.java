@@ -133,7 +133,7 @@ public class ModeloPrestamo extends AbstractTableModel {
 	/**
 	 * Método que obtiene un juego a partir de una fila.
 	 * @param fila Fila de la tabla que tenga el modelo.
-	 * @return El juego.
+	 * @return El usuario.
 	 */
 	public Prestamo getPrestamo(int fila) {
 		
