@@ -22,6 +22,8 @@ import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.RowSpec;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -108,6 +110,20 @@ public class PanelBorrarUsuario extends JPanel {
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String filtro = "";
+				int columna = 0;
+				
+				// Dependiendo del filtro escogido se determina la columna por la que filtrar.
+				
+					filtro = txtDNI.getText();
+			
+				((MiTabla) table).filtrar(filtro, columna);
+			
+			}
+		});
 		
 	
 		
