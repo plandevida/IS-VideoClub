@@ -1,2 +1,3 @@
 Catan the game:4:3:18:altamente destructivo
+Pilla la cola:2:1:18:Agarrasela al otro
 EOF
