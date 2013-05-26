@@ -16,6 +16,8 @@ import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.gui.ventanas.VentanaPrincipal;
 import app.bsodsoftware.gameclub.java.modelo.Sistema;
 import javax.swing.SwingConstants;
+
+import java.awt.BorderLayout;
 import java.awt.Component;
 
 
@@ -180,4 +182,5 @@ public class PanelAnadirJuego extends JPanel{
 		groupLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnAceptar, btnCancelar});
 		setLayout(groupLayout);
 	}
+
 }
