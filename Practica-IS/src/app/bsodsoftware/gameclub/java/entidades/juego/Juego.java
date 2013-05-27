@@ -31,6 +31,7 @@ public class Juego {
 		this.unidades = unidades;
 		this.edad_minima = edad_minima;
 		this.descripcion = descipcion;
+		if(imagen.getIconHeight()<=0){imagen=new ImageIcon("src/app/bsodsoftware/gameclub/java/imagenes/untitled.png");}
 		this.imagen = new ImageIcon(imagen.getImage().getScaledInstance(
 				56, 56, Image.SCALE_FAST));
 		this.imagen.setDescription(imagen.getDescription());
