@@ -1,5 +1,7 @@
 package app.bsodsoftware.gameclub.java.entidades.juego;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 public class Juego {
@@ -29,7 +31,10 @@ public class Juego {
 		this.unidades = unidades;
 		this.edad_minima = edad_minima;
 		this.descripcion = descipcion;
-		this.imagen = imagen;
+		if(imagen.getIconHeight()<=0){imagen=new ImageIcon("src/app/bsodsoftware/gameclub/java/imagenes/untitled.png");}
+		this.imagen = new ImageIcon(imagen.getImage().getScaledInstance(
+				56, 56, Image.SCALE_FAST));
+		this.imagen.setDescription(imagen.getDescription());
 		this.unidades_prestadas = 0;
 
 	}
@@ -113,5 +118,10 @@ public class Juego {
 		}
 
 		return igual;
+	}
+
+	public String getURLImagen() {
+		// TODO Auto-generated method stub
+		return imagen.getDescription();
 	}
 }

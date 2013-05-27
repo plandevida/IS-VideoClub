@@ -2,6 +2,8 @@ package app.bsodsoftware.gameclub.java.modelo.implementacion;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import app.bsodsoftware.gameclub.java.entidades.juego.Juego;
 import app.bsodsoftware.gameclub.java.entrada.Escritura;
 import app.bsodsoftware.gameclub.java.entrada.Lectura;
@@ -74,9 +76,11 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 				if (!"".equals(linea_juego)) {
 
 					String datos[] = linea_juego.split(":");
+					ImageIcon imagen =new ImageIcon(datos[6]+".png");
+					imagen.setDescription(datos[6]);
 					addjuego(new Juego(Integer.valueOf(datos[0]), datos[1], Integer.parseInt(datos[2]),
 							Integer.parseInt(datos[3]),
-							Integer.parseInt(datos[4]), datos[5], null));
+							Integer.parseInt(datos[4]), datos[5], imagen));
 				}
 			}
 		} catch (Exception e) {
@@ -96,7 +100,8 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 			linea_juego = "";
 			linea_juego += j.getId() + ":" + j.getNombre() + ":" + j.getNum_jugadores() + ":"
 					+ j.getUnidades() + ":" + j.getEdad_minima() + ":"
-					+ j.getDescripcion() + "\n";
+					+ j.getDescripcion() + ":"
+					+ j.getURLImagen() + "\n";
 			// System.out.println("linea->" + linea_juego);
 			salida_de_datos_por_fichero.escribirLinea(linea_juego);
 		}

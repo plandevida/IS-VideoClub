@@ -151,15 +151,22 @@ public class PanelBorrarUsuario extends JPanel {
 
 				if (miSistema.existeUsuario(usuario)) {
 
-					miSistema.borrarUsuario(usuario);
+					if(miSistema.borrarUsuario(usuario))
+					{
 					JOptionPane.showMessageDialog(ventanaprincipal,
 							"Usuario borrado correctamente", "Aviso",
 							JOptionPane.INFORMATION_MESSAGE);
 					cargarTabla();
+					}
+					else {
+						JOptionPane.showMessageDialog(ventanaprincipal,
+								"Usuario con préstamos pendientes", "Aviso",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
 				} else {
 
 					JOptionPane.showMessageDialog(ventanaprincipal,
-							"No se a podido borrar", "Error",
+							"No se ha podido borrar", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}

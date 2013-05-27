@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -213,7 +214,7 @@ public class PanelModificarJuego extends JPanel {
 														Integer.valueOf(tUnidades.getText()),
 														Integer.valueOf(tEdad.getText()),
 														tDescripcion.getText(), 
-														null
+														new ImageIcon()
 													);
 				
 									if ( miSistema.modificarjuego(juego) ) {
@@ -259,18 +260,18 @@ public class PanelModificarJuego extends JPanel {
 		try {
 
 			tId.setText( String.valueOf(juego.getId()));
-			tSNombre.setEditable(!tSNombre.isEditable());
+			tSNombre.setEditable(true);
 			tSNombre.setText(juego.getNombre());
 			tNombre.setText(juego.getNombre());
-			tNombre.setEditable(!tNombre.isEditable());
+			tNombre.setEditable(true);
 			tNjugadores.setText( String.valueOf(juego.getNum_jugadores()) );
-			tNjugadores.setEditable(!tNjugadores.isEditable());
+			tNjugadores.setEditable(true);
 			tUnidades.setText(String.valueOf(juego.getUnidades()));
-			tUnidades.setEditable(!tUnidades.isEditable());
+			tUnidades.setEditable(true);
 			tEdad.setText( String.valueOf(juego.getEdad_minima()) );
-			tEdad.setEditable(!tEdad.isEditable());
+			tEdad.setEditable(true);
 			tDescripcion.setText(juego.getDescripcion());
-			tDescripcion.setEditable(!tDescripcion.isEditable());
+			tDescripcion.setEditable(true);
 
 			btnModificar.setEnabled(true);
 			btnCancelar.setEnabled(true);
@@ -286,17 +287,17 @@ public class PanelModificarJuego extends JPanel {
 	private void unBindUsuario() {
 		tId.setText("");
 		tSNombre.setText("");
-		tSNombre.setEditable(!tSNombre.isEditable());
+		tSNombre.setEditable(false);
 		tNombre.setText("");
-		tNombre.setEditable(!tNombre.isEditable());
+		tNombre.setEditable(false);
 		tNjugadores.setText("");
-		tNjugadores.setEditable(!tNjugadores.isEditable());
+		tNjugadores.setEditable(false);
 		tUnidades.setText("");
-		tUnidades.setEditable(!tUnidades.isEditable());
+		tUnidades.setEditable(false);
 		tEdad.setText("");
-		tEdad.setEditable(!tEdad.isEditable());
+		tEdad.setEditable(false);
 		tDescripcion.setText("");
-		tDescripcion.setEditable(!tDescripcion.isEditable());
+		tDescripcion.setEditable(false);
 
 		btnModificar.setEnabled(false);
 		btnCancelar.setEnabled(false);

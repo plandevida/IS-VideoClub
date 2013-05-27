@@ -7,6 +7,7 @@ import java.util.Random;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -100,7 +101,7 @@ public class PanelAnadirJuego extends JPanel {
 								txtNombre.getText(), Integer.parseInt(txtNJugadores.getText()), 
 								Integer.parseInt(txtUnidades.getText()),
 								Integer.parseInt(txtEdadminima.getText()),
-								txtDescripcion.getText(), null);
+								txtDescripcion.getText(), new ImageIcon());
 						// comprueba si ya existe el usuario
 						if (!miSistema.existejuego(juego)) {
 							// añade el usuario
