@@ -32,7 +32,7 @@ public class Manager {
 
 		mySelf = this;
 
-		titulo = "Video Game Club";
+		titulo = "Game Club";
 
 		sistema = new Sistema();
 		sistema.cargarFichero();
