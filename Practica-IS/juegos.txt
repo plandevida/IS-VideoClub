@@ -1,4 +1,5 @@
 1:Catan the game:4:3:18:Altamente entretenido:src/app/bsodsoftware/gameclub/java/imagenes/untitled
 2:Twiste:6:1:18:Diversión loca:src/app/bsodsoftware/gameclub/java/imagenes/untitled
 95165501:JuegoMod:4:3:10:juego de prueba:src/app/bsodsoftware/gameclub/java/imagenes/untitled.png
+49817649:jungle speed:1:1:10:1:src/app/bsodsoftware/gameclub/java/imagenes/untitled.png
 EOF

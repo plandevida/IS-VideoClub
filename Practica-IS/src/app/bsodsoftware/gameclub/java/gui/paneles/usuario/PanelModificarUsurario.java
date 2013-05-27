@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -221,14 +220,12 @@ public class PanelModificarUsurario extends JPanel {
 
 				try {
 					usuario = new Usuario(tDNI.getText(), tNombre.getText(),
-							tApellidos.getText(), !"".equals(tFNacimiento
-									.getText()) ? new SimpleDateFormat(
-									"dd-MM-YYY").parse(tFNacimiento.getText())
-									: null, tDireccion.getText(), Integer
-									.valueOf(tTlf.getText()));
+							tApellidos.getText(), !"".equals(tFNacimiento.getText()) ? new SimpleDateFormat("dd-MM-YYY").parse(tFNacimiento.getText()) : null,
+									tDireccion.getText(),
+									Integer.valueOf(tTlf.getText()));
 					
-					Date fnacimiento = !"".equals(tFNacimiento.getText()) ? new SimpleDateFormat("dd-MM-YYYY").parse(tFNacimiento.getText()) : null;
-					usuario.setFecha_nacimiento(fnacimiento);
+//					Date fnacimiento = !"".equals(tFNacimiento.getText()) ? new SimpleDateFormat("dd-MM-YYYY").parse(tFNacimiento.getText()) : null;
+//					usuario.setFecha_nacimiento(fnacimiento);
 
 					if ( miSistema.modificarUsuario(usuario) ) {
 						
@@ -272,30 +269,30 @@ public class PanelModificarUsurario extends JPanel {
 	private void bindUsuario(Usuario usuario) {
 		try {
 
-			tDNI.setEditable(!tDNI.isEditable());
+			tDNI.setEditable(true);
 			tDNI.setText(usuario.getDni());
 			tNombre.setText(usuario.getNombre());
-			tNombre.setEditable(!tNombre.isEditable());
+			tNombre.setEditable(true);
 			tApellidos.setText(usuario.getApellidos());
-			tApellidos.setEditable(!tApellidos.isEditable());
+			tApellidos.setEditable(true);
 			tTlf.setText(String.valueOf(usuario.getTelefono()));
-			tTlf.setEditable(!tTlf.isEditable());
+			tTlf.setEditable(true);
 			chckbxSancionado.setSelected(usuario.isSancionado());
-			chckbxSancionado.setEnabled(!chckbxSancionado.isEnabled());
+			chckbxSancionado.setEnabled(true);
 
 			String fSancion = usuario.getHasta() != null ? new SimpleDateFormat(
 					"dd-MM-YYYY").format(usuario.getHasta()) : "";
 
 			tFSancion.setText(fSancion);
-			tFSancion.setEditable(!tFSancion.isEditable());
+			tFSancion.setEditable(true);
 
 			String fNacimiento = usuario.getFecha_nacimiento() != null ? new SimpleDateFormat(
 					"dd-MM-YYYY").format(usuario.getFecha_nacimiento()) : "";
 
 			tFNacimiento.setText(fNacimiento);
-			tFNacimiento.setEditable(!tFNacimiento.isEditable());
+			tFNacimiento.setEditable(true);
 			tDireccion.setText(usuario.getDireccion());
-			tDireccion.setEditable(!tDireccion.isEditable());
+			tDireccion.setEditable(true);
 
 			btnModificar.setEnabled(true);
 			btnCancelar.setEnabled(true);
@@ -310,21 +307,21 @@ public class PanelModificarUsurario extends JPanel {
 	 */
 	private void unBindUsuario() {
 		tDNI.setText("");
-		tDNI.setEditable(!tDNI.isEditable());
+		tDNI.setEditable(false);
 		tNombre.setText("");
-		tNombre.setEditable(!tNombre.isEditable());
+		tNombre.setEditable(false);
 		tApellidos.setText("");
-		tApellidos.setEditable(!tApellidos.isEditable());
+		tApellidos.setEditable(false);
 		tTlf.setText("");
-		tTlf.setEditable(!tTlf.isEditable());
+		tTlf.setEditable(false);
 		chckbxSancionado.setSelected(false);
-		chckbxSancionado.setEnabled(!chckbxSancionado.isEnabled());
+		chckbxSancionado.setEnabled(false);
 		tFSancion.setText("");
-		tFSancion.setEditable(!tFSancion.isEditable());
+		tFSancion.setEditable(false);
 		tFNacimiento.setText("");
-		tFNacimiento.setEditable(!tFNacimiento.isEditable());
+		tFNacimiento.setEditable(false);
 		tDireccion.setText("");
-		tDireccion.setEditable(!tDireccion.isEditable());
+		tDireccion.setEditable(false);
 
 		btnModificar.setEnabled(false);
 		btnCancelar.setEnabled(false);
