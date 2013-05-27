@@ -57,6 +57,12 @@ public class Imagenes {
 
 		return getCachedIcon();
 	}
+	
+	public static ImageIcon resuelveImagenJuego(String nombreImagen) {
+		cachedIcon = new ImageIcon(Imagenes.class.getResource(nombreImagen));
+		
+		return cachedIcon;
+	}
 
 	/**
 	 * Obtiene la última imagen cargada.

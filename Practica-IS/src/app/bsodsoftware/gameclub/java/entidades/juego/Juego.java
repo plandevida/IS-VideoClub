@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import app.bsodsoftware.gameclub.java.imagenes.Imagenes;
+
 public class Juego {
 
 	private int id;
@@ -31,7 +33,7 @@ public class Juego {
 		this.unidades = unidades;
 		this.edad_minima = edad_minima;
 		this.descripcion = descipcion;
-		if(imagen.getIconHeight()<=0){imagen=new ImageIcon("src/app/bsodsoftware/gameclub/java/imagenes/untitled.png");}
+		if(imagen.getIconHeight()<=0){imagen = Imagenes.resuelveImagenJuego("untitled");}
 		this.imagen = new ImageIcon(imagen.getImage().getScaledInstance(
 				56, 56, Image.SCALE_FAST));
 		this.imagen.setDescription(imagen.getDescription());
@@ -119,8 +121,11 @@ public class Juego {
 
 		return igual;
 	}
-
-	public String getURLImagen() {
-		return imagen.getDescription();
+	
+	public String getNombreImagen() {
+		String rutas[] = imagen.getDescription().split("/");
+		String nombre = rutas[rutas.length-1];
+		
+		return nombre;
 	}
 }
