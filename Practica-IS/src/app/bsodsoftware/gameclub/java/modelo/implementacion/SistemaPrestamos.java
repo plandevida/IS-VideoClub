@@ -165,8 +165,14 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 
 	@Override
 	public boolean usuarioConPrestamos(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resultado=false;
+		for(Prestamo p: listaPrestamos){
+			if(p.getUsuario_a_prestar().equals(usuario)) 
+			{
+				resultado=true;
+			}
+		}
+		return resultado;
 	}
 
 }

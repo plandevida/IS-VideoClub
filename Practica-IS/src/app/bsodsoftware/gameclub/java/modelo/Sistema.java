@@ -38,7 +38,7 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 
 	@Override
 	public boolean borrarUsuario(Usuario usuario) {
-		return sistemaUsuarios.borrarUsuario(usuario);
+		return !usuarioConPrestamos(usuario) && sistemaUsuarios.borrarUsuario(usuario) ;
 	}
 
 	@Override
@@ -135,8 +135,7 @@ public class Sistema implements InterfazFicheros, InterfazFachadaJuego,
 
 	@Override
 	public boolean usuarioConPrestamos(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return false;
+		return sistemaPrestamos.usuarioConPrestamos(usuario);
 	}
 
 }

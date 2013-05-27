@@ -55,6 +55,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 	public boolean borrarUsuario(Usuario usuario) {
 
 		boolean resultado = true;
+		
 		if (!existeUsuario(usuario)) {
 			resultado = false;
 		} else {
