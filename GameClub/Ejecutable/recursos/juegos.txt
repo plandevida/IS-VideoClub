@@ -1,0 +1,4 @@
+1:Catan the game:4:3:18:Altamente entretenido:catan.png
+2:Twister:6:1:18:Diversi??n loca:twister.png
+49817649:jungle speed:8:1:10:Pilla el totem!!:jungle.png
+EOF
