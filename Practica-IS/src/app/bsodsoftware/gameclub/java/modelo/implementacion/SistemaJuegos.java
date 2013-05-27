@@ -66,7 +66,7 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 	@Override
 	public void cargarFichero() {
-		Lectura entrada_de_datos_por_fichero = new Lectura("juegos.txt");
+		Lectura entrada_de_datos_por_fichero = new Lectura("recursos/juegos.txt");
 		String linea_juego;
 
 		try {
@@ -92,7 +92,7 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 
 	@Override
 	public void escribirFichero() {
-		Escritura salida_de_datos_por_fichero = new Escritura("juegos.txt");
+		Escritura salida_de_datos_por_fichero = new Escritura("recursos/juegos.txt");
 		String linea_juego;
 
 		for (Juego j : listaJuegos) {

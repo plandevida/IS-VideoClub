@@ -98,7 +98,7 @@ public class MiTabla extends JTable {
 		TableColumnModel modeloColumna = cabecera.getColumnModel();
 		TableColumn columna;
 
-		String[] columnasModelo = ((MiModelo) getModel()).getColumnas();
+		String[] columnasModelo = ((MiModelo<?>) getModel()).getColumnas();
 
 		for (int i = 0; i < modelo.getColumnCount(); i++) {
 

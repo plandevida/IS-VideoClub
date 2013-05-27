@@ -108,7 +108,7 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 
 	@Override
 	public void cargarFichero() {
-		Lectura entrada_de_datos_por_fichero = new Lectura("prestamos.txt");
+		Lectura entrada_de_datos_por_fichero = new Lectura("recursos/prestamos.txt");
 		String linea_prestamo;
 
 		try {
@@ -134,7 +134,7 @@ public class SistemaPrestamos implements InterfazFachadaPrestamo,
 
 	@Override
 	public void escribirFichero() {
-		Escritura salida_de_datos_por_fichero = new Escritura("prestamos.txt");
+		Escritura salida_de_datos_por_fichero = new Escritura("recursos/prestamos.txt");
 		String linea_prestamo;
 
 		for (Prestamo p : listaPrestamos) {

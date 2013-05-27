@@ -75,7 +75,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 	@Override
 	public void cargarFichero() {
 
-		Lectura entrada_de_datos_por_fichero = new Lectura("usuarios.txt");
+		Lectura entrada_de_datos_por_fichero = new Lectura("recursos/usuarios.txt");
 		String linea_usuario;
 
 		try {
@@ -101,7 +101,7 @@ public class SistemaUsuarios implements InterfazFachadaUsuario,
 
 	@Override
 	public void escribirFichero() {
-		Escritura salida_de_datos_por_fichero = new Escritura("usuarios.txt");
+		Escritura salida_de_datos_por_fichero = new Escritura("recursos/usuarios.txt");
 		String linea_usuario;
 
 		for (Usuario u : listaUsuarios) {

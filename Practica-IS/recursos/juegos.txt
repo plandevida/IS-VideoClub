@@ -1,4 +1,4 @@
 1:Catan the game:4:3:18:Altamente entretenido:src/app/bsodsoftware/gameclub/java/imagenes/catan
 2:Twister:6:1:18:Diversión loca:src/app/bsodsoftware/gameclub/java/imagenes/twister
-49817649:jungle speed:1:1:10:Pilla el totem!!:src/app/bsodsoftware/gameclub/java/imagenes/jungle
+49817649:jungle speed:8:1:10:Pilla el totem!!:src/app/bsodsoftware/gameclub/java/imagenes/jungle
 EOF
