@@ -56,8 +56,6 @@ public class PanelAnadirJuego extends JPanel {
 
 		JLabel lblEdadminima = new JLabel("Edad Minima");
 
-		JLabel lblImagen = new JLabel("Imagen");
-
 		txtNombre = new JTextField();
 		txtNombre.setColumns(10);
 
@@ -141,178 +139,61 @@ public class PanelAnadirJuego extends JPanel {
 		txtEdadminima.setColumns(10);
 
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout
-				.setHorizontalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addGap(129)
-																		.addGroup(
-																				groupLayout
-																						.createParallelGroup(
-																								Alignment.TRAILING)
-																						.addGroup(
-																								groupLayout
-																										.createSequentialGroup()
-																										.addGroup(
-																												groupLayout
-																														.createParallelGroup(
-																																Alignment.LEADING)
-																														.addComponent(
-																																lblUnidades,
-																																GroupLayout.DEFAULT_SIZE,
-																																165,
-																																Short.MAX_VALUE)
-																														.addComponent(
-																																lblDescripcion,
-																																GroupLayout.DEFAULT_SIZE,
-																																165,
-																																Short.MAX_VALUE)
-																														.addComponent(
-																																lblEdadminima,
-																																GroupLayout.DEFAULT_SIZE,
-																																165,
-																																Short.MAX_VALUE)
-																														.addComponent(
-																																lblNJugadores,
-																																GroupLayout.DEFAULT_SIZE,
-																																165,
-																																Short.MAX_VALUE)
-																														.addComponent(
-																																lblNombre,
-																																GroupLayout.DEFAULT_SIZE,
-																																165,
-																																Short.MAX_VALUE))
-																										.addGap(27))
-																						.addGroup(
-																								groupLayout
-																										.createSequentialGroup()
-																										.addComponent(
-																												lblImagen,
-																												GroupLayout.DEFAULT_SIZE,
-																												174,
-																												Short.MAX_VALUE)
-																										.addGap(18)))
-																		.addGroup(
-																				groupLayout
-																						.createParallelGroup(
-																								Alignment.LEADING)
-																						.addComponent(
-																								txtEdadminima)
-																						.addComponent(
-																								txtDescripcion)
-																						.addComponent(
-																								txtUnidades)
-																						.addComponent(
-																								txtNombre)
-																						.addComponent(
-																								txtNJugadores,
-																								GroupLayout.DEFAULT_SIZE,
-																								195,
-																								Short.MAX_VALUE)))
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addGap(188)
-																		.addComponent(
-																				btnAceptar,
-																				GroupLayout.PREFERRED_SIZE,
-																				98,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addGap(94)
-																		.addComponent(
-																				btnCancelar,
-																				GroupLayout.PREFERRED_SIZE,
-																				117,
-																				GroupLayout.PREFERRED_SIZE)))
-										.addGap(146)));
-		groupLayout
-				.setVerticalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addGap(71)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																txtNombre,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(lblNombre))
-										.addGap(18)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																lblNJugadores)
-														.addComponent(
-																txtNJugadores,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																lblUnidades)
-														.addComponent(
-																txtUnidades,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																lblDescripcion)
-														.addComponent(
-																txtDescripcion,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																lblEdadminima)
-														.addComponent(
-																txtEdadminima,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(29)
-										.addComponent(lblImagen)
-										.addGap(49)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																btnCancelar)
-														.addComponent(
-																btnAceptar))
-										.addGap(231)));
-		groupLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {
-				btnAceptar, btnCancelar });
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(129)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblUnidades, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+						.addComponent(lblDescripcion, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+						.addComponent(lblEdadminima, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+						.addComponent(lblNJugadores, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+						.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+						.addComponent(btnAceptar, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(27)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(txtEdadminima, 195, 195, Short.MAX_VALUE)
+								.addComponent(txtDescripcion, 195, 195, Short.MAX_VALUE)
+								.addComponent(txtUnidades, 195, 195, Short.MAX_VALUE)
+								.addComponent(txtNombre, 195, 195, Short.MAX_VALUE)
+								.addComponent(txtNJugadores)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(73)
+							.addComponent(btnCancelar, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(151, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(71)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNJugadores)
+						.addComponent(txtNJugadores, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblUnidades)
+						.addComponent(txtUnidades, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblDescripcion)
+						.addComponent(txtDescripcion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblEdadminima)
+						.addComponent(txtEdadminima, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(39)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnAceptar)
+						.addComponent(btnCancelar))
+					.addGap(286))
+		);
+		groupLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnAceptar, btnCancelar});
 		setLayout(groupLayout);
 	}
 

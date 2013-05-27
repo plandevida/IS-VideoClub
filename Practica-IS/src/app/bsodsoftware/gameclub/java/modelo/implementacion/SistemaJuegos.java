@@ -102,7 +102,7 @@ public class SistemaJuegos implements InterfazFachadaJuego, InterfazFicheros {
 					+ j.getUnidades() + ":" + j.getEdad_minima() + ":"
 					+ j.getDescripcion() + ":"
 					+ j.getURLImagen() + "\n";
-			// System.out.println("linea->" + linea_juego);
+			
 			salida_de_datos_por_fichero.escribirLinea(linea_juego);
 		}
 

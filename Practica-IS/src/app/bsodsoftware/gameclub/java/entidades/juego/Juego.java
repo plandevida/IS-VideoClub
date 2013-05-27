@@ -121,7 +121,6 @@ public class Juego {
 	}
 
 	public String getURLImagen() {
-		// TODO Auto-generated method stub
 		return imagen.getDescription();
 	}
 }

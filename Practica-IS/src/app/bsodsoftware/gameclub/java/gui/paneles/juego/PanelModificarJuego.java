@@ -205,16 +205,19 @@ public class PanelModificarJuego extends JPanel {
 							@Override
 							public void actionPerformed(ActionEvent e) {
 				
-								Juego juego = null;
+								Juego juego = miSistema.buscaJuego(tNombre.getText());
 				
 								try {
+									
+									ImageIcon imagenAnterior = juego.getImagen() != null ? juego.getImagen() : new ImageIcon();
+									
 									juego = new Juego( Integer.valueOf(tId.getText()),
 														tNombre.getText(),
 														Integer.valueOf(tNjugadores.getText()),
 														Integer.valueOf(tUnidades.getText()),
 														Integer.valueOf(tEdad.getText()),
 														tDescripcion.getText(), 
-														new ImageIcon()
+														imagenAnterior
 													);
 				
 									if ( miSistema.modificarjuego(juego) ) {
